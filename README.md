@@ -24,7 +24,20 @@ This is built as a **rules engine plus a client**, not as an Unreal Blueprint ga
 
 **Data-driven content.** Units, spells, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A constructed list is 40 main cards, 5 reserves, 20 territories. New cards are content, not engine classes.
 
-**Bot.** Play vs AI uses a legal-action generator and MCTS. The bot plays through the same `GameState` as a human.
+**AI.** Play vs AI is Monte Carlo Tree Search over the same `GameState` a human uses. Legal moves are enumerated by a generator (deploy, move, attack, spells, abilities, lands). Only attacks that already pass range, LOS, and validation are considered.
+
+Leaf positions are scored with a linear model: `value = clamp(dot(features, weights), -1, 1)` from the AI's seat. Default weights are the hand-tuned heuristic; they can be swapped at runtime from a file (`TACTICS_BOT_WEIGHTS`) without a recompile. Terminal positions use the real match outcome (base destroyed, sudden-death base-HP tiebreak).
+
+The scorer is built around two axes, because this game is a card economy and a tactics board at the same time:
+
+- **Win condition first.** Base HP difference `/ 30` is the dominant term. The AI is trying to kill the enemy base, not farm a unit count.
+- **Card / tempo.** Hand difference, spendable float (it expires at end of turn), flux, remaining deck count, and remaining deck quality. Idle energy is wasted tempo.
+- **Piece value, not headcount.** Each unit or structure is `HP + attack + movement*0.5 + ranged range*0.6 + keyword premia + ability optionality + engine passives + status`. A 22/22 Sentinel is not scored like a 1/1 token. Value engines (spawners, energy generators, auras) are weighted higher so they are not traded for junk. Status is in the same number: armor and boosts add; stun / silence / jammed / DoTs / overload subtract; evasive adds.
+- **Position.** Advancement toward the enemy base (Chebyshev, normalized). Penalty if enemy units sit within 2 tiles of our base, weighted by their attack. Objective tiles (scanner, omni-energy, aether) have hold values; capturing or contesting them is scored, piling extra bodies onto an already-contested tile is not.
+- **Attack policy.** Target `piece_value` (prefer the Sentinel). Lethality bonus for a kill vs chip. Expected-hit fraction for evasive and low cover (unless trueshot/flying). Counterattack risk, including not dying for a token. The base stays the top target (it does not counter).
+- **Spells and abilities.** Immediate effect (damage/debuff on enemies scaled by target value, heals/buffs on allies that need them) vs future value (hold Reflex mana for the opponent's turn, spend expiring float now, wait for 2+ AoE targets). Deploy scoring includes `card_engine_future_value` so ramp cards are worth playing before they do anything the turn they land.
+
+Search clones the match, rolls MCTS, and picks from that. No separate Unreal AI.
 
 **Networking.** Host-authoritative WebSocket (default port 8788, wire version 4). The host owns `GameState`. Clients send command strings; the host broadcasts snapshots and JSON-patch deltas, plus a command journal. Optional room-token auth is HMAC-SHA256 over seat, counter, and line (replay-protected). Optional in-process TLS if built with OpenSSL. `tactics_net_server` is a headless host (P1 is server authority, remotes are P2+). `tactics_net_client` is a text join client for the same socket. That path is for a later microcomputer / smart-board / web GUI.
 
