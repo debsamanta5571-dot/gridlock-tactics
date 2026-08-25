@@ -7,6 +7,7 @@
 #include "STacticsBoardPanel.h"
 #include "STacticsDeckBuilderPanel.h"
 #include "STacticsMainMenuPanel.h"
+#include "STacticsSettingsPanel.h"
 #include "TacticsDeckLibrarySubsystem.h"
 #include "TacticsMapNavigator.h"
 #include "TacticsMapSettings.h"
@@ -14,6 +15,7 @@
 #include "TacticsWebSocketSubsystem.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
+#include "HAL/PlatformMisc.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "Engine/World.h"
@@ -28,6 +30,7 @@
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/SOverlay.h"
 #include "Widgets/Text/STextBlock.h"
+#include "Framework/Application/SlateApplication.h"
 
 void UTacticsGameInstance::Init()
 {
@@ -43,7 +46,6 @@ void UTacticsGameInstance::StartGameInstance()
 {
 	Super::StartGameInstance();
 #if !WITH_EDITOR
-	// Packaged builds otherwise inherit a low ResolutionQuality from the engine default.
 	if (UGameUserSettings* Settings = GEngine ? GEngine->GetGameUserSettings() : nullptr)
 	{
 		Settings->SetFullscreenMode(EWindowMode::WindowedFullscreen);
@@ -52,8 +54,6 @@ void UTacticsGameInstance::StartGameInstance()
 		{
 			Settings->SetScreenResolution(Desktop);
 		}
-		Settings->SetOverallScalabilityLevel(3);
-		Settings->SetResolutionScaleValueEx(100.f);
 		Settings->SetVSyncEnabled(true);
 		Settings->ApplySettings(false);
 	}
@@ -128,6 +128,7 @@ void UTacticsGameInstance::RemoveMenuAndBuilderUi()
 	}
 	MainMenuPanel.Reset();
 	DeckBuilderPanel.Reset();
+	HideOptionsOverlay();
 }
 
 void UTacticsGameInstance::ApplyViewportUiForCurrentScreen()
@@ -188,8 +189,59 @@ void UTacticsGameInstance::AddUiDeferred()
 	UiAddAttempts = 0;
 }
 
+void UTacticsGameInstance::HideOptionsOverlay()
+{
+	if (!OptionsOverlay.IsValid())
+	{
+		return;
+	}
+	if (UGameViewportClient* ViewportClient = GetGameViewportClient())
+	{
+		ViewportClient->RemoveViewportWidgetContent(OptionsOverlay.ToSharedRef());
+	}
+	OptionsOverlay.Reset();
+}
+
+void UTacticsGameInstance::ToggleOptionsOverlay()
+{
+	if (OptionsOverlay.IsValid())
+	{
+		HideOptionsOverlay();
+		return;
+	}
+	UGameViewportClient* ViewportClient = GetGameViewportClient();
+	if (!ViewportClient)
+	{
+		return;
+	}
+	OptionsOverlay = SNew(STacticsSettingsPanel)
+		.GameInstance(this)
+		.bInMatch(CurrentScreen == ETacticsAppScreen::Match)
+		.OnBack(FSimpleDelegate::CreateUObject(this, &UTacticsGameInstance::HideOptionsOverlay));
+	ViewportClient->AddViewportWidgetContent(OptionsOverlay.ToSharedRef(), OptionsOverlayZOrder);
+	FSlateApplication::Get().SetKeyboardFocus(OptionsOverlay, EFocusCause::SetDirectly);
+}
+
+void UTacticsGameInstance::ReturnToMainMenuFromMatch()
+{
+	HideOptionsOverlay();
+	if (UTacticsWebSocketSubsystem* Net = GetSubsystem<UTacticsWebSocketSubsystem>())
+	{
+		Net->Disconnect();
+		Net->StopHost();
+	}
+	ShowMainMenu();
+}
+
+void UTacticsGameInstance::RequestQuitGame()
+{
+	HideOptionsOverlay();
+	FPlatformMisc::RequestExit(false);
+}
+
 void UTacticsGameInstance::ShowMainMenu()
 {
+	HideOptionsOverlay();
 	CurrentScreen = ETacticsAppScreen::MainMenu;
 	bPendingLobbyMatchEnter = false;
 	bPendingLobbyMatchAsHost = false;

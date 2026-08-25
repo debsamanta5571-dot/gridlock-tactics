@@ -1126,7 +1126,7 @@ void STacticsBoardPanel::HandleShortcutKey(const FKey& Key)
 		}
 		return;
 	}
-	if (Key == EKeys::P || Key == EKeys::SpaceBar) {
+	if (Key == EKeys::P) {
 		if (Subsystem->CanControlledPlayerPassPriority()) {
 			RunCli(TEXT("pass"));
 		}

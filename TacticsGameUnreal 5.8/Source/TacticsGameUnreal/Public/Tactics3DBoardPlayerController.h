@@ -29,6 +29,7 @@ protected:
 	void OnShortcutCancel();
 	void OnShortcutUndo();
 	void OnShortcutPass();
+	void OnToggleOptions();
 	void OnShortcutConfirm();
 	void OnZoomIn();
 	void OnZoomOut();

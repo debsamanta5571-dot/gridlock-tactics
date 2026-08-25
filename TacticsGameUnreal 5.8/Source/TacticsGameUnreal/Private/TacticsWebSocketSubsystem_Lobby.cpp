@@ -200,25 +200,22 @@ bool UTacticsWebSocketSubsystem::CanHostStartMatch() const
 	if (!IsHosting() || !IsInLobby()) {
 		return false;
 	}
-	bool bHostReady = false;
+	bool bHostHasDeck = false;
 	int32 Occupied = 0;
-	int32 ReadyOccupied = 0;
 	for (const FTacticsLobbySeatState& S : LobbySeats) {
 		if (!S.bOccupied) {
 			continue;
 		}
 		++Occupied;
-		if (S.bReady) {
-			++ReadyOccupied;
+		if (S.DeckJson.IsEmpty()) {
+			return false;
 		}
 		if (S.bIsHost) {
-			bHostReady = S.bReady && !S.DeckJson.IsEmpty();
-		} else if (S.DeckJson.IsEmpty()) {
-			return false;
+			bHostHasDeck = true;
 		}
 	}
 	const int32 Required = LobbySettings.bTeam2v2 ? 4 : 2;
-	return bHostReady && Occupied >= Required && ReadyOccupied == Occupied;
+	return bHostHasDeck && Occupied >= Required;
 }
 
 bool UTacticsWebSocketSubsystem::BeginHostLobby(const FTacticsLobbyMatchSettings& Settings,
@@ -470,7 +467,7 @@ void UTacticsWebSocketSubsystem::HandleLobbyClaimFromPeer(const TSharedPtr<FTact
 bool UTacticsWebSocketSubsystem::HostStartMatchFromLobby(FString& OutError)
 {
 	if (!CanHostStartMatch()) {
-		OutError = TEXT("Cannot start - every occupied seat must be ready with a deck.");
+		OutError = TEXT("Cannot start - need a full lobby and a deck in every occupied seat.");
 		return false;
 	}
 	UGameInstance* GI = GetGameInstance();

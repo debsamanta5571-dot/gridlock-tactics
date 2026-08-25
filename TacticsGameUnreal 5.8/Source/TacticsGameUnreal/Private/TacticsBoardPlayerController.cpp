@@ -1,5 +1,7 @@
 #include "TacticsBoardPlayerController.h"
+#include "TacticsGameInstance.h"
 #include "Engine/World.h"
+#include "InputCoreTypes.h"
 
 ATacticsBoardPlayerController::ATacticsBoardPlayerController()
 {
@@ -34,6 +36,24 @@ void ATacticsBoardPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	ApplySlateFriendlyMouseCursor(this);
+}
+
+void ATacticsBoardPlayerController::SetupInputComponent()
+{
+	Super::SetupInputComponent();
+	if (InputComponent)
+	{
+		InputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ATacticsBoardPlayerController::OnToggleOptions);
+		InputComponent->BindKey(EKeys::BackSpace, IE_Pressed, this, &ATacticsBoardPlayerController::OnToggleOptions);
+	}
+}
+
+void ATacticsBoardPlayerController::OnToggleOptions()
+{
+	if (UTacticsGameInstance* TGI = Cast<UTacticsGameInstance>(GetGameInstance()))
+	{
+		TGI->ToggleOptionsOverlay();
+	}
 }
 
 void ATacticsBoardPlayerController::PlayerTick(const float DeltaSeconds)

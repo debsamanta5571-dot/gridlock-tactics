@@ -18,5 +18,8 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
 	virtual void PlayerTick(float DeltaSeconds) override;
+
+	void OnToggleOptions();
 };

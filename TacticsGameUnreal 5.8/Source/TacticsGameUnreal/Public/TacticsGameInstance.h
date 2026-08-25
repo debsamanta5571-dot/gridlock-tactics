@@ -9,6 +9,7 @@ class ABattleVisualizationActor;
 class STacticsBoardPanel;
 class STacticsMainMenuPanel;
 class STacticsDeckBuilderPanel;
+class STacticsSettingsPanel;
 
 /** Which full-screen flow the game instance is showing. */
 UENUM()
@@ -68,6 +69,15 @@ public:
 
 	/** Travels to the main menu map and shows the start panel. */
 	void ShowMainMenu();
+	/** Closes the match and returns to the start screen. */
+	void ReturnToMainMenuFromMatch();
+	/** Opens or closes the options overlay (Space). */
+	void ToggleOptionsOverlay();
+	/** Hides the options overlay if it is up. */
+	void HideOptionsOverlay();
+	bool IsOptionsOverlayVisible() const { return OptionsOverlay.IsValid(); }
+	/** Exits the process (packaged game or standalone). */
+	void RequestQuitGame();
 	/** Travels to the deck builder map. */
 	void ShowDeckBuilder();
 	/** Starts a local Play vs AI match with the pending decks and difficulty. */
@@ -167,6 +177,8 @@ private:
 	TSharedPtr<STacticsMainMenuPanel> MainMenuPanel;
 	TSharedPtr<STacticsDeckBuilderPanel> DeckBuilderPanel;
 	TSharedPtr<STacticsBoardPanel> BoardPanel;
+	TSharedPtr<STacticsSettingsPanel> OptionsOverlay;
+	static constexpr int32 OptionsOverlayZOrder = 400000;
 	TSharedPtr<class SWidget> CombatViewportCurtain;
 	bool bSavedDisableWorldRendering{false};
 	int32 UiAddAttempts{0};
