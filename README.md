@@ -17,3 +17,4 @@ If you want to actually try this game, (i don't think its fully stable yet, the 
 ## Open
 Add packaged build instructions and c++ server instructuions (don't recommend c++ server its mean to eventually have a web gui to alk to"
 
+#Made with C++ and Unreal 5.8
