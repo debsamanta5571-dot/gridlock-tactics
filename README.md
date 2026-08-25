@@ -6,6 +6,16 @@ Gridlock Tactics is a tactical card game my friends and I are working on. Matche
 
 ![Gameplay](preview.gif)
 
+## Unreal build
+
+- [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
+- [How to play (PDF)](docs/HOW_TO_PLAY.pdf)
+
+Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
+
+- Play vs AI
+- Host LAN / Join (default port 8788)
+
 ## Architecture
 
 ### Rules core
@@ -64,20 +74,9 @@ The features treat this as both a card game and a tactics game.
 
 Search clones the match, runs MCTS, and takes the chosen action. There is no separate Unreal AI.
 
-## Downloads
-
-- [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
-- [Standalone C++ host + join client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
-- [How to play (PDF)](docs/HOW_TO_PLAY.pdf)
-
-## Unreal build
-
-Unzip the Unreal zip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
-
-- Play vs AI
-- Host LAN / Join (default port 8788)
-
 ## C++ server
+
+[Standalone C++ host + join client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
 
 I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
