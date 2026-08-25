@@ -21,7 +21,7 @@ if not exist "%CONTENT%\TacticsData\ability_catalog.json" (
 )
 
 echo.
-echo Standalone host. Unreal clients: Join, ws://127.0.0.1:8788/
+echo Headless host. Join with run_net_client.bat or Unreal Join ws://127.0.0.1:8788/
 echo Extra args: --public  --port N  --token SECRET
 echo.
 

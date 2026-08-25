@@ -24,7 +24,7 @@ Unreal Gui.
 ## Downloads
 
 - [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
-- [Standalone C++ host + CLI (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
+- [Standalone C++ host + join client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
 - [How to play (PDF)](docs/HOW_TO_PLAY.pdf)
 
 ## Unreal build
@@ -38,10 +38,12 @@ Unzip the Unreal zip and run `TacticsGameUnreal.exe`. Keep that whole folder tog
 
 I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
-Download the C++ zip, unzip it, then double-click one of these:
+Download the C++ zip, unzip it, then:
 
-- `run_net_server.bat` — headless host on this machine. In the Unreal client, Join `ws://127.0.0.1:8788/`
-- `run_net_server_lan.bat` — same thing, but other PCs on the LAN can join
-- `run_cli.bat` — text match, no Unreal at all
+- `run_net_server.bat` - headless host on this machine
+- `run_net_server_lan.bat` - same host, other PCs on the LAN can join
+- `run_net_client.bat` - text join client. Start the server first, then this. Type help.
+
+Unreal can still Join the same host at `ws://127.0.0.1:8788/`.
 
 Made with C++ and Unreal 5.7/ 5.8

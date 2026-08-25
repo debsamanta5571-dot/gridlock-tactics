@@ -20,6 +20,6 @@ if not exist "cpp_core\build\CMakeCache.txt" (
 )
 
 echo Building standalone C++ targets...
-cmake --build cpp_core\build --config Release --target tactics_net_server tactics_master_cli tactics_core_cli bot_match
+cmake --build cpp_core\build --config Release --target tactics_net_server tactics_net_client
 echo STANDALONE_BUILD_EXIT=%ERRORLEVEL%
 exit /b %ERRORLEVEL%
