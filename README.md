@@ -13,32 +13,18 @@ Technically its not actually made with c++ unreal objects but it is a separate c
 
 # Instructions
 
-If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you will need Unreal Engine 5.8.
+If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you do not need Unreal Engine installed.
 
-## Unreal
+## Packaged build
 
-Open `TacticsGameUnreal 5.8/TacticsGameUnreal.uproject` and press Play.
+Run `Packaged\Win64\TacticsGameUnreal.exe`. No editor, no engine install.
 
 - Play vs AI
 - Host LAN / Join (default port 8788)
 
-To rebuild the editor (`build_ue.bat` expects the engine at `E:\UE_5.8`, change that path if yours is somewhere else):
-
-```
-.\build_ue.bat
-```
-
-## Packaged build
-
-```
-.\scripts\package_win64_desktop.ps1
-```
-
-Then run `Packaged\Win64\TacticsGameUnreal.exe`. That output stays on your machine, it is not in this repo.
-
 ## C++ server
 
-I don't really recommend this for actually playing. It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Unreal Host LAN.
+I don't really recommend this for actually playing. It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
 If you still want the headless host:
 
@@ -47,7 +33,7 @@ If you still want the headless host:
 .\run_net_server.bat
 ```
 
-That builds `tactics_net_server` if it isn't there yet and loads cards from `TacticsGameUnreal 5.8\Content`. In Unreal, Join `ws://127.0.0.1:8788/`.
+That builds `tactics_net_server` if it isn't there yet and loads cards from `TacticsGameUnreal 5.8\Content`. From the packaged game, Join `ws://127.0.0.1:8788/`.
 
 LAN bind (0.0.0.0):
 
