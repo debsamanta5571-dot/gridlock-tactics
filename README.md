@@ -1,8 +1,6 @@
 # Gridlock Tactics
 
-Gridlock Tactics is a two-player tactical card game I'm building with friends. They design the cards. I write the code. Two sides fight on an 8x12 board: take territories for energy, deploy units, and destroy the other base.
-
-The rules are a C++ library. Unreal is the 3D client. There is a playable Windows build and a headless C++ host if you want to join without the editor.
+Gridlock Tactics is a tactical card game my friends and I are working on. I’m the one writing the code. Matches happen on an 8x12 board. Take territory=ies, spend the energy on cards and units, and try to destroy the other team’s base.
 
 ## Preview
 
