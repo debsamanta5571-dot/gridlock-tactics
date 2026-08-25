@@ -16,24 +16,19 @@ The rules are not Unreal objects. They are a separate C++ module loaded in separ
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
-# Instructions
-
-If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you do not need Unreal Engine installed.
 
 ## Downloads
-
-Windows zips (no Unreal Engine install):
 
 - [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
 - [Standalone C++ host + CLI (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
 
-Unreal zip: unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
 
-C++ zip: `run_net_server.bat` / `tactics_net_server.exe` is the headless host, `run_cli.bat` is the text match. Card data is already in the zip.
+
+
 
 ## Unreal build
 
-If you already have a packaged folder locally, run `Packaged\Win64\TacticsGameUnreal.exe`. No editor, no engine install.
+Unreal zip: unzip and run `TacticsGameUnreal.exe`.
 
 - Play vs AI
 - Host LAN / Join (default port 8788)
@@ -51,6 +46,7 @@ If you still want the headless host:
 
 That builds `tactics_net_server` if it isn't there yet and loads cards from `TacticsGameUnreal 5.8\Content`. From the packaged game, Join `ws://127.0.0.1:8788/`.
 
+
 LAN bind (0.0.0.0):
 
 ```
@@ -59,6 +55,8 @@ LAN bind (0.0.0.0):
 
 Extra args go through (`--port 9000`, `--token secret`).
 
+
+C++ zip: `run_net_server.bat` / `tactics_net_server.exe` is the headless host, `run_cli.bat` is the text match. Card data is already in the zip.
 Interactive C++ match with no Unreal at all:
 
 ```
