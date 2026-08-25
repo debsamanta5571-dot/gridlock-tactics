@@ -57,5 +57,7 @@ private:
 	FReply StartVsAi();
 	FReply StartHost();
 	FReply StartJoin();
+	FReply OpenOptions();
+	FReply QuitGame();
 	bool IsShowingVsAiSetup() const { return bShowVsAiSetup && !IsInMultiplayerLobby(); }
 };

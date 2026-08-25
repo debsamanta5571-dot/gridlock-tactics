@@ -1,31 +1,52 @@
 #include "STacticsSettingsPanel.h"
 
-#include "TacticsBoardVisualSettingsSubsystem.h"
 #include "TacticsCardText.h"
 #include "TacticsGameInstance.h"
 
+#include "Engine/Engine.h"
+#include "GameFramework/GameUserSettings.h"
+#include "InputCoreTypes.h"
+#include "Styling/CoreStyle.h"
 #include "Widgets/Input/SButton.h"
+#include "Layout/Visibility.h"
 #include "Widgets/Layout/SBorder.h"
+#include "Widgets/Layout/SBox.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Text/STextBlock.h"
 
 namespace
 {
-constexpr FLinearColor kSettingsPanelBg(0.02f, 0.04f, 0.08f, 0.92f);
+constexpr FLinearColor kSettingsPanelBg(0.028f, 0.026f, 0.024f, 0.96f);
+constexpr FLinearColor kDim(0.f, 0.f, 0.f, 0.62f);
 constexpr FLinearColor kTitle(0.95f, 0.95f, 0.95f, 1.f);
-constexpr FLinearColor kBody(0.78f, 0.82f, 0.88f, 1.f);
-constexpr FLinearColor kAccent(0.72f, 0.88f, 1.f, 1.f);
+constexpr FLinearColor kAccent(0.78f, 0.76f, 0.72f, 1.f);
+constexpr FLinearColor kBtnIdle(0.08f, 0.075f, 0.07f, 0.96f);
+constexpr FLinearColor kBtnPrimary(0.26f, 0.07f, 0.05f, 1.f);
 
-TSharedRef<SButton> SettingsBtn(const FText& Label, FOnClicked OnClicked)
+TSharedRef<SButton> SettingsBtn(const FText& Label, FOnClicked OnClicked, bool bPrimary = false)
 {
 	return SNew(SButton)
 		.OnClicked(OnClicked)
+		.ButtonColorAndOpacity(bPrimary ? kBtnPrimary : kBtnIdle)
 		[
 			SNew(STextBlock)
 				.Text(Label)
 				.Justification(ETextJustify::Center)
+				.ColorAndOpacity(FLinearColor::White)
 				.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 12))
 		];
+}
+
+const TCHAR* GraphicsLabel(const int32 Level)
+{
+	switch (Level)
+	{
+	case 0: return TEXT("Low");
+	case 1: return TEXT("Medium");
+	case 2: return TEXT("High");
+	case 3: return TEXT("Epic");
+	default: return TEXT("Custom");
+	}
 }
 }  // namespace
 
@@ -33,176 +54,147 @@ void STacticsSettingsPanel::Construct(const FArguments& InArgs)
 {
 	GameInstance = InArgs._GameInstance;
 	OnBack = InArgs._OnBack;
+	bInMatch = InArgs._bInMatch;
 
 	ChildSlot
 		[
 			SNew(SBorder)
-				.BorderBackgroundColor(kSettingsPanelBg)
-				.Padding(32.f)
+				.BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
+				.BorderBackgroundColor(kDim)
+				.HAlign(HAlign_Center)
+				.VAlign(VAlign_Center)
+				.Padding(24.f)
 				[
-					SNew(SVerticalBox)
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+					SNew(SBox)
+						.WidthOverride(460.f)
 						[
-							SNew(STextBlock)
-								.Text(FText::FromString(TEXT("Settings")))
-								.ColorAndOpacity(kTitle)
-								.Font(TacticsCardText::DesignFont(TEXT("Bold"), 28))
-						]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 20.f)
-						[
-							SNew(STextBlock)
-								.Text(FText::FromString(
-									TEXT("Scales cell spacing, grout, floor tiles, and highlights together. "
-										 "Unit card art stays the same size in world units so more grout shows around units. "
-										 "Applies on the next match.")))
-								.ColorAndOpacity(kBody)
-								.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 11))
-								.AutoWrapText(true)
-						]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 12.f)
-						[
-							SNew(STextBlock)
-								.Text(FText::FromString(TEXT("Board cell scale")))
-								.ColorAndOpacity(kAccent)
-								.Font(TacticsCardText::DesignFont(TEXT("Bold"), 14))
-						]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 20.f)
-						[BuildCellSpacingControl()]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
-						[
-							SettingsBtn(FText::FromString(TEXT("Save")),
-								FOnClicked::CreateSP(this, &STacticsSettingsPanel::SaveSettings))
-						]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
-						[
-							SettingsBtn(FText::FromString(TEXT("Reset to defaults")),
-								FOnClicked::CreateSP(this, &STacticsSettingsPanel::ResetDefaults))
-						]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 16.f)
-						[
-							SettingsBtn(FText::FromString(TEXT("Back")),
-								FOnClicked::CreateLambda([this]() {
-									if (OnBack.IsBound()) {
-										OnBack.Execute();
-									}
-									return FReply::Handled();
-								}))
-						]
-					+ SVerticalBox::Slot().AutoHeight()
-						[
-							SNew(STextBlock)
-								.Text_Lambda([this]() { return FText::FromString(StatusMessage); })
-								.ColorAndOpacity(FLinearColor(0.75f, 0.9f, 1.f, 1.f))
-								.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 11))
-								.AutoWrapText(true)
+							SNew(SBorder)
+								.BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
+								.BorderBackgroundColor(kSettingsPanelBg)
+								.Padding(28.f)
+								[
+									SNew(SVerticalBox)
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+										[
+											SNew(STextBlock)
+												.Text(FText::FromString(TEXT("Options")))
+												.ColorAndOpacity(kTitle)
+												.Font(TacticsCardText::DesignFont(TEXT("Bold"), 28))
+										]
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 16.f)
+										[
+											SNew(STextBlock)
+												.Text(FText::FromString(TEXT("Graphics")))
+												.ColorAndOpacity(kAccent)
+												.Font(TacticsCardText::DesignFont(TEXT("Bold"), 14))
+										]
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 16.f)
+										[BuildGraphicsRow()]
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+										[
+											SNew(SBox)
+												.Visibility(bInMatch ? EVisibility::Visible : EVisibility::Collapsed)
+												[
+													SettingsBtn(FText::FromString(TEXT("Main menu")),
+														FOnClicked::CreateSP(this, &STacticsSettingsPanel::ReturnToMainMenu), true)
+												]
+										]
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+										[
+											SNew(SBox)
+												.Visibility(bInMatch ? EVisibility::Visible : EVisibility::Collapsed)
+												[
+													SettingsBtn(FText::FromString(TEXT("Quit")),
+														FOnClicked::CreateSP(this, &STacticsSettingsPanel::QuitGame))
+												]
+										]
+									+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 12.f)
+										[
+											SettingsBtn(FText::FromString(TEXT("Close")),
+												FOnClicked::CreateSP(this, &STacticsSettingsPanel::CloseOverlay))
+										]
+								]
 						]
 				]
 		];
-
-	RefreshStatus();
 }
 
-TSharedRef<SWidget> STacticsSettingsPanel::BuildCellSpacingControl()
+TSharedRef<SWidget> STacticsSettingsPanel::BuildGraphicsRow()
 {
-	return SNew(SVerticalBox)
-		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 6.f)
+	TSharedRef<SHorizontalBox> Row = SNew(SHorizontalBox);
+	for (int32 Level = 0; Level <= 3; ++Level)
+	{
+		const int32 Captured = Level;
+		Row->AddSlot().FillWidth(1.f).Padding(Level == 0 ? 0.f : 6.f, 0.f, 0.f, 0.f)
 			[
-				SNew(STextBlock)
-					.Text(FText::FromString(TEXT("Larger = wider cells, bigger grout slabs, and more room around unit portraits.")))
-					.ColorAndOpacity(kBody)
-					.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 10))
-					.AutoWrapText(true)
-			]
-		+ SVerticalBox::Slot().AutoHeight()
-			[
-				SNew(SHorizontalBox)
-				+ SHorizontalBox::Slot().AutoWidth().Padding(0.f, 0.f, 8.f, 0.f)
-					[
-						SettingsBtn(FText::FromString(TEXT("−")),
-							FOnClicked::CreateSP(this, &STacticsSettingsPanel::AdjustCellSpacing, -0.05f))
-					]
-				+ SHorizontalBox::Slot().FillWidth(1.f).VAlign(VAlign_Center)
+				SNew(SButton)
+					.OnClicked(FOnClicked::CreateSP(this, &STacticsSettingsPanel::SetGraphicsLevel, Captured))
+					.ButtonColorAndOpacity_Lambda([this, Captured]() {
+						return FSlateColor(CurrentGraphicsLevel() == Captured ? kBtnPrimary : kBtnIdle);
+					})
 					[
 						SNew(STextBlock)
-							.Text_Lambda([this]() {
-								if (!GameInstance.IsValid()) {
-									return FText::FromString(TEXT("-"));
-								}
-								const UTacticsBoardVisualSettingsSubsystem* Settings =
-									GameInstance->GetSubsystem<UTacticsBoardVisualSettingsSubsystem>();
-								if (!Settings) {
-									return FText::FromString(TEXT("-"));
-								}
-								const float Spacing = Settings->GetBoardCellSpacingScale();
-								const float CellUU = Settings->GetVisualCellWorldSize();
-								return FText::FromString(FString::Printf(
-									TEXT("Scale %.2f  (cell spacing %.0f uu)"), Spacing, CellUU));
-							})
-							.ColorAndOpacity(kTitle)
-							.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 12))
-					]
-				+ SHorizontalBox::Slot().AutoWidth().Padding(8.f, 0.f, 0.f, 0.f)
-					[
-						SettingsBtn(FText::FromString(TEXT("+")),
-							FOnClicked::CreateSP(this, &STacticsSettingsPanel::AdjustCellSpacing, 0.05f))
+							.Text(FText::FromString(GraphicsLabel(Captured)))
+							.Justification(ETextJustify::Center)
+							.ColorAndOpacity(FLinearColor::White)
+							.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 11))
 					]
 			];
+	}
+	return Row;
 }
 
-void STacticsSettingsPanel::RefreshStatus()
+int32 STacticsSettingsPanel::CurrentGraphicsLevel() const
 {
-	StatusMessage = TEXT("Adjust cell scale, then Save. Launch a match to preview.");
+	const UGameUserSettings* Settings = GEngine ? GEngine->GetGameUserSettings() : nullptr;
+	return Settings ? Settings->GetOverallScalabilityLevel() : 0;
 }
 
-FReply STacticsSettingsPanel::AdjustCellSpacing(const float Delta)
+FReply STacticsSettingsPanel::SetGraphicsLevel(const int32 Level)
 {
-	if (!GameInstance.IsValid()) {
+	UGameUserSettings* Settings = GEngine ? GEngine->GetGameUserSettings() : nullptr;
+	if (!Settings)
+	{
 		return FReply::Handled();
 	}
-	UTacticsBoardVisualSettingsSubsystem* Settings = GameInstance->GetSubsystem<UTacticsBoardVisualSettingsSubsystem>();
-	if (!Settings) {
-		return FReply::Handled();
-	}
-	Settings->SetBoardCellSpacingScale(Settings->GetBoardCellSpacingScale() + Delta);
-	StatusMessage = FString::Printf(
-		TEXT("Cell scale %.2f (%.0f uu spacing, not saved yet)."),
-		Settings->GetBoardCellSpacingScale(),
-		Settings->GetVisualCellWorldSize());
+	Settings->SetOverallScalabilityLevel(FMath::Clamp(Level, 0, 3));
+	Settings->ApplySettings(true);
 	Invalidate(EInvalidateWidget::Paint);
 	return FReply::Handled();
 }
 
-FReply STacticsSettingsPanel::SaveSettings()
+FReply STacticsSettingsPanel::CloseOverlay()
 {
-	if (!GameInstance.IsValid()) {
-		StatusMessage = TEXT("Game instance not ready.");
-		return FReply::Handled();
+	if (OnBack.IsBound())
+	{
+		OnBack.Execute();
 	}
-	UTacticsBoardVisualSettingsSubsystem* Settings = GameInstance->GetSubsystem<UTacticsBoardVisualSettingsSubsystem>();
-	if (!Settings) {
-		StatusMessage = TEXT("Settings subsystem unavailable.");
-		return FReply::Handled();
-	}
-	Settings->SaveToConfig();
-	StatusMessage = FString::Printf(
-		TEXT("Saved. Cell scale %.2f (%.0f uu) - applies on next match."),
-		Settings->GetBoardCellSpacingScale(),
-		Settings->GetVisualCellWorldSize());
-	Invalidate(EInvalidateWidget::Paint);
 	return FReply::Handled();
 }
 
-FReply STacticsSettingsPanel::ResetDefaults()
+FReply STacticsSettingsPanel::ReturnToMainMenu()
 {
-	if (!GameInstance.IsValid()) {
-		return FReply::Handled();
+	if (GameInstance.IsValid())
+	{
+		GameInstance->ReturnToMainMenuFromMatch();
 	}
-	UTacticsBoardVisualSettingsSubsystem* Settings = GameInstance->GetSubsystem<UTacticsBoardVisualSettingsSubsystem>();
-	if (!Settings) {
-		return FReply::Handled();
-	}
-	Settings->ResetToDefaults();
-	StatusMessage = TEXT("Defaults restored (not saved yet).");
-	Invalidate(EInvalidateWidget::Paint);
 	return FReply::Handled();
+}
+
+FReply STacticsSettingsPanel::QuitGame()
+{
+	if (GameInstance.IsValid())
+	{
+		GameInstance->RequestQuitGame();
+	}
+	return FReply::Handled();
+}
+
+FReply STacticsSettingsPanel::OnKeyDown(const FGeometry& MyGeometry, const FKeyEvent& InKeyEvent)
+{
+	if (InKeyEvent.GetKey() == EKeys::Escape || InKeyEvent.GetKey() == EKeys::BackSpace)
+	{
+		return CloseOverlay();
+	}
+	return SCompoundWidget::OnKeyDown(MyGeometry, InKeyEvent);
 }

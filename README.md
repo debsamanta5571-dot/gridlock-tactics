@@ -20,9 +20,20 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 
 If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you do not need Unreal Engine installed.
 
+## Downloads
+
+Windows zips (no Unreal Engine install):
+
+- [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
+- [Standalone C++ host + CLI (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
+
+Unreal zip: unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
+
+C++ zip: `run_net_server.bat` / `tactics_net_server.exe` is the headless host, `run_cli.bat` is the text match. Card data is already in the zip.
+
 ## Unreal build
 
-Run `Packaged\Win64\TacticsGameUnreal.exe`. No editor, no engine install.
+If you already have a packaged folder locally, run `Packaged\Win64\TacticsGameUnreal.exe`. No editor, no engine install.
 
 - Play vs AI
 - Host LAN / Join (default port 8788)

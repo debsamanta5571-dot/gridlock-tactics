@@ -294,6 +294,12 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildTitleCard()
 									TEXT("cancel_join"), false, TEXT("06"))]]
 					]
 			]
+		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+			[MakePlaque(FText::FromString(TEXT("Options")),
+				FOnClicked::CreateSP(this, &STacticsMainMenuPanel::OpenOptions), TEXT("options"), false, TEXT("04"))]
+		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
+			[MakePlaque(FText::FromString(TEXT("Quit")),
+				FOnClicked::CreateSP(this, &STacticsMainMenuPanel::QuitGame), TEXT("quit"), false, TEXT("05"))]
 		+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 12.f, 0.f, 0.f)
 			[SNew(STextBlock)
 					.Text_Lambda([this]() { return FText::FromString(StatusMessage); })
@@ -531,10 +537,9 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildLobbyCard()
 											const FString DeckLabel = Seat.DeckName.IsEmpty()
 												? FString(TEXT("Deck"))
 												: (Lib ? Lib->GetDeckDisplayName(Seat.DeckName) : Seat.DeckName);
-											Lines += FString::Printf(TEXT("P%d  %s  ·  %s  ·  %s\n"), Seat.SeatId,
+											Lines += FString::Printf(TEXT("P%d  %s  ·  %s\n"), Seat.SeatId,
 												Seat.bIsHost ? TEXT("Host") : *Seat.DisplayName,
-												*DeckLabel,
-												Seat.bReady ? TEXT("READY") : TEXT("waiting"));
+												*DeckLabel);
 										}
 									}
 									return FText::FromString(Lines.TrimEnd());
@@ -556,19 +561,6 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildLobbyCard()
 							})
 							[BuildDeckPicker()]]
 					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
-						[MakePlaque(FText::FromString(TEXT("Ready")),
-							FOnClicked::CreateLambda([this]() {
-								if (GameInstance.IsValid()) {
-									if (UTacticsWebSocketSubsystem* Net = GameInstance->GetSubsystem<UTacticsWebSocketSubsystem>()) {
-										ApplySelectedDeckToLobby();
-										Net->LobbySetReady(true);
-										RefreshUi();
-									}
-								}
-								return FReply::Handled();
-							}),
-							TEXT("ready"), true, TEXT("01"))]
-					+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)
 						[
 							SNew(SBox)
 								.Visibility_Lambda([this]() {
@@ -588,7 +580,6 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildLobbyCard()
 											return FReply::Handled();
 										}
 										ApplySelectedDeckToLobby();
-										Net->LobbySetReady(true);
 										FString Err;
 										if (!Net->HostStartMatchFromLobby(Err)) {
 											StatusMessage = Err;
@@ -761,6 +752,24 @@ void STacticsMainMenuPanel::ApplySelectedDeckToLobby()
 	}
 	Net->LobbySetDeck(SelectedDeckKey, Json);
 	RefreshUi();
+}
+
+FReply STacticsMainMenuPanel::OpenOptions()
+{
+	if (GameInstance.IsValid())
+	{
+		GameInstance->ToggleOptionsOverlay();
+	}
+	return FReply::Handled();
+}
+
+FReply STacticsMainMenuPanel::QuitGame()
+{
+	if (GameInstance.IsValid())
+	{
+		GameInstance->RequestQuitGame();
+	}
+	return FReply::Handled();
 }
 
 void STacticsMainMenuPanel::RefreshUi()

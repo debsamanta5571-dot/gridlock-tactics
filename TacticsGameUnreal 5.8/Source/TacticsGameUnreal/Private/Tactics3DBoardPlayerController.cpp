@@ -34,10 +34,10 @@ void ATactics3DBoardPlayerController::SetupInputComponent()
 	if (InputComponent) {
 		InputComponent->BindKey(EKeys::LeftMouseButton, IE_Pressed, this, &ATactics3DBoardPlayerController::OnPrimaryClick);
 		InputComponent->BindKey(EKeys::RightMouseButton, IE_Pressed, this, &ATactics3DBoardPlayerController::OnSecondaryClick);
-		InputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ATactics3DBoardPlayerController::OnShortcutEscape);
+		InputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ATactics3DBoardPlayerController::OnToggleOptions);
+		InputComponent->BindKey(EKeys::BackSpace, IE_Pressed, this, &ATactics3DBoardPlayerController::OnToggleOptions);
 		InputComponent->BindKey(EKeys::Z, IE_Pressed, this, &ATactics3DBoardPlayerController::OnShortcutUndo);
 		InputComponent->BindKey(EKeys::P, IE_Pressed, this, &ATactics3DBoardPlayerController::OnShortcutPass);
-		InputComponent->BindKey(EKeys::SpaceBar, IE_Pressed, this, &ATactics3DBoardPlayerController::OnShortcutPass);
 		InputComponent->BindKey(EKeys::Enter, IE_Pressed, this, &ATactics3DBoardPlayerController::OnShortcutConfirm);
 		InputComponent->BindKey(EKeys::MouseScrollUp, IE_Pressed, this, &ATactics3DBoardPlayerController::OnZoomIn);
 		InputComponent->BindKey(EKeys::MouseScrollDown, IE_Pressed, this, &ATactics3DBoardPlayerController::OnZoomOut);
@@ -70,10 +70,13 @@ void ATactics3DBoardPlayerController::SetupInputComponent()
 
 void ATactics3DBoardPlayerController::OnShortcutEscape()
 {
+	OnToggleOptions();
+}
+
+void ATactics3DBoardPlayerController::OnToggleOptions()
+{
 	if (UTacticsGameInstance* TGI = CachedGameInstance.Get()) {
-		if (TSharedPtr<STacticsBoardPanel> Panel = TGI->GetTacticsBoardPanel()) {
-			Panel->HandleShortcutKey(EKeys::Escape);
-		}
+		TGI->ToggleOptionsOverlay();
 	}
 }
 
