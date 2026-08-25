@@ -6,14 +6,6 @@ Gridlock Tactics is a tactical card game my friends and I are working on. Matche
 
 ![Gameplay](preview.gif)
 
-## Reasoning
-
-The real purpose of this c++ architecture is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
-
-The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
-
-Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
-
 ## Architecture
 
 ### Rules core
@@ -41,6 +33,14 @@ UE 5.8: Slate HUD, 3D board, combat visualization, deck builder, Play vs AI, Hos
 ### Build
 
 C++20, CMake, MSVC, Unreal 5.8 / UBT. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
+
+### Reasoning
+
+The real purpose of this c++ architecture is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
+
+The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
+
+Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
 ## AI
 
