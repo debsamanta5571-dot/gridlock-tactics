@@ -18,6 +18,7 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 
 - [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
 - [Standalone C++ host + CLI (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
+- [How to play (PDF)](docs/HOW_TO_PLAY.pdf)
 
 ## Unreal build
 
