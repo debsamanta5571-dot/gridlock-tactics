@@ -33,6 +33,9 @@ cmake --build cpp_core/build --config Release
 ```
 ./cpp_core/build/Release/tactics_core_cli
 ./cpp_core/build/Release/tactics_master_cli
+./cpp_core/build/Release/tactics_net_server
 ./cpp_core/build/Release/bot_match
 ./cpp_core/build/Release/aether_bot_test
 ```
+
+From the repo root on Windows, `build_standalone.bat` builds those targets. `run_net_server.bat` launches the WebSocket host with `--content` pointed at `TacticsGameUnreal 5.8\Content`. `run_cli.bat` launches `tactics_master_cli`.
