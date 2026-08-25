@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "status_effects": [
+    {
+      "key": "poison",
+      "display_name": "Poison",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "fire",
+      "display_name": "Fire",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "bleed",
+      "display_name": "Bleed",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "rooted",
+      "display_name": "Rooted",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "stunned",
+      "display_name": "Stunned",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "silenced",
+      "display_name": "Silenced",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "jammed",
+      "display_name": "Jammed",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "blocks_activated_abilities": true,
+      "is_negative": true
+    },
+    {
+      "key": "overload",
+      "display_name": "Overload",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "explosion_threshold": 3,
+      "explosion_damage": 5,
+      "is_negative": true
+    },
+    {
+      "key": "vulnerable",
+      "display_name": "Vulnerable",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "boost",
+      "display_name": "Boost",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "next_damage_bonus",
+      "display_name": "Next Damage Bonus",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_overload_next_ability",
+      "display_name": "Next Attack/Ability: Apply Overload",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_jammed_next_ability",
+      "display_name": "Next Attack/Ability: Apply Jammed",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_bleed_next_ability",
+      "display_name": "Next Attack/Ability: Apply Bleed",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_movement_reduction_next_ability",
+      "display_name": "Next Ability: Slow on Hit",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_rooted_next_ability",
+      "display_name": "Next Ability: Root on Hit",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "next_ability_doubled",
+      "display_name": "Next Ability Doubled",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "bonus_health",
+      "display_name": "Bonus Health",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "shield",
+      "display_name": "Shield",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "barrier",
+      "display_name": "Barrier",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "deployment_fatigue",
+      "display_name": "Deployment Fatigue",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_negative": true
+    },
+    {
+      "key": "defend_stance",
+      "display_name": "Defend Stance",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "dash_movement",
+      "display_name": "Dash Movement",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "recover_stance",
+      "display_name": "Recover Stance",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_overload",
+      "display_name": "On-Hit: Apply Overload",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "on_damage_apply_jammed",
+      "display_name": "On-Hit: Apply Jammed",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "medical_override",
+      "display_name": "Medical Override",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "volatile_surge_buff",
+      "display_name": "Volatile Surge",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "shocking_stimulus_movement",
+      "display_name": "Stimulus Movement",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "delayed_next_damage_bonus",
+      "display_name": "Delayed Damage Bonus",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "aura_range_boost",
+      "display_name": "Aura Range Boost",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "aura_stats_boost",
+      "display_name": "Aura Stats Boost",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "covering_fire",
+      "display_name": "Covering Fire",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "artillery_mode_buff",
+      "display_name": "Artillery Mode",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "bonus_move_grant",
+      "display_name": "Bonus Move",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "style",
+      "display_name": "Style",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "reactive_armor_grant",
+      "display_name": "Reactive Armor",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "grant_cleave_self_buff",
+      "display_name": "Cleave",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "whirlwind_spray_buff",
+      "display_name": "Whirlwind Spray",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "grant_first_strike_self_buff",
+      "display_name": "First Strike",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "valiant_guard",
+      "display_name": "Valiant Guard",
+      "expire_on": "owner_turn_start",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "relentless_aura_grant",
+      "display_name": "Relentless",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "movement_aura_grant",
+      "display_name": "March Aura",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "damage_aura_grant",
+      "display_name": "Battle Hymn",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "multistrike_ally_grant",
+      "display_name": "Multistrike",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "hyperactive_scanning",
+      "display_name": "Hyperactive Scanning",
+      "expire_on": "never",
+      "default_stacks": 1,
+      "is_positive": true
+    },
+    {
+      "key": "stealth",
+      "display_name": "Stealth",
+      "expire_on": "owner_turn_end",
+      "default_stacks": 1,
+      "is_positive": true
+    }
+  ]
+}

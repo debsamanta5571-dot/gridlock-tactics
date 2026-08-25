@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "key": "test",
+  "cards": [
+    { "card_key": "test_haste_runner", "copies": 1 },
+    { "card_key": "test_surge_striker", "copies": 1 },
+    { "card_key": "test_charge_knight", "copies": 1 }
+  ]
+}

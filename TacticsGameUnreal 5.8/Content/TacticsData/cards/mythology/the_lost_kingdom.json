@@ -1,0 +1,1322 @@
+{
+  "schema_version": 1,
+  "set": "the_lost_kingdom",
+  "set_name": "The Lost Kingdom",
+  "colors": [
+    "mythology",
+    "turquoise"
+  ],
+  "cards": [
+    {
+      "key": "spellcasting_squire",
+      "name": "Spellcasting Squire",
+      "type": "unit",
+      "rules_text": "Temporary {T} expires at end of turn. Ineligible spells stay in the deck; only matching spells are removed.",
+      "flavor_text": "He keeps the grimoire dry and the blade sharp - whichever the moment demands.",
+      "art_id": "mythology/the_lost_kingdom/spellcasting_squire",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-001",
+      "search_aliases": [
+        "spellcasting squire",
+        "squire",
+        "arcane proximity",
+        "scribe's insight"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "spell",
+          "ramp"
+        ]
+      },
+      "energy_cost": {
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "passives": [
+        "spellcasting_squire_mana_passive"
+      ],
+      "abilities": [
+        "spellcasting_squire_draw_spell"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Spellcasting Squire",
+        "attack_type": "melee",
+        "base_health": 3,
+        "current_health": 3,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 3, 3 {HP}. Arcane Proximity: at the start of your turn, if an enemy is within 2 tiles, gain 1 {GL:flux_energy|flux energy}. Scribe's Insight {N}{T}{T}: draw a spell from your deck that costs 3 or less."
+    },
+    {
+      "key": "proclamation_unerring_barrage",
+      "name": "Proclamation of the Unerring Barrage",
+      "type": "spell",
+      "rules_text": "Skip remaining copies if you pick fewer than 4 targets. Each copy resolves independently and counts as a separate spell cast for {KW:spellbound}.",
+      "flavor_text": "Four words, four bolts - and not one misses its mark.",
+      "art_id": "mythology/the_lost_kingdom/proclamation_unerring_barrage",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-002",
+      "search_aliases": [
+        "proclamation of the unerring barrage",
+        "unerring barrage",
+        "barrage",
+        "multicast"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "damage",
+          "fast"
+        ]
+      },
+      "energy_cost": {
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "multicast",
+          "amount": 4
+        }
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "deal_damage",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "require_target_unit_types": [
+          "unit"
+        ]
+      },
+      "normal_rules_text": "{KW:multicast} 4. {REFLEX}. Deal 1 damage to any unit. Choose up to 4 different targets."
+    },
+    {
+      "key": "orphic_knight",
+      "name": "Orphic Knight",
+      "type": "unit",
+      "rules_text": "Orphic Verse requires an attack action. Bonus damage includes damage buffs, keyword bonuses, and ability-damage aura.",
+      "flavor_text": "She sings the wound closed before the blade ever lands.",
+      "art_id": "mythology/the_lost_kingdom/orphic_knight",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-003",
+      "search_aliases": [
+        "orphic knight",
+        "knight",
+        "spellbound",
+        "orphic verse"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "spell",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        },
+        {
+          "key": "spellbound"
+        }
+      ],
+      "passives": [
+        "orphic_knight_spellbound"
+      ],
+      "abilities": [
+        "orphic_knight_verse_strike"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Orphic Knight",
+        "attack_type": "melee",
+        "base_health": 6,
+        "current_health": 6,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 2, 6 {HP}. {KW:spellbound}: whenever you play a spell, gain +1 damage this turn. Orphic Verse {T}: deal 1 damage to an enemy; convert all bonus damage into {FX:bonus_health} on this unit."
+    },
+    {
+      "key": "mana_frog",
+      "name": "Mana Frog",
+      "type": "unit",
+      "rules_text": "Floating {T} expires when the active turn ends, even if gained on the opponent's turn.",
+      "flavor_text": "It croaks once, brightly - then the spell you needed is suddenly affordable.",
+      "art_id": "mythology/the_lost_kingdom/mana_frog",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-004",
+      "search_aliases": [
+        "mana frog",
+        "frog",
+        "mana release"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "spell",
+          "ramp"
+        ]
+      },
+      "energy_cost": {
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "passives": [
+        "mana_frog_death_passive"
+      ],
+      "unit_types": [
+        "beast",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Mana Frog",
+        "attack_type": "melee",
+        "base_health": 1,
+        "current_health": 1,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 4, 1 {HP}. Mana Release: when this unit dies, gain 3 {GL:flux_energy|flux energy} before the current turn ends."
+    },
+    {
+      "key": "chant_whispering_zephyrs_breath",
+      "name": "Chant of the Whispering Zephyr's Breath",
+      "type": "spell",
+      "rules_text": "Choose the unit, then choose an orthogonal direction. Respects {KW:immovable}; collision and terrain rules apply.",
+      "flavor_text": "A breath of wind, a whispered word - and the battlefield rearranges itself.",
+      "art_id": "mythology/the_lost_kingdom/chant_whispering_zephyrs_breath",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-005",
+      "search_aliases": [
+        "chant of the whispering zephyr's breath",
+        "whispering zephyr",
+        "zephyr's breath",
+        "push"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "displacement"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "push_unit",
+        "effect_payload": {
+          "amount": 2,
+          "cardinal_only": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "require_target_unit_types": [
+          "unit"
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {REFLEX}. Push a unit 2 tiles in a cardinal direction."
+    },
+    {
+      "key": "mae_and_faye",
+      "name": "Mae & Faye",
+      "type": "unit",
+      "rules_text": "Echo Spell pays 1 {T} plus X {T} when activated; click a batch queue entry when the ability is armed.",
+      "flavor_text": "One sings the hex; the other aims the bolt - and neither misses twice.",
+      "art_id": "mythology/the_lost_kingdom/mae_and_faye",
+      "set": "the_lost_kingdom",
+      "rarity": "rare",
+      "collector_number": "MYTH-006",
+      "search_aliases": [
+        "mae and faye",
+        "mae & faye",
+        "echo spell",
+        "charm and harm"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "ranged",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 2
+      },
+      "abilities": [
+        "mae_and_faye_echo_spell",
+        "mae_and_faye_charm_and_harm"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Mae & Faye",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 2,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 3,
+        "ranged_range": 3,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "multistrike",
+            "amount": 1
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:multistrike} 1. {RANGED} 1–3, {RANGE}3, {MOVE} 3, 6 {HP}. Echo Spell ({T} + X): copy an allied spell on the batch queue with total energy cost X. Charm & Harm {T}{T}: deal 3 damage to an enemy unit and apply 1 {FX:stunned|Stun}."
+    },
+    {
+      "key": "invocation_arcane_counterweave",
+      "name": "Invocation of the Arcane Counterweave",
+      "type": "spell",
+      "rules_text": "Cannot counter attacks or other non-spell/ability batch items. Target by batch item id.",
+      "flavor_text": "The weave unravels what was only half-spoken - and the magic forgets it was ever cast.",
+      "art_id": "mythology/the_lost_kingdom/invocation_arcane_counterweave",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-007",
+      "search_aliases": [
+        "invocation of the arcane counterweave",
+        "arcane counterweave",
+        "counterweave",
+        "counter spell"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 2
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "counter_spell"
+      },
+      "normal_rules_text": "{REFLEX}. Counter a spell or ability on the batch queue."
+    },
+    {
+      "key": "symphony_scorching_sphere",
+      "name": "Symphony of the Scorching Sphere",
+      "type": "spell",
+      "rules_text": "{FX:fire} tiles last 2 of the caster's turn-ends. Units on burning tiles take {FX:fire} 1 at their owner's turn-end.",
+      "flavor_text": "The chorus swells - and the ground remembers every note as flame.",
+      "art_id": "mythology/the_lost_kingdom/symphony_scorching_sphere",
+      "set": "the_lost_kingdom",
+      "rarity": "rare",
+      "collector_number": "MYTH-008",
+      "search_aliases": [
+        "symphony of the scorching sphere",
+        "scorching sphere",
+        "fire aoe"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "damage",
+          "aoe"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 3
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "scorching_sphere",
+        "effect_payload": {
+          "amount": 5,
+          "fire": 1,
+          "duration": 2
+        },
+        "requires_mandatory_board_cell": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{CHANNELED}. Choose a board cell. Deal 5 damage to all units in a 13-tile area (3×3 square plus one tile beyond the center of each edge). Apply {FX:fire} 1 to every unit in the area. Set unoccupied tiles in the area on {FX:fire}."
+    },
+    {
+      "key": "oath_forgotten_library",
+      "name": "Oath of the Forgotten Library",
+      "type": "spell",
+      "rules_text": "Resolves immediately; bypasses the batch queue.",
+      "flavor_text": "The shelves still answer - speak the oath and forgotten pages find their way into waiting hands.",
+      "art_id": "mythology/the_lost_kingdom/oath_forgotten_library",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-009",
+      "search_aliases": [
+        "oath of the forgotten library",
+        "forgotten library",
+        "draw three",
+        "draw 3"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "burst",
+          "draw"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 2
+      },
+      "spell": {
+        "speed": "blazing",
+        "effect_key": "draw_cards_for_player",
+        "effect_payload": {
+          "amount": 3
+        }
+      },
+      "normal_rules_text": "{BLAZING}. Choose a player. That player draws 3 cards."
+    },
+    {
+      "key": "curse_forsaken_silence",
+      "name": "Curse of the Forsaken Silence",
+      "type": "spell",
+      "rules_text": "While {FX:silenced}, keywords, passives, and buffs are disabled. {KW:focus} spells may still be cast from that unit.",
+      "flavor_text": "The old tongue still works - one word, and even the proudest knight forgets the names of their gifts.",
+      "art_id": "mythology/the_lost_kingdom/curse_forsaken_silence",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-010",
+      "search_aliases": [
+        "curse of the forsaken silence",
+        "forsaken silence",
+        "silence curse"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_silenced_owner_turn_end",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {REFLEX}. Silence a unit until the end of that unit's owner's turn."
+    },
+    {
+      "key": "incantation_twin_paralysis",
+      "name": "Incantation of Twin Paralysis",
+      "type": "spell",
+      "rules_text": "Skip remaining copies if you pick fewer than 2 targets. One energy payment queues one batch copy per target picked.",
+      "flavor_text": "Two syllables, two stillnesses - the old ward binds limbs faster than thought can flee.",
+      "art_id": "mythology/the_lost_kingdom/incantation_twin_paralysis",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-011",
+      "search_aliases": [
+        "incantation of twin paralysis",
+        "twin paralysis",
+        "stun two",
+        "stun 2"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "multicast",
+          "amount": 2
+        }
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_stunned",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "enemy",
+        "require_target_unit_types": [
+          "unit"
+        ]
+      },
+      "normal_rules_text": "{KW:multicast} 2. {REFLEX}. {FX:stunned|Stun} up to 2 enemy units for 1 turn. Choose different targets."
+    },
+    {
+      "key": "magus_apprentice",
+      "name": "Magus Apprentice",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "Every spell she hears becomes stored lightning - released all at once, or scattered in every direction.",
+      "art_id": "mythology/the_lost_kingdom/magus_apprentice",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-012",
+      "search_aliases": [
+        "magus apprentice",
+        "apprentice",
+        "arcane charge",
+        "arcane bolt",
+        "arcane surge"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "ranged",
+          "spell"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "spellbound"
+        }
+      ],
+      "passives": [
+        "magus_apprentice_spellbound"
+      ],
+      "abilities": [
+        "magus_apprentice_arcane_bolt",
+        "magus_apprentice_arcane_surge"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Magus Apprentice",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 4,
+        "ranged_range": 2,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:spellbound}. {RANGED} 2–4, {RANGE}2, {MOVE} 2, 5 {HP}. Whenever you play a spell, gain 1 Arcane Charge. Arcane Bolt {N}{T}: consume all Arcane Charge; deal that much damage to an enemy unit or structure. Arcane Surge {N}{T}{T}: consume all Arcane Charge; deal that much damage to this unit and each surrounding unit, structure, and base."
+    },
+    {
+      "key": "silvermane_cavalry",
+      "name": "Silvermane Cavalry",
+      "type": "unit",
+      "rules_text": "If your attack kills the target, they do not counterattack while you have {KW:first_strike}.",
+      "flavor_text": "Their lances strike before the echo of the charge reaches the line.",
+      "art_id": "mythology/the_lost_kingdom/silvermane_cavalry",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-013",
+      "search_aliases": [
+        "silvermane",
+        "cavalry",
+        "silver charge",
+        "first strike",
+        "trophy of the hunt"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "melee",
+          "cavalry"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "haste"
+        }
+      ],
+      "passives": [
+        "silvermane_cavalry_trophy_conduit"
+      ],
+      "abilities": [
+        "silvermane_cavalry_silver_charge"
+      ],
+      "unit_types": [
+        "soldier",
+        "cavalry"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Silvermane Cavalry",
+        "attack_type": "melee",
+        "base_health": 7,
+        "current_health": 7,
+        "melee_damage": 4,
+        "melee_damage_min": 3,
+        "melee_damage_max": 5,
+        "melee_range": 1,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:haste}. {MELEE} 3–5, {MOVE} 4, 7 {HP}. Trophy of the Hunt: when you defeat an enemy unit, gain 1 {KW:conduit} permanently. Silver Charge {T}{T}: gain {KW:first_strike} until end of turn."
+    },
+    {
+      "key": "ancient_frog",
+      "name": "Ancient Frog",
+      "type": "unit",
+      "rules_text": "Tap zones manually during your turn to bank more float; this does not tap zones for you. Multiple reservoir units split energy evenly (turn order gets +1 remainder pips).",
+      "flavor_text": "It swells with every spark you fail to spend - and croaks it all back when the pond runs dry.",
+      "art_id": "mythology/the_lost_kingdom/ancient_frog",
+      "set": "the_lost_kingdom",
+      "rarity": "rare",
+      "collector_number": "MYTH-014",
+      "search_aliases": [
+        "ancient frog",
+        "frog",
+        "reservoir",
+        "mana storage",
+        "large frog"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "melee",
+          "ramp"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "turquoise": 4
+      },
+      "keywords": [
+        {
+          "key": "large_unit"
+        }
+      ],
+      "passives": [
+        "ancient_frog_store_passive",
+        "ancient_frog_release_passive"
+      ],
+      "unit_types": [
+        "beast",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Ancient Frog",
+        "attack_type": "melee",
+        "base_health": 8,
+        "current_health": 8,
+        "melee_damage": 5,
+        "melee_damage_min": 3,
+        "melee_damage_max": 6,
+        "melee_range": 1,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:large_unit} (2×2). {MELEE} 3–6, {MOVE} 3, 8 {HP}. Reservoir: at the end of your turn, consume all your floating energy and store it (max 16). Mana Burst: when this unit dies, grant all stored energy as {GL:flux_energy|flux energy}."
+    },
+    {
+      "key": "conjuration_vital_grace",
+      "name": "Conjuration of Vital Grace",
+      "type": "spell",
+      "rules_text": "{FX:bonus_health} absorbs damage before normal HP; healing does not refill {FX:bonus_health}.",
+      "flavor_text": "A whispered grace - and flesh remembers how to hold the blow.",
+      "art_id": "mythology/the_lost_kingdom/conjuration_vital_grace",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-015",
+      "search_aliases": [
+        "conjuration of vital grace",
+        "vital grace",
+        "bonus health"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "buff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_bonus_health",
+        "effect_payload": {
+          "amount": 4
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "{REFLEX}. Target allied unit gains 4 {FX:bonus_health}."
+    },
+    {
+      "key": "conjuration_thundering_vale",
+      "name": "Conjuration of the Thundering Vale",
+      "type": "spell",
+      "rules_text": "Adjacent means orthogonal only, not diagonal; any team. {KW:immovable} units still take damage but are not pushed. Cast from a unit you control, then confirm.",
+      "flavor_text": "The vale answers in thunder - and only those beside you feel the weight of the surge.",
+      "art_id": "mythology/the_lost_kingdom/conjuration_thundering_vale",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-016",
+      "search_aliases": [
+        "conjuration of the thundering vale",
+        "thundering vale",
+        "force wave",
+        "adjacent push"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "spell",
+          "fast",
+          "damage",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "focus"
+        }
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "thundering_vale",
+        "effect_payload": {
+          "amount": 4,
+          "push": 3
+        },
+        "requires_board_target": false
+      },
+      "normal_rules_text": "{KW:focus}. {REFLEX}. Deal 4 damage to all units adjacent to the caster and push them 3 tiles away."
+    },
+    {
+      "key": "valgar_the_insatiable",
+      "name": "Valgar the Insatiable",
+      "type": "unit",
+      "rules_text": "Arm the spell, click Valgar, then pick a target in range and line of sight from him.",
+      "flavor_text": "He feeds on the fallen - and the spells that follow taste all the sweeter.",
+      "art_id": "mythology/the_lost_kingdom/valgar_the_insatiable",
+      "set": "the_lost_kingdom",
+      "rarity": "rare",
+      "collector_number": "MYTH-017",
+      "search_aliases": [
+        "valgar",
+        "insatiable",
+        "devourer's trophy",
+        "insatiable focus"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "ranged",
+          "draw"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "turquoise": 4
+      },
+      "passives": [
+        "valgar_devourers_trophy",
+        "valgar_insatiable_focus"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Valgar the Insatiable",
+        "attack_type": "ranged",
+        "base_health": 9,
+        "current_health": 9,
+        "ranged_damage": 3,
+        "ranged_damage_min": 0,
+        "ranged_damage_max": 6,
+        "ranged_range": 2,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{RANGED} 0–6, {RANGE} 2, {MOVE} 2, 9 {HP}. Devourer's Trophy: whenever this unit kills an enemy unit, draw a card (max 3 times per turn). Insatiable {KW:focus}: while this unit is on the board, non-{KW:focus} damaging spells you cast must be cast through this unit as a {KW:focus} caster with {RANGE} 2."
+    },
+    {
+      "key": "seraphina",
+      "name": "Seraphina",
+      "type": "unit",
+      "rules_text": "Symphony of the Scorching Sphere expires at the end of your next turn.",
+      "flavor_text": "She counts every incantation - and when the chorus reaches three, the sphere answers.",
+      "art_id": "mythology/the_lost_kingdom/seraphina",
+      "set": "the_lost_kingdom",
+      "rarity": "rare",
+      "collector_number": "MYTH-018",
+      "search_aliases": [
+        "seraphina",
+        "resonance",
+        "scorching acceleration",
+        "symphony"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "ranged",
+          "spell"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "cleave"
+        },
+        {
+          "key": "spellbound"
+        }
+      ],
+      "passives": [
+        "seraphina_spellbound",
+        "seraphina_scorching_acceleration"
+      ],
+      "unit_types": [
+        "soldier",
+        "mage"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Seraphina",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 2,
+        "ranged_damage_min": 0,
+        "ranged_damage_max": 4,
+        "ranged_range": 3,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:cleave}. {KW:spellbound}. {RANGED} 0–4, {RANGE} 3, {MOVE} 2, 6 {HP}. {KW:spellbound}: whenever you play a spell, gain 1 Resonance; at 3 Resonance, create Symphony of the Scorching Sphere in your hand and remove 3 Resonance. Scorching Acceleration: you may play Symphony of the Scorching Sphere at {REFLEX} speed."
+    },
+    {
+      "key": "sir_garrick_the_valiant",
+      "name": "Sir Garrick the Valiant",
+      "type": "unit",
+      "rules_text": "Valiant Guard: Garrick may counterattack afterward if able; the ally does not counter. {FX:barrier} blocks one hit of damage; Piercing ignores {FX:barrier}.",
+      "flavor_text": "He steps into the blow meant for another - and stands unbowed when the steel finds him.",
+      "art_id": "mythology/the_lost_kingdom/sir_garrick_the_valiant",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-019",
+      "search_aliases": [
+        "sir garrick",
+        "garrick",
+        "valiant guard",
+        "bulwark",
+        "barrier"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "melee",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 1
+      },
+      "abilities": [
+        "sir_garrick_valiant_guard",
+        "sir_garrick_bulwark"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Sir Garrick the Valiant",
+        "attack_type": "melee",
+        "base_health": 6,
+        "current_health": 6,
+        "melee_damage": 3,
+        "melee_damage_min": 2,
+        "melee_damage_max": 4,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{MELEE} 2–4, {MOVE} 2, 6 {HP}. Valiant Guard {N}{T}: the next time a surrounding 1×1 ally is targeted by an attack, swap positions and take that attack. Bulwark {N}{T}: gain 1 {FX:barrier} until end of this turn."
+    },
+    {
+      "key": "mana_pylon",
+      "name": "Mana Pylon",
+      "type": "building",
+      "rules_text": "In team games, teammates' damaging spells count. Oldest deployed pylon with a {KW:charge} reacts first.",
+      "flavor_text": "The lattice hums louder with every spell that passes through it.",
+      "art_id": "mythology/the_lost_kingdom/mana_pylon",
+      "set": "the_lost_kingdom",
+      "rarity": "uncommon",
+      "collector_number": "MYTH-020",
+      "search_aliases": [
+        "mana pylon",
+        "pylon",
+        "spell conduit",
+        "charge reservoir"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "structure",
+          "utility",
+          "spell"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "turquoise": 2
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        },
+        {
+          "key": "spearhead",
+          "amount": 4
+        }
+      ],
+      "passives": [
+        "mana_pylon_charge_supply_passive",
+        "mana_pylon_conduit_passive"
+      ],
+      "unit_types": [
+        "structure"
+      ],
+      "unit": {
+        "entity_type": "building",
+        "unit_type": "Mana Pylon",
+        "base_health": 3,
+        "current_health": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 2. {KW:spearhead} 4. 3 {HP}. No attacks. {KW:charge} Reservoir: at the start of your turn, gain a charge. Spell {KW:conduit}: whenever an allied damaging spell is cast, consume a {KW:charge} and add {KW:conduit} 1 to that spell cast."
+    },
+    {
+      "key": "defective_construct",
+      "name": "Defective Construct",
+      "type": "unit",
+      "rules_text": "Does not grant another movement action.",
+      "flavor_text": "The animus holds - but the legs forgot their purpose until magic reminds them.",
+      "art_id": "mythology/the_lost_kingdom/defective_construct",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-021",
+      "search_aliases": [
+        "defective construct",
+        "construct",
+        "spellbound",
+        "immobile"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "melee",
+          "spell"
+        ]
+      },
+      "energy_cost": {
+        "turquoise": 1
+      },
+      "keywords": [
+        {
+          "key": "spellbound"
+        }
+      ],
+      "passives": [
+        "defective_construct_spellbound"
+      ],
+      "unit_types": [
+        "construct"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Defective Construct",
+        "attack_type": "melee",
+        "base_health": 3,
+        "current_health": 3,
+        "melee_damage": 4,
+        "melee_damage_min": 3,
+        "melee_damage_max": 6,
+        "movement": 0,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{MELEE} 3–6, 0 {MOVE}, 1 movement action, 3 {HP}. {KW:spellbound}: whenever you play a spell, gain +1 movement speed this turn."
+    },
+    {
+      "key": "disregarded_rangers",
+      "name": "Disregarded Rangers",
+      "type": "unit",
+      "rules_text": "Hookshot {RANGE}4; pull is orthogonal or diagonal only and stops when the target is adjacent or blocked. {FX:bleed} stacks decay at the owner's turn-end and deal damage equal to the stack count.",
+      "flavor_text": "They saw the kingdom fall and kept walking - their bolts still bite.",
+      "art_id": "mythology/the_lost_kingdom/disregarded_rangers",
+      "set": "the_lost_kingdom",
+      "rarity": "common",
+      "collector_number": "MYTH-022",
+      "search_aliases": [
+        "disregarded rangers",
+        "rangers",
+        "serrated bolt",
+        "hookshot"
+      ],
+      "search_facets": {
+        "faction": [
+          "the_lost_kingdom"
+        ],
+        "color": [
+          "mythology",
+          "turquoise"
+        ],
+        "role": [
+          "unit",
+          "ranged",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "turquoise": 1
+      },
+      "abilities": [
+        "disregarded_rangers_serrated_bolt",
+        "disregarded_rangers_hookshot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Disregarded Rangers",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 4,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 5,
+        "ranged_range": 3,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{RANGED} 3–5, {RANGE}3, {MOVE} 2, 5 {HP}. Serrated Bolt {N}: your next attack or ability applies 3 {FX:bleed}. Hookshot {N}{T}: deal 3 damage to a unit and pull it toward you along a straight line."
+    }
+  ]
+}

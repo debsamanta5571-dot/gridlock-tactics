@@ -1,0 +1,843 @@
+#include "tactics/cards/passive_catalog.hpp"
+
+#include "tactics/cards/effect_definitions_io.hpp"
+
+#include <nlohmann/json.hpp>
+
+#include <mutex>
+#include <unordered_map>
+
+namespace tactics {
+namespace {
+
+using json = nlohmann::json;
+
+std::mutex g_catalog_mutex;
+std::unordered_map<std::string, PassiveAbilitySpec> g_catalog;
+bool g_builtins_loaded{false};
+
+// BEGIN_GENERATED_PASSIVE_CATALOG
+static const char kBuiltinPassiveCatalogJson[] =
+    R"JSON({
+  "passives": {
+    "sky_banner_aura": {
+      "key": "sky_banner_aura",
+      "name": "Sky Banner Aura",
+      "rules_text": "",
+      "applies_to": "allied_units",
+      "stat_grants": {
+        "attack": 1,
+        "health": 1
+      },
+      "keywords": [
+        "flying"
+      ],
+      "is_positive": true,
+      "normal_rules_text": "Allied units get +1/+1 and {KW:flying} while this unit is alive."
+    },
+    "sentinels_tithe": {
+      "key": "sentinels_tithe",
+      "name": "Sentinel's Tithe",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy_unit",
+      "reactive_effect_key": "gain_orange",
+      "reactive_effect_payload": {
+        "amount": 2,
+        "turn_cap": 4
+      },
+      "reactive_string_payload": {
+        "pool": "spell_ability",
+        "source_survive_until": "phase_resolution"
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 2 {GL:flux_energy|flux energy} (max 4 per turn)."
+    },
+    "titans_tithe": {
+      "key": "titans_tithe",
+      "name": "Titan's Tithe",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy_unit",
+      "reactive_effect_key": "gain_orange",
+      "reactive_effect_payload": {
+        "amount": 4,
+        "turn_cap": 12
+      },
+      "reactive_string_payload": {
+        "pool": "spell_ability",
+        "source_survive_until": "phase_resolution"
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 4 {GL:flux_energy|flux energy} (max 12 per turn)."
+    },
+    "mortar_barrage_passive": {
+      "key": "mortar_barrage_passive",
+      "name": "Mortar Barrage",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_end",
+      "automated_effect_key": "mortar_barrage",
+      "automated_effect_payload": {
+        "damage": 3,
+        "overload": 1,
+        "min_range": 2,
+        "max_range": 4
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the end of your turn, deal 3 damage and apply 1 {FX:overload} to a random enemy unit within range 4 (minimum range 2) and all entities adjacent to that unit."
+    },
+    "final_barrage_detonation_passive": {
+      "key": "final_barrage_detonation_passive",
+      "name": "Final Barrage Detonation",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_start",
+      "automated_effect_key": "final_barrage_detonate",
+      "automated_effect_payload": {
+        "damage": 3,
+        "overload": 1,
+        "min_range": 2,
+        "max_range": 4
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the start of your turn, if this building was primed by Final Barrage, fire Mortar Barrage 6 times, then self-destruct dealing 3 damage and 1 {FX:overload} to all adjacent entities."
+    },
+    "replication_protocol": {
+      "key": "replication_protocol",
+      "name": "Replication Protocol",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy",
+      "reactive_effect_key": "spawn_melee_robot_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Whenever this structure deals damage to an enemy, spawn a Replicator Bot token on a random unoccupied adjacent tile to that enemy (if one is available). The bot's attack and health equal the damage dealt. The bot spawns {FX:stunned}."
+    },
+    "surrounding_buff_mirror": {
+      "key": "surrounding_buff_mirror",
+      "name": "Resonance Echo",
+      "rules_text": "",
+      "applies_to": "self",
+      "is_positive": true,
+      "normal_rules_text": "Whenever a surrounding unit (allied or enemy) gains a {FX:boost}, this unit also gains a copy of that {FX:boost}."
+    },
+    "hyperactive_scanning": {
+      "key": "hyperactive_scanning",
+      "name": "Hyperactive Scanning",
+      "rules_text": "",
+      "applies_to": "self",
+      "is_positive": true,
+      "normal_rules_text": "Temporarily gain the keywords of surrounding units."
+    },
+    "vulturous_nanites": {
+      "key": "vulturous_nanites",
+      "name": "Vulturous Nanites",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "self_died",
+      "reactive_effect_key": "spawn_half_stat_melee_token_stunned",
+      "is_positive": true,
+      "normal_rules_text": "{KW:last_gasp}: when this unit dies, spawn a melee token at its location with half its base attack and HP (rounded down); the token spawns {FX:stunned}."
+    },
+    "starforged_feast_passive": {
+      "key": "starforged_feast_passive",
+      "name": "Starforged Feast",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_end",
+      "automated_effect_key": "consume_spell_orange_for_growth",
+      "sort_order": 100,
+      "is_positive": true,
+      "normal_rules_text": "At the end of your turn, consume all {GL:flux_energy|flux energy} not generated by zones. Gain +1 permanent damage and +1 permanent max HP for each point consumed."
+    },
+    "the_macrowave_pulse": {
+      "key": "the_macrowave_pulse",
+      "name": "The Macrowave Pulse",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_end",
+      "automated_effect_key": "aoe_damage_surrounding",
+      "automated_effect_payload": {
+        "amount": 3
+      },
+      "is_negative": true,
+      "normal_rules_text": "At the end of this unit's owner's turn, deal 3 damage to all surrounding units (allies and enemies)."
+    },
+    "core_cracker_prime_passive": {
+      "key": "core_cracker_prime_passive",
+      "name": "Cold Start",
+      "rules_text": "",
+      "applies_to": "self",
+      "is_negative": true,
+      "normal_rules_text": "At the start of each of your turns (except the turn this unit was deployed), this unit cannot move, attack, use abilities, or react until you pay 3 gallantry (channeled) to Prime Core."
+    },
+    "core_cracker_advance_passive": {
+      "key": "core_cracker_advance_passive",
+      "name": "Crushing Advance",
+      "rules_text": "",
+      "applies_to": "self",
+      "is_positive": false,
+      "normal_rules_text": "Cannot gain {FX:bonus_move_grant}-points or extra moves. Can move to any tile regardless of occupancy, except tiles containing an {KW:indestructible} entity or another Core Cracker. When moving to an occupied tile, entities there take 3 damage and are pushed to a surrounding tile (destroyed if none available). This push ignores {KW:immovable}."
+    },
+    "forward_depot_supply_passive": {
+      "key": "forward_depot_supply_passive",
+      "name": "Resonance Supply",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_start",
+      "automated_effect_key": "gain_orange",
+      "automated_effect_payload": {
+        "amount": 3
+      },
+      "automated_string_payload": {
+        "pool": "spell_ability"
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the start of your turn, gain 3 {GL:flux_energy|flux energy}."
+    },
+    "boss_ability_aura": {
+      "key": "boss_ability_aura",
+      "name": "Command Presence",
+      "rules_text": "",
+      "applies_to": "allied_units",
+      "aura_range": 1,
+      "stat_grants": {
+        "ability_damage": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Allied units within range 1 deal +1 damage with activated abilities."
+    },
+    "inspiring_commander_aura": {
+      "key": "inspiring_commander_aura",
+      "name": "Inspiring Presence",
+      "rules_text": "",
+      "applies_to": "allied_units",
+      "aura_range": 1,
+      "stat_grants": {
+        "attack": 1,
+        "health": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Surrounding allied units (Chebyshev 1) gain +1 damage and +1 maximum HP."
+    },
+    "diesel_rider_movement_refresh": {
+      "key": "diesel_rider_movement_refresh",
+      "name": "Full Throttle",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy",
+      "reactive_effect_key": "refresh_movement_self",
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit deals damage to an enemy, restore one full move action."
+    },
+    "valiant_resolute_iron_will": {
+      "key": "valiant_resolute_iron_will",
+      "name": "Iron Will",
+      "rules_text": "",
+      "applies_to": "self",
+      "stat_grants": {
+        "survive_lethal_percent": 50,
+        "survive_lethal_bonus_attack": 2,
+        "survive_lethal_bonus_health": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "When damage would kill this unit, 50% chance to survive at 1 HP instead. If triggered and this unit was not already {FX:stunned}, gain 1 {FX:stunned|stun} stack. Then permanently gain +2 attack and +2 max HP."
+    },
+    "shock_wire_shock_retaliation": {
+      "key": "shock_wire_shock_retaliation",
+      "name": "Shock Retaliation",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_taken_melee",
+      "reactive_effect_key": "apply_overload_to_attacker",
+      "reactive_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever a unit melee attacks this structure and deals damage, that attacker receives 1 {FX:overload}. Hybrid units using their ranged attack do not trigger this, even at melee range."
+    },
+    "ape_foreman_structure_aura": {
+      "key": "ape_foreman_structure_aura",
+      "name": "Reinforced Foundations",
+      "rules_text": "",
+      "applies_to": "allied_structures",
+      "aura_range": 1,
+      "stat_grants": {
+        "health": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "Allied structures adjacent to this unit gain +2 max HP."
+    },
+    "sanglante_bloodlust": {
+      "key": "sanglante_bloodlust",
+      "name": "Bloodlust",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "enemy_unit_killed",
+      "reactive_effect_key": "grant_permanent_stat_growth_self",
+      "reactive_effect_payload": {
+        "attack": 1,
+        "health": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit kills an enemy unit, permanently gain +1/+1."
+    },
+    "callahan_sworn_protector": {
+      "key": "callahan_sworn_protector",
+      "name": "Sworn Protector",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "covered_unit_died",
+      "reactive_effect_key": "grant_multistrike_eot",
+      "is_positive": true,
+      "normal_rules_text": "Whenever a unit you were covering dies, gain +1 {KW:multistrike} for 2 turns. Stacks once per unit death; each new death refreshes the duration."
+    },
+    "spellcasting_squire_mana_passive": {
+      "key": "spellcasting_squire_mana_passive",
+      "name": "Arcane Proximity",
+      "rules_text": "Temporary {T} expires at end of turn.",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_start",
+      "automated_effect_key": "gain_turquoise_if_enemy_within",
+      "automated_effect_payload": {
+        "amount": 1,
+        "range": 2
+      },
+      "automated_string_payload": {
+        "pool": "spell_ability"
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the start of your turn, if an enemy unit is within 2 tiles, gain 1 {GL:flux_energy|flux energy}."
+    },
+    "orphic_knight_spellbound": {
+      "key": "orphic_knight_spellbound",
+      "name": "Spellbound",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "owner_spell_played",
+      "reactive_effect_key": "grant_next_damage_bonus_self",
+      "reactive_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever you play a spell, gain +1 damage this turn."
+    },
+    "mana_frog_death_passive": {
+      "key": "mana_frog_death_passive",
+      "name": "Mana Release",)JSON"
+    R"JSON(      "rules_text": "Floating {T} expires when the active turn ends, even if gained on the opponent's turn.",
+      "applies_to": "self",
+      "reactive_trigger": "self_died",
+      "reactive_effect_key": "gain_turquoise",
+      "reactive_effect_payload": {
+        "amount": 3
+      },
+      "reactive_string_payload": {
+        "pool": "spell_ability"
+      },
+      "is_positive": true,
+      "normal_rules_text": "When this unit dies, gain 3 {GL:flux_energy|flux energy} before the current turn ends."
+    },
+    "magus_apprentice_spellbound": {
+      "key": "magus_apprentice_spellbound",
+      "name": "Spellbound",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "owner_spell_played",
+      "reactive_effect_key": "grant_magus_charge_self",
+      "reactive_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever you play a spell, gain 1 Arcane Charge."
+    },
+    "silvermane_cavalry_trophy_conduit": {
+      "key": "silvermane_cavalry_trophy_conduit",
+      "name": "Trophy of the Hunt",
+      "rules_text": "{KW:conduit} stacks and {KW:boost|boosts} your spells board-wide.",
+      "applies_to": "self",
+      "reactive_trigger": "enemy_unit_killed",
+      "reactive_effect_key": "grant_permanent_conduit_self",
+      "reactive_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "When you defeat an enemy unit, gain 1 {KW:conduit} permanently."
+    },
+    "ancient_frog_store_passive": {
+      "key": "ancient_frog_store_passive",
+      "name": "Reservoir",
+      "rules_text": "Tap zones manually during your turn to bank more float; this does not tap zones for you. Multiple reservoir units split energy evenly (turn order gets +1 remainder pips).",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_end",
+      "automated_effect_key": "consume_floating_energy_for_storage",
+      "automated_effect_payload": {
+        "max_storage": 16
+      },
+      "sort_order": 100,
+      "is_positive": true,
+      "normal_rules_text": "At the end of your turn, consume all your floating energy and store it (max 16)."
+    },
+    "ancient_frog_release_passive": {
+      "key": "ancient_frog_release_passive",
+      "name": "Mana Burst",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "self_died",
+      "reactive_effect_key": "release_stored_energy_spell_turquoise",
+      "is_positive": true,
+      "normal_rules_text": "When this unit dies, grant all stored energy as {GL:flux_energy|flux energy}."
+    },
+    "valgar_devourers_trophy": {
+      "key": "valgar_devourers_trophy",
+      "name": "Devourer's Trophy",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "enemy_unit_killed",
+      "reactive_effect_key": "draw_cards_owner",
+      "reactive_effect_payload": {
+        "amount": 1,
+        "turn_cap": 3
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit kills an enemy unit, draw a card (max 3 times per turn)."
+    },
+    "valgar_insatiable_focus": {
+      "key": "valgar_insatiable_focus",
+      "name": "Insatiable Focus",
+      "rules_text": "Arm the spell, click Valgar, then pick a target in range and line of sight from him.",
+      "applies_to": "self",
+      "forces_damage_spell_focus_casting": true,
+      "forced_damage_spell_focus_range": 2,
+      "is_positive": true,
+      "normal_rules_text": "While this unit is on the board, non-{KW:focus} damaging spells you cast must be cast through this unit as a {KW:focus} caster with {RANGE} 2."
+    },
+    "seraphina_spellbound": {
+      "key": "seraphina_spellbound",
+      "name": "Spellbound",
+      "rules_text": "Symphony of the Scorching Sphere expires at the end of your next turn.",
+      "applies_to": "self",
+      "reactive_trigger": "owner_spell_played",
+      "reactive_effect_key": "grant_seraphina_resonance_self",
+      "reactive_effect_payload": {
+        "amount": 1,
+        "threshold": 3,
+        "hand_expires_after_owner_turn_ends": 2
+      },
+      "reactive_string_payload": {
+        "grant_card_key": "symphony_scorching_sphere"
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever you play a spell, gain 1 Resonance; at 3 Resonance, create Symphony of the Scorching Sphere in your hand and remove 3 Resonance."
+    },
+    "seraphina_scorching_acceleration": {
+      "key": "seraphina_scorching_acceleration",
+      "name": "Scorching Acceleration",
+      "rules_text": "",
+      "applies_to": "self",
+      "is_positive": true,
+      "normal_rules_text": "You may play Symphony of the Scorching Sphere at {REFLEX} speed."
+    },
+    "mana_pylon_charge_supply_passive": {
+      "key": "mana_pylon_charge_supply_passive",
+      "name": "Charge Reservoir",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_start",
+      "automated_effect_key": "grant_mana_pylon_charge_self",
+      "automated_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the start of your turn, gain a charge."
+    },
+    "mana_pylon_conduit_passive": {
+      "key": "mana_pylon_conduit_passive",
+      "name": "Spell Conduit",
+      "rules_text": "In team games, teammates' damaging spells count. Oldest deployed pylon with a {KW:charge} reacts first.",
+      "applies_to": "self",
+      "reactive_trigger": "ally_damaging_spell_played",
+      "reactive_effect_key": "consume_mana_pylon_charge_spell_conduit",
+      "reactive_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever an allied damaging spell is cast, consume a {KW:charge} and add {KW:conduit} 1 to that spell cast."
+    },
+    "defective_construct_spellbound": {
+      "key": "defective_construct_spellbound",
+      "name": "Spellbound",
+      "rules_text": "Does not grant another movement action.",
+      "applies_to": "self",
+      "reactive_trigger": "owner_spell_played",
+      "reactive_effect_key": "grant_movement_speed_self",
+      "is_positive": true,
+      "normal_rules_text": "Whenever you play a spell, gain +1 movement speed this turn."
+    },
+    "war_time_belles_march": {
+      "key": "war_time_belles_march",
+      "name": "March Aura",
+      "rules_text": "",
+      "applies_to": "self",
+      "trigger_timing": "owner_turn_start",
+      "automated_effect_key": "grant_movement_aura",
+      "automated_effect_payload": {
+        "amount": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "At the start of your turn, all surrounding allied units gain +1 movement this turn."
+    },
+    "lady_concordia_promise": {
+      "key": "lady_concordia_promise",
+      "name": "Concordia's Promise",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "ally_took_damage_nearby",
+      "reactive_effect_key": "grant_permanent_stat_growth_self",
+      "reactive_effect_payload": {
+        "health": 1,
+        "attack": 1
+      },
+      "aura_range": 2,
+      "is_positive": true,
+      "normal_rules_text": "When an allied unit within range 2 takes damage from an enemy, permanently gain +1 attack damage and heal 1 HP."
+    },
+    "glorious_standard_sentinel_veil": {
+      "key": "glorious_standard_sentinel_veil",
+      "name": "Sentinel Veil",
+      "rules_text": "",
+      "applies_to": "allied_units",
+      "aura_range": 1,
+      "stat_grants": {
+        "survive_lethal_percent": 100
+      },
+      "is_positive": true,
+      "normal_rules_text": "Surrounding allied units each have a once-per-turn death prevention: the first time they would die this turn while in range, they survive at 1 HP instead."
+    },
+    "orion_crowe_armored_carapace": {
+      "key": "orion_crowe_armored_carapace",
+      "name": "Armored Carapace",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "electrified_death_ball_shock_field": {
+      "key": "electrified_death_ball_shock_field",
+      "name": "Shock Field",
+      "applies_to": "self",
+      "passive_mechanic": "shock_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does applies 1 {FX:overload} to each unit it damages."
+    },
+    "electrified_death_ball_armored_hull": {
+      "key": "electrified_death_ball_armored_hull",
+      "name": "Armored Hull",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 2."
+    },
+    "clawbreaker_overload_strikes": {
+      "key": "clawbreaker_overload_strikes",
+      "name": "Overload Strikes",
+      "applies_to": "self",
+      "passive_mechanic": "overload_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does applies 1 {FX:overload} to each unit it damages."
+    },
+    "clawbreaker_bleeding_strikes": {
+      "key": "clawbreaker_bleeding_strikes",
+      "name": "Bleeding Strikes",
+      "applies_to": "self",
+      "passive_mechanic": "bleed_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does applies 1 {FX:bleed} to each unit it damages."
+    },
+    "shock_bot_overload_strikes": {
+      "key": "shock_bot_overload_strikes",
+      "name": "Overload on Hit",
+      "applies_to": "self",
+      "passive_mechanic": "overload_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does applies 1 {FX:overload} to each unit it damages."
+    },
+    "raging_volt_spire_overload_hardening": {
+      "key": "raging_volt_spire_overload_hardening",
+      "name": "Overload Hardening",
+      "applies_to": "self",
+      "passive_mechanic": "overload_resistance",
+      "is_positive": true,
+      "normal_rules_text": "Takes half damage from {FX:overload} explosions and retains all {FX:overload} stacks after exploding. Incoming {FX:overload} applications are halved (floor)."
+    },
+    "raging_volt_spire_volt_feed": {
+      "key": "raging_volt_spire_volt_feed",
+      "name": "Volt Feed",
+      "applies_to": "self",
+      "passive_mechanic": "overload_feed",
+      "mechanic_payload": {
+        "amount": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever any other unit within {RANGE}2 explodes from {FX:overload}, this unit gains those stacks. Does not absorb stacks from other Volt Feed units' explosions."
+    },
+    "voltcrusher_armored_plating": {
+      "key": "voltcrusher_armored_plating",
+      "name": "Armored Plating",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "flame_trooper_incendiary_rounds": {
+      "key": "flame_trooper_incendiary_rounds",
+      "name": "Incendiary Rounds",
+      "applies_to": "self",
+      "passive_mechanic": "fire_on_hit",
+      "mechanic_payload": {
+        "amount": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does applies 2 {FX:fire} to each unit it damages."
+    },
+    "flame_trooper_last_gasp_fire": {
+      "key": "flame_trooper_last_gasp_fire",
+      "name": "Last Gasp: Inferno",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "self_died",
+      "reactive_effect_key": "fire_tile_footprint_on_death",
+      "reactive_effect_payload": {
+        "duration": 2,
+        "radius": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "When this unit dies, set its tile and adjacent tiles on fire for 2 turns."
+    },
+    "mother_ship_armored_hull": {
+      "key": "mother_ship_armored_hull",
+      "name": "Armored Hull",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "callahan_armored_coat": {
+      "key": "callahan_armored_coat",
+      "name": "Armored Coat",
+      "applies_to": "self",
+      "stat_grants": {)JSON"
+    R"JSON(        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "apex_troopers_armored_carapace": {
+      "key": "apex_troopers_armored_carapace",
+      "name": "Armored Carapace",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "core_cracker_armored_shell": {
+      "key": "core_cracker_armored_shell",
+      "name": "Armored Shell",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "galvanized_bunker_armored_walls": {
+      "key": "galvanized_bunker_armored_walls",
+      "name": "Armored Walls",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 2
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 2."
+    },
+    "fumigant_armored_canister": {
+      "key": "fumigant_armored_canister",
+      "name": "Armored Canister",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "fumigant_gas_emission": {
+      "key": "fumigant_gas_emission",
+      "name": "Gas Emission",
+      "applies_to": "self",
+      "passive_mechanic": "gas_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does places a gas cloud on each tile it damages for 2 of your turn-ends and applies 1 {FX:poison} to each unit on it (including {KW:cleave} hits)."
+    },
+    "miasma_gas_emission": {
+      "key": "miasma_gas_emission",
+      "name": "Gas Emission",
+      "applies_to": "self",
+      "passive_mechanic": "gas_on_hit",
+      "is_positive": true,
+      "normal_rules_text": "Damage this unit does places a gas cloud on each tile it damages for 2 of your turn-ends and applies 1 {FX:poison} to each unit on it (including {KW:cleave} hits)."
+    },
+    "lady_concordia_armored_regalia": {
+      "key": "lady_concordia_armored_regalia",
+      "name": "Armored Regalia",
+      "applies_to": "self",
+      "stat_grants": {
+        "armor": 1
+      },
+      "is_positive": true,
+      "normal_rules_text": "Armor 1."
+    },
+    "starforged_tithe": {
+      "key": "starforged_tithe",
+      "name": "Starforged Tithe",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy_unit",
+      "reactive_effect_key": "gain_orange",
+      "reactive_effect_payload": {
+        "amount": 1,
+        "turn_cap": 2
+      },
+      "reactive_string_payload": {
+        "pool": "spell_ability",
+        "source_survive_until": "phase_resolution"
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 1 {GL:flux_energy|flux energy} (max 2 per turn)."
+    },
+    "rangers_tithe": {
+      "key": "rangers_tithe",
+      "name": "Ranger's Tithe",
+      "rules_text": "",
+      "applies_to": "self",
+      "reactive_trigger": "damage_dealt_enemy_unit",
+      "reactive_effect_key": "gain_orange",
+      "reactive_effect_payload": {
+        "amount": 3,
+        "turn_cap": 6
+      },
+      "reactive_string_payload": {
+        "pool": "spell_ability",
+        "source_survive_until": "phase_resolution"
+      },
+      "is_positive": true,
+      "normal_rules_text": "Whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 3 {GL:flux_energy|flux energy} (max 6 per turn)."
+    }
+  }
+})JSON";
+// END_GENERATED_PASSIVE_CATALOG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool merge_passives_object(const json& root, std::string& err_out)
+{
+    const auto it = root.find("passives");
+    if (it == root.end() || !it->is_object()) {
+        err_out = "passive catalog: missing top-level \"passives\" object";
+        return false;
+    }
+    std::vector<PassiveAbilitySpec> parsed;
+    parsed.reserve(it->size());
+    for (auto e = it->begin(); e != it->end(); ++e) {
+        if (!e.value().is_object()) {
+            err_out = "passive catalog: entry for \"" + e.key() + "\" must be an object";
+            return false;
+        }
+        PassiveAbilitySpec passive;
+        if (!effect_io::read_passive_spec_object(e.value(), passive, err_out, "passive catalog." + e.key())) {
+            return false;
+        }
+        if (passive.key.empty()) {
+            passive.key = e.key();
+        }
+        parsed.push_back(std::move(passive));
+    }
+    std::lock_guard<std::mutex> lock(g_catalog_mutex);
+    for (PassiveAbilitySpec& passive : parsed) {
+        const std::string key = passive.key;
+        g_catalog.erase(key);
+        g_catalog.emplace(key, std::move(passive));
+    }
+    return true;
+}
+
+}  // namespace
+
+void clear_passive_catalog()
+{
+    std::lock_guard<std::mutex> lock(g_catalog_mutex);
+    g_catalog.clear();
+    g_builtins_loaded = false;
+}
+
+bool load_passive_catalog_from_json_utf8(const std::string& utf8, std::string& err_out)
+{
+    try {
+        const json root = json::parse(utf8);
+        return merge_passives_object(root, err_out);
+    } catch (const std::exception& ex) {
+        err_out = ex.what();
+        return false;
+    }
+}
+
+void ensure_builtin_passive_catalog_loaded()
+{
+    {
+        std::lock_guard<std::mutex> lock(g_catalog_mutex);
+        if (g_builtins_loaded) {
+            return;
+        }
+    }
+    std::string err;
+    if (load_passive_catalog_from_json_utf8(kBuiltinPassiveCatalogJson, err)) {
+        std::lock_guard<std::mutex> lock(g_catalog_mutex);
+        g_builtins_loaded = true;
+    }
+}
+
+bool try_get_passive_from_catalog(const std::string& id, PassiveAbilitySpec& out)
+{
+    ensure_builtin_passive_catalog_loaded();
+    std::lock_guard<std::mutex> lock(g_catalog_mutex);
+    const auto it = g_catalog.find(id);
+    if (it == g_catalog.end()) {
+        return false;
+    }
+    out = it->second;
+    return true;
+}
+
+}  // namespace tactics
