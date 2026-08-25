@@ -10,7 +10,7 @@ This is a work in progress prototype for a multiplayer tactical card game me and
 
 ## Architecture
 
-The real purpose of this is to hook it up to a physical smart board later. The board would register the game and the pieces straight into the software over WebSockets.
+The real purpose of this is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
 
 The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
 
