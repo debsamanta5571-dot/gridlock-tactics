@@ -1,6 +1,6 @@
 # Gridlock Tactics
 
-Gridlock Tactics is a tactical card game my friends and I are working on. I’m the one writing the code. Matches happen on an 8x12 board. Take territory=ies, spend the energy on cards and units, and try to destroy the other team’s base.
+Gridlock Tactics is a tactical card game my friends and I are working on. I’m the one writing the code. Matches happen on an 8x12 board. Take territories, spend the energy on cards and units, and try to destroy the other team’s base.
 
 ## Preview
 
