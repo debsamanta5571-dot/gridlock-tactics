@@ -15,7 +15,7 @@ Technically its not actually made with c++ unreal objects but it is a separate c
 
 If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you do not need Unreal Engine installed.
 
-## Packaged build
+## Unreal build
 
 Run `Packaged\Win64\TacticsGameUnreal.exe`. No editor, no engine install.
 
