@@ -31,29 +31,10 @@ Unzip the Unreal zip and run `TacticsGameUnreal.exe`. Keep that whole folder tog
 
 I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
-The C++ zip has `run_net_server.bat` / `tactics_net_server.exe` (headless host) and `run_cli.bat` (text match). Card data is already in the zip.
-
-If you want to build it from this repo instead:
-
 ```
-.\build_standalone.bat
-.\run_net_server.bat
-```
-
-That builds `tactics_net_server` if it isn't there yet and loads cards from `TacticsGameUnreal 5.8\Content`. From the packaged game, Join `ws://127.0.0.1:8788/`.
-
-LAN bind (0.0.0.0):
-
-```
-.\run_net_server_lan.bat
-```
-
-Extra args go through (`--port 9000`, `--token secret`).
-
-Interactive C++ match with no Unreal at all:
-
-```
-.\run_cli.bat
+run_net_server.bat
+run_net_server_lan.bat
+run_cli.bat
 ```
 
 Made with C++ and Unreal 5.7/ 5.8
