@@ -16,16 +16,21 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 
 ## Architecture
 
-Match rules live in a standalone **C++20** library (`cpp_core`). Unreal Engine 5.8 is the client (Slate HUD, 3D board, LAN). The editor does not reimplement the rules. The same `.cpp` files are compiled into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). CMake and Unreal Build Tool stay in sync via `scripts/generate_cpp_core_stubs.py`.
+This is built as a **rules engine plus a client**, not as an Unreal Blueprint game.
 
-There is one `tactics::GameState`. Slate, the 3D board, the headless WebSocket host (`tactics_net_server`), and the C++ join client all drive it with the same command strings.
+**C++20 core (`cpp_core`).** All match logic lives in a standalone library with no `UObject` types: grid and multi-tile footprints, A* pathing, line of sight, territories and energy (including tagged flux pools), card instances, combat (melee / ranged, armor, magic resist, counterattack), status effects, a turn manager, and a phase batch queue. Speeds are Channeled, Reflex, and Blazing. There is one `tactics::GameState`. Win condition is destroying the enemy base.
 
-- **C++ core:** board, pathing, LOS, territories / energy, cards, combat, turn manager, phase batch queue (Channeled / Reflex / Blazing), snapshots
-- **Content:** JSON catalogs for cards, abilities, passives, and decks. New cards are data, not engine objects
-- **Bot:** legal-action generator + MCTS opponent (Play vs AI)
-- **Unreal:** UE 5.8 GUI. Host LAN / Join on WebSocket (default port 8788). Host is authority; clients send commands and apply snapshots
-- **Headless net:** `tactics_net_server` plus `tactics_net_client` so a microcomputer can host without Unreal, for a later smart-board / web client
-- **Language / build:** C++20, CMake, MSVC, Unreal 5.8 / UBT
+**Same sources in Unreal.** Those `.cpp` files are compiled into UE 5.8 through one-line UBT shims (`TacticsCore/Private/CppCoreStub_*.cpp`). CMake and Unreal Build Tool stay aligned with `scripts/generate_cpp_core_stubs.py` (including a `--check` mode). Slate, the 3D board, Host LAN, the headless server, and the C++ join client all call `dispatch_master_cli_line`. The GUI does not reimplement the rules.
+
+**Data-driven content.** Units, spells, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A constructed list is 40 main cards, 5 reserves, 20 territories. New cards are content, not engine classes.
+
+**Bot.** Play vs AI uses a legal-action generator and MCTS. The bot plays through the same `GameState` as a human.
+
+**Networking.** Host-authoritative WebSocket (default port 8788, wire version 4). The host owns `GameState`. Clients send command strings; the host broadcasts snapshots and JSON-patch deltas, plus a command journal. Optional room-token auth is HMAC-SHA256 over seat, counter, and line (replay-protected). Optional in-process TLS if built with OpenSSL. `tactics_net_server` is a headless host (P1 is server authority, remotes are P2+). `tactics_net_client` is a text join client for the same socket. That path is for a later microcomputer / smart-board / web GUI.
+
+**Unreal client.** UE 5.8: Slate HUD, 3D board actors, combat visualization, deck builder, Play vs AI, Host LAN / Join.
+
+**Build.** C++20, CMake, MSVC, Unreal 5.8 / UBT. Headless core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
 
 ## Downloads
 
