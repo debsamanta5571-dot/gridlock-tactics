@@ -1,6 +1,8 @@
 # Gridlock Tactics
 
-This is a work in progress prototype for a multiplayer tactical card game me and my friends are making. Of course they wanted the comp sci major to actually program everything while they think of "ideas" nevertheless its going sort of smoothly even if the UI is kind of a mess.
+Gridlock Tactics is a two-player tactical card game I'm building with friends. They design the cards. I write the code. Two sides fight on an 8x12 board: take territories for energy, deploy units, and destroy the other base.
+
+The rules are a C++ library. Unreal is the 3D client. There is a playable Windows build and a headless C++ host if you want to join without the editor.
 
 ## Preview
 
@@ -16,34 +18,37 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 
 ## Architecture
 
-This is built as a **rules engine plus a client**, not as an Unreal Blueprint game.
+The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 draws it. Nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns. The win condition is destroying the other base.
 
-**C++20 core (`cpp_core`).** All match logic lives in a standalone library with no `UObject` types: grid and multi-tile footprints, A* pathing, line of sight, territories and energy (including tagged flux pools), card instances, combat (melee / ranged, armor, magic resist, counterattack), status effects, a turn manager, and a phase batch queue. Speeds are Channeled, Reflex, and Blazing. There is one `tactics::GameState`. Win condition is destroying the enemy base.
+Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A Python script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list, including a `--check` mode. Slate, the 3D board, Host LAN, the headless server, and the C++ join client all send the same command strings into `dispatch_master_cli_line`. The GUI does not have a second copy of the rules.
 
-**Same sources in Unreal.** Those `.cpp` files are compiled into UE 5.8 through one-line UBT shims (`TacticsCore/Private/CppCoreStub_*.cpp`). CMake and Unreal Build Tool stay aligned with `scripts/generate_cpp_core_stubs.py` (including a `--check` mode). Slate, the 3D board, Host LAN, the headless server, and the C++ join client all call `dispatch_master_cli_line`. The GUI does not reimplement the rules.
+The library covers an 8x12 grid with multi-tile units, A* pathing, line of sight, territories and energy (including flux, which only pays for spells and abilities), a turn manager, and a phase batch queue. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
 
-**Data-driven content.** Units, spells, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A constructed list is 40 main cards, 5 reserves, 20 territories. New cards are content, not engine classes.
+Cards, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A legal list is 40 cards, 5 reserves, and 20 territories. Adding a card is a data change, not a new Unreal class.
 
-**AI.** Play vs AI is Monte Carlo Tree Search over the same `GameState` a human uses. Legal moves are enumerated by a generator (deploy, move, attack, spells, abilities, lands). Only attacks that already pass range, LOS, and validation are considered.
+**AI.** Play vs AI is Monte Carlo Tree Search on that same `GameState`. A generator lists legal deploys, moves, attacks, spells, abilities, and land uses. Attacks that fail range, line of sight, or validation never enter the tree.
 
-Leaf positions are scored with a linear model: `value = clamp(dot(features, weights), -1, 1)` from the AI's seat. Default weights are the hand-tuned heuristic; they can be swapped at runtime from a file (`TACTICS_BOT_WEIGHTS`) without a recompile. Terminal positions use the real match outcome (base destroyed, sudden-death base-HP tiebreak).
+Each leaf gets a score in `[-1, 1]` from the AI's seat: a dot product of features and weights, then clamped. The default weights are hand-tuned. They can be replaced at runtime from a file (`TACTICS_BOT_WEIGHTS`) without rebuilding. If the match is already over, the score is the real result (base destroyed, or sudden-death base health).
 
-The scorer is built around two axes, because this game is a card economy and a tactics board at the same time:
+The features treat this as both a card game and a tactics game.
 
-- **Win condition first.** Base HP difference `/ 30` is the dominant term. The AI is trying to kill the enemy base, not farm a unit count.
-- **Card / tempo.** Hand difference, spendable float (it expires at end of turn), flux, remaining deck count, and remaining deck quality. Idle energy is wasted tempo.
-- **Piece value, not headcount.** Each unit or structure is `HP + attack + movement*0.5 + ranged range*0.6 + keyword premia + ability optionality + engine passives + status`. A 22/22 Sentinel is not scored like a 1/1 token. Value engines (spawners, energy generators, auras) are weighted higher so they are not traded for junk. Status is in the same number: armor and boosts add; stun / silence / jammed / DoTs / overload subtract; evasive adds.
-- **Position.** Advancement toward the enemy base (Chebyshev, normalized). Penalty if enemy units sit within 2 tiles of our base, weighted by their attack. Objective tiles (scanner, omni-energy, aether) have hold values; capturing or contesting them is scored, piling extra bodies onto an already-contested tile is not.
-- **Attack policy.** Target `piece_value` (prefer the Sentinel). Lethality bonus for a kill vs chip. Expected-hit fraction for evasive and low cover (unless trueshot/flying). Counterattack risk, including not dying for a token. The base stays the top target (it does not counter).
-- **Spells and abilities.** Immediate effect (damage/debuff on enemies scaled by target value, heals/buffs on allies that need them) vs future value (hold Reflex mana for the opponent's turn, spend expiring float now, wait for 2+ AoE targets). Deploy scoring includes `card_engine_future_value` so ramp cards are worth playing before they do anything the turn they land.
+Base health comes first (`difference / 30`). That is the win condition, so it outweighs everything else. After that: cards in hand, float energy (it expires at end of turn), flux, how many cards are left in the deck, and how strong that remaining deck is.
 
-Search clones the match, rolls MCTS, and picks from that. No separate Unreal AI.
+Units are not counted as equals. Each piece is scored from HP, attack, movement, ranged reach, keywords, activated abilities, engine passives, and status. A large Sentinel is worth more than a 1/1 token. Spawners, energy generators, and auras are worth more still, so the AI does not trade them away cheaply. Armor and damage boosts add to the number. Stun, silence, jammed, damage-over-time, and overload subtract. Evasive adds, because half the attacks miss.
 
-**Networking.** Host-authoritative WebSocket (default port 8788, wire version 4). The host owns `GameState`. Clients send command strings; the host broadcasts snapshots and JSON-patch deltas, plus a command journal. Optional room-token auth is HMAC-SHA256 over seat, counter, and line (replay-protected). Optional in-process TLS if built with OpenSSL. `tactics_net_server` is a headless host (P1 is server authority, remotes are P2+). `tactics_net_client` is a text join client for the same socket. That path is for a later microcomputer / smart-board / web GUI.
+Position is in there too. Units get credit for closing on the enemy base. Enemy units within two tiles of our base are a penalty, scaled by their attack. Scanner, omni-energy, and aether tiles have hold values. Taking or contesting one scores. Stacking extra units onto a tile that is already contested does not.
 
-**Unreal client.** UE 5.8: Slate HUD, 3D board actors, combat visualization, deck builder, Play vs AI, Host LAN / Join.
+When it attacks, it prefers high `piece_value` targets and pays extra for a kill rather than chip damage. Evasive targets and low cover cut the expected value in half unless the attacker has trueshot or flying. It accounts for the counterattack, including lines where our unit dies for almost nothing. The enemy base stays the best target because it never hits back.
 
-**Build.** C++20, CMake, MSVC, Unreal 5.8 / UBT. Headless core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
+Spells and abilities mix what happens now with what should wait. Damage and debuffs on a valuable enemy score high. Heals and buffs score when an ally actually needs them. Reflex energy is often held for the opponent's turn. Float that would expire is spent now. Wide area effects wait for two or more targets. Deploy scoring includes future engine value, so a ramp card can be worth playing before it does anything the turn it lands.
+
+Search clones the match, runs MCTS, and takes the chosen action. There is no separate Unreal AI.
+
+**Networking.** The host owns `GameState`. Clients talk over WebSocket (port 8788, wire version 4). They send command strings. The host replies with full snapshots, JSON-patch deltas, and a command journal. A room token, if set, is HMAC-SHA256 over seat, a rising counter, and the line, so captured frames cannot be replayed. TLS is optional if the server is built with OpenSSL. `tactics_net_server` is the headless host (P1 is the server, joiners are P2+). `tactics_net_client` joins that same socket in text. That is the path for a later microcomputer, smart board, or web UI.
+
+**Unreal client.** UE 5.8: Slate HUD, 3D board, combat visualization, deck builder, Play vs AI, Host LAN, and Join.
+
+**Build.** C++20, CMake, MSVC, Unreal 5.8 / UBT. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
 
 ## Downloads
 
