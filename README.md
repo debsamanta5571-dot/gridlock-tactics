@@ -31,10 +31,10 @@ Unzip the Unreal zip and run `TacticsGameUnreal.exe`. Keep that whole folder tog
 
 I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
-```
-run_net_server.bat
-run_net_server_lan.bat
-run_cli.bat
-```
+Download the C++ zip, unzip it, then double-click one of these:
+
+- `run_net_server.bat` — headless host on this machine. In the Unreal client, Join `ws://127.0.0.1:8788/`
+- `run_net_server_lan.bat` — same thing, but other PCs on the LAN can join
+- `run_cli.bat` — text match, no Unreal at all
 
 Made with C++ and Unreal 5.7/ 5.8
