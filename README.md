@@ -14,7 +14,7 @@ The real purpose of this is to hook it up to a physical smart board later. The b
 
 It is not built out of Unreal C++ objects. The rules are a separate C++ module loaded into what is basically a GUI. That standalone C++ build is meant to run as a small portable server on a microcomputer. It can also run with Unreal as a 3D board on desktop.
 
-Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. The art is still placeholder.
+Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
 # Instructions
 
