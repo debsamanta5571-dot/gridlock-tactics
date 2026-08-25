@@ -35,7 +35,7 @@ Unreal zip: unzip and run `TacticsGameUnreal.exe`.
 
 ## C++ server
 
-I don't really recommend this for actually playing. It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
+I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
 If you still want the headless host:
 
