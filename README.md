@@ -16,10 +16,16 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 
 ## Architecture
 
-Advanced C++ module that is extendable and can be used alone or with unreal
-Extendable json system for storing cards
-Advanced AI using mtchts
-Unreal Gui. extend more
+Match rules live in a standalone **C++20** library (`cpp_core`). Unreal Engine 5.8 is the client (Slate HUD, 3D board, LAN). The editor does not reimplement the rules. The same `.cpp` files are compiled into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). CMake and Unreal Build Tool stay in sync via `scripts/generate_cpp_core_stubs.py`.
+
+There is one `tactics::GameState`. Slate, the 3D board, the headless WebSocket host (`tactics_net_server`), and the C++ join client all drive it with the same command strings.
+
+- **C++ core:** board, pathing, LOS, territories / energy, cards, combat, turn manager, phase batch queue (Channeled / Reflex / Blazing), snapshots
+- **Content:** JSON catalogs for cards, abilities, passives, and decks. New cards are data, not engine objects
+- **Bot:** legal-action generator + MCTS opponent (Play vs AI)
+- **Unreal:** UE 5.8 GUI. Host LAN / Join on WebSocket (default port 8788). Host is authority; clients send commands and apply snapshots
+- **Headless net:** `tactics_net_server` plus `tactics_net_client` so a microcomputer can host without Unreal, for a later smart-board / web client
+- **Language / build:** C++20, CMake, MSVC, Unreal 5.8 / UBT
 
 ## Downloads
 
