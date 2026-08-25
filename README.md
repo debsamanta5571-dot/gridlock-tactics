@@ -12,7 +12,7 @@ This is a work in progress prototype for a multiplayer tactical card game me and
 
 The real purpose of this is to hook it up to a physical smart board later. The board would register the game and the pieces straight into the software over WebSockets.
 
-It is not built out of Unreal C++ objects. The rules are a separate C++ module loaded into what is basically a GUI. That standalone C++ build is meant to run as a small portable server on a microcomputer. It can also run with Unreal as a 3D board on desktop.
+The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
