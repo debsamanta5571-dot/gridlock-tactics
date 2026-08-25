@@ -34,7 +34,7 @@ UE 5.8: Slate HUD, 3D board, combat visualization, deck builder, Play vs AI, Hos
 
 C++20, CMake, MSVC, Unreal 5.8 / UBT. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
 
-### Reasoning
+## Reasoning
 
 The real purpose of this c++ architecture is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
 
@@ -42,7 +42,7 @@ The rules are not Unreal objects. They are a separate C++ module loaded in separ
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
-## AI
+## Advanced AI Bot
 
 Play vs AI is Monte Carlo Tree Search on that same `GameState`. A generator lists legal deploys, moves, attacks, spells, abilities, and land uses. Attacks that fail range, line of sight, or validation never enter the tree.
 
