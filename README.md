@@ -15,6 +15,37 @@ Technically its not actually made with c++ unreal objects but it is a separate c
 If you want to actually try this game, (i don't think its fully stable yet, the c++ is fine but the unreal gui still needs a lot of polishing) you will need to read the instructions its fairly complex"
 
 ## Open
-Add packaged build instructions and c++ server instructuions (don't recommend c++ server its mean to eventually have a web gui to alk to"
+
+Needs **Unreal Engine 5.8**. Open `TacticsGameUnreal 5.8/TacticsGameUnreal.uproject` and press Play.
+
+- **Play vs AI** (you are seat 1, MCTS is seat 2)
+- **Host LAN** / **Join** (port, default 8788)
+
+Editor rebuild (`build_ue.bat` expects the engine at `E:\UE_5.8`; change that path if yours is different):
+
+```
+.\build_ue.bat
+```
+
+Standalone C++ host / CLI (no Unreal). These bats build the exe if it is missing and pass `--content` at `TacticsGameUnreal 5.8\Content` so the card JSON actually loads:
+
+```
+.\build_standalone.bat
+.\run_net_server.bat
+.\run_net_server_lan.bat
+.\run_cli.bat
+```
+
+Unreal clients Join `ws://127.0.0.1:8788/`. `run_net_server_lan.bat` binds `0.0.0.0` for LAN. Extra args (`--port`, `--token`) go through.
+
+This C++ host is the portable-server path (eventual web / smart-board client). For just playing the game, use Unreal Host LAN instead.
+
+Packaged desktop build (stays local, not in this repo):
+
+```
+.\scripts\package_win64_desktop.ps1
+```
+
+Output: `Packaged\Win64\TacticsGameUnreal.exe`
 
 #Made with C++ and Unreal 5.7/ 5.8
