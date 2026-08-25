@@ -1,0 +1,525 @@
+card.basic_infantry.name,Basic Infantry
+card.basic_infantry.rules_text,Quick Shot targets enemies .
+card.basic_infantry.normal_rules_text,"{KW:stockpile} 2. {MELEE} 1–3, {MOVE} 3, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy."
+card.basic_infantry.flavor_text,
+card.sandbox_ranger.name,Sandbox Rifleman
+card.sandbox_ranger.rules_text,Sandbox testing unit.
+card.sandbox_ranger.normal_rules_text,"{RANGED} 2 at {RANGE} 6, {MOVE} 3, 4 {HP}."
+card.sandbox_ranger.flavor_text,
+card.taunt_guard.name,Taunt Guard
+card.taunt_guard.rules_text,Enemies orthogonally adjacent cannot move away and must target this unit. Any move that ends on a tile next to this unit stops there. Pathfinding cannot enter this unit's tile.
+card.taunt_guard.normal_rules_text,"{KW:taunt}. {MELEE} 1–2, {MOVE} 2, 6 {HP}."
+card.taunt_guard.flavor_text,
+card.sky_banner.name,Sky Banner
+card.sky_banner.rules_text,
+card.sky_banner.normal_rules_text,"{MELEE} 0, {MOVE} 3, 4 {HP}. Allied units get +1/+1 and {KW:flying} while this unit is alive."
+card.sky_banner.flavor_text,
+card.kill_spell.name,Kill Spell
+card.kill_spell.rules_text,
+card.kill_spell.normal_rules_text,{REFLEX}. Destroy any target by dealing lethal damage.
+card.kill_spell.flavor_text,
+card.poison_cloud.name,Poison Cloud
+card.poison_cloud.rules_text,
+card.poison_cloud.normal_rules_text,{REFLEX}. Apply {FX:poison} 3 to any target that can receive {FX:poison}.
+card.poison_cloud.flavor_text,
+card.ignite.name,Ignite
+card.ignite.rules_text,
+card.ignite.normal_rules_text,{REFLEX}. Apply {FX:fire} 3 to any target.
+card.ignite.flavor_text,
+card.deep_cut.name,Deep Cut
+card.deep_cut.rules_text,
+card.deep_cut.normal_rules_text,{REFLEX}. Apply {FX:bleed} 3 to any target that can receive {FX:bleed}.
+card.deep_cut.flavor_text,
+card.silence.name,Silence
+card.silence.rules_text,"While {FX:silenced}, keywords, passives, and buffs are disabled. {KW:focus} spells may still be cast from that unit."
+card.silence.normal_rules_text,{REFLEX}. Apply {FX:silenced}.
+card.silence.flavor_text,
+card.cleanse_silence.name,Cleanse Silence
+card.cleanse_silence.rules_text,
+card.cleanse_silence.normal_rules_text,{REFLEX}. Remove {FX:silenced} from any target.
+card.cleanse_silence.flavor_text,
+card.stealth.name,Stealth
+card.stealth.rules_text,Stealthed units cannot be directly targeted by enemy attacks or abilities. Area effects still apply. Attacking removes all {FX:stealth}. Lose 1 stack at the start of your turn.
+card.stealth.normal_rules_text,{REFLEX}. Apply 1 {FX:stealth} to an allied unit.
+card.stealth.flavor_text,
+card.low_cover.name,Low Cover
+card.low_cover.rules_text,Enemy units adjacent to this tile have 50% evasion vs ranged attacks when this tile is on the line of {FX:fire}; evaded shots damage this obstacle. {KW:flying} and {KW:trueshot} ignore this evasion.
+card.low_cover.normal_rules_text,4 {HP}. Does not block line of sight.
+card.low_cover.flavor_text,
+card.focus_bolt.name,Focus Bolt
+card.focus_bolt.rules_text,Casts from a unit you control and uses that unit's keywords.
+card.focus_bolt.normal_rules_text,{KW:focus}. {REFLEX}. Deal 3 damage to an enemy within {RANGE} 4.
+card.focus_bolt.flavor_text,
+card.grease_monkeys.name,Grease Monkeys
+card.grease_monkeys.rules_text,Tune-Up stacks with other {KW:boost|boosts}.
+card.grease_monkeys.normal_rules_text,"{LIFE}3, {MOVE}3, {MELEE}1–2. {KW:stockpile} 3. Quick Repairs {O} (channeled): Heal 2 to an allied structure or base. Tune-Up {O}{O} (channeled): {KW:boost|Boosts} an allied unit or structure with +2 damage on its next attack or ability."
+card.grease_monkeys.flavor_text,"If it creaks, sputters, or catches fire, the Monkeys already have three ideas and a wrench."
+card.orion_crowe.name,Orion Crowe
+card.orion_crowe.rules_text,Diagonal directions use a stacked-L footprint. Energy Wave ignores cover and counts as your attack.
+card.orion_crowe.normal_rules_text,"{GL:armor} 1. {LIFE}8, {MOVE}3, {MELEE}3–5. Overcharge Burst {O} (blazing): {KW:boost|Boosts} self (+1 damage on your next attack or ability). Energy Wave {N}{O} (reflex, attack): Choose a direction ; deal 2 damage to everything in a 3×2 area in that direction."
+card.orion_crowe.flavor_text,She channels stored power through the battlefield in a single sweeping discharge.
+card.electrified_death_ball.name,Electrified Death Ball
+card.electrified_death_ball.rules_text,{KW:slippery}: can path through occupied cells but cannot end movement on one.
+card.electrified_death_ball.normal_rules_text,"{KW:whirlwind}. {KW:slippery}. {GL:armor} 2. {LIFE}9, {MOVE}3, {MELEE}1–1. {KW:shock_on_hit}: damage this unit does applies 1 {FX:overload} to each unit it damages."
+card.electrified_death_ball.flavor_text,
+card.sylvia.name,Sylvia
+card.sylvia.rules_text,{KW:boost|Boosts} expire at your turn end if unused. {FX:overload} and {FX:jammed} {KW:boost|boosts} are mutually exclusive on the same target.
+card.sylvia.normal_rules_text,"{LIFE}5, {MOVE}3, {RANGED}2–3, {RANGE}3. Static Charge {N}{O} (channeled): {KW:boost|Boosts} an allied unit, structure, or yourself - its next attack or ability applies 1 {FX:overload} to each entity it damages. Jamming Array {N}{N}{O}{O}{O} (channeled): same targeting; {KW:boost|Boosts} its next attack or ability to apply 1 {FX:jammed} to each entity it damages."
+card.sylvia.flavor_text,She threads disruption through every shot her allies take.
+card.starforged_knights.name,Starforged Knights
+card.starforged_knights.rules_text,
+card.starforged_knights.normal_rules_text,"{KW:stockpile} 3. {LIFE}5, {MOVE}3, {MELEE}1–3. Starforged Growth {N}{O} (reflex): permanently gain +1 max HP and +1 damage. Starforged Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 1 {GL:flux_energy|flux energy} (max 2 per turn)."
+card.starforged_knights.flavor_text,"Each strike rings louder than the last, and the echo pays in power."
+card.clawbreaker_mk5.name,Clawbreaker Mk 5
+card.clawbreaker_mk5.rules_text,On-hit effects and damage bonuses apply to every Fury Strikes hit. Fury Strikes counts as your attack.
+card.clawbreaker_mk5.normal_rules_text,"Overload Strikes: Damage this unit does applies 1 {FX:overload} to each unit it damages. Bleeding Strikes: Damage this unit does applies 1 {FX:bleed} to each unit it damages. {LIFE}11, {MOVE}3, {MELEE}3–6. Fury Strikes {N}{O}{O} (channeled, attack): strike a target enemy three times for 1 damage each. Missile Storm {N}{N}{O}{O} (reflex): fire missiles at up to 4 nearest enemies for 2 damage each."
+card.clawbreaker_mk5.flavor_text,The chain arm doesn't stop. Neither does the damage counter.
+card.blackmarket_battery.name,Blackmarket Battery
+card.blackmarket_battery.rules_text,{KW:surge} does not grant extra movement.
+card.blackmarket_battery.normal_rules_text,"(reflex). Target an allied unit. If it has {FX:deployment_fatigue}, grant it {KW:surge} (may attack and use abilities this turn despite fatigue). If it has no fatigue, refresh all its abilities (resets abilities used this turn and barrage cast counts)."
+card.blackmarket_battery.flavor_text,"Fully illegal, definitely overpriced, and worth every credit."
+card.beam_splitter_mk2.name,Beam Splitter Mk II
+card.beam_splitter_mk2.rules_text,Uses the caster’s pierce, lifesteal, soul steal, and on-damage primers on each hit.
+card.beam_splitter_mk2.normal_rules_text,"{KW:stockpile} 2. {KW:focus} ({RANGE} 4). Choose a friendly caster unit, then a cardinal direction ; fires a helix-shaped beam in that direction, dealing 2 damage to everything in 6 tiles along that ray."
+card.beam_splitter_mk2.flavor_text,Twin-phase refraction turns one beam into a weaving lattice of ruin.
+card.starforged_sentinel.name,Starforged Sentinel
+card.starforged_sentinel.rules_text,
+card.starforged_sentinel.normal_rules_text,"{KW:stockpile} 3. {LIFE}11, {MOVE}2, {MELEE}3–5. Sentinel’s Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 2 {GL:flux_energy|flux energy} (max 4 per turn). Starforged Surge {N}{O} (reflex, 3 uses per turn): permanently gain +1 max HP and +1 damage."
+card.starforged_sentinel.flavor_text,It absorbs every blow like a toll - and the resonance pays back double.
+card.starforged_titan.name,Starforged Titan
+card.starforged_titan.rules_text,"Starforged Feast fires last among this unit’s end-of-turn passives. {KW:exalted}: you must have generated 8 {GL:flux_energy|flux energy} over the course of the game."
+card.starforged_titan.normal_rules_text,"{KW:exalted}: you must have generated 8 {GL:flux_energy|flux energy} over the course of the game. 2×2. {KW:cleave}. {LIFE}16, {MOVE}4, {MELEE}6–8. Titan’s Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 4 {GL:flux_energy|flux energy} (max 12 per turn). Starforged Feast: at end of your turn, consume all {GL:flux_energy|flux energy} not generated by zones; gain +1 damage and +1 max HP for each point consumed."
+card.starforged_titan.flavor_text,"Where the Sentinel endures, the Titan devours."
+card.rapid_ranged_replicator.name,Rapid Ranged Replicator
+card.rapid_ranged_replicator.rules_text,No bot spawns if no {ADJACENT} empty tile is available.
+card.rapid_ranged_replicator.normal_rules_text,"{LIFE}5, {RANGED}2, {RANGE}4. Replication Protocol: whenever this structure damages an enemy, spawn a Replicator Bot on a random unoccupied {ADJACENT} tile to that enemy - the bot’s attack and HP equal the damage dealt; it spawns {FX:stunned}. Replicate Power {N}{O} (channeled): permanently gain +1 damage."
+card.rapid_ranged_replicator.flavor_text,Every hit is an investment.
+card.estelle_novara.name,Estelle Novara
+card.estelle_novara.rules_text,"Piercing Shot ignores {FX:shield}, {GL:armor}, and {FX:bonus_health}, ignores line of sight, and does not damage bases."
+card.estelle_novara.normal_rules_text,"{LIFE}5, {MOVE}3, {RANGED}4–6, {RANGE}3. Resonance Echo: whenever a surrounding allied or enemy unit gains any temporary buff, you gain a copy too. Piercing Shot {N}{N}{O} (channeled): fire a piercing bolt in one direction up to {RANGE}8 dealing 3 damage to every unit and structure hit."
+card.estelle_novara.flavor_text,She doesn't aim for one target. She aims through all of them.
+card.the_macrowave.name,The Macrowave
+card.the_macrowave.rules_text,Can target any unit on either team.
+card.the_macrowave.normal_rules_text,"(channeled). Grant a target unit The Macrowave Pulse: at end of its owner’s turn, deal 3 damage to all surrounding units (allies and enemies)."
+card.the_macrowave.flavor_text,The frequency is perfectly tuned to cook everything in range.
+card.power_of_the_sun.name,Power of the Sun
+card.power_of_the_sun.rules_text,X must be at least 1. Cannot target the casting unit itself.
+card.power_of_the_sun.normal_rules_text,{KW:focus} (channeled). Choose X. Deal X damage to a unit within {RANGE} 1 of your caster. Costs 2 {O} + X {N}.
+card.power_of_the_sun.flavor_text,"The longer it charges, the smaller the shadow it leaves."
+card.jury_rigged_mortar.name,Jury-Rigged Mortar
+card.jury_rigged_mortar.rules_text,Mortar Barrage cannot target {ADJACENT} tiles (minimum range 2).
+card.jury_rigged_mortar.normal_rules_text,"{LIFE}6. Mortar Barrage: at end of your turn, deal 3 damage and apply 1 {FX:overload} to a random enemy within {RANGE}4 (not {ADJACENT}) and all {ADJACENT} entities to that enemy. Final Barrage {N}{N}{N}{O}{O}{O} (channeled): at start of your next turn, fire Mortar Barrage 6 times, then self-destruct for 3 damage and 1 {FX:overload} to all {ADJACENT} entities."
+card.jury_rigged_mortar.flavor_text,Calibration is for people with time.
+card.nurse_bot.name,Nurse Bot
+card.nurse_bot.rules_text,
+card.nurse_bot.normal_rules_text,"{LIFE}4, {MOVE}3, {RANGED}2, {RANGE}3. Quick Heal {O} (reflex): Heal a target allied unit for 4. Medical Override {N}{N}{O} (channeled): Grant an allied unit {FX:medical_override} until the end of that unit's turn."
+card.nurse_bot.flavor_text,Sometimes the best offence is someone else's defence.
+card.sunkissed_ranger.name,Sunkissed Ranger
+card.sunkissed_ranger.rules_text,
+card.sunkissed_ranger.normal_rules_text,"{KW:stockpile} 2. {LIFE}9, {MOVE}3, {RANGED}3–6, {RANGE}3. Ranger's Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 3 {GL:flux_energy|flux energy} (max 6 per turn). Sunkissed Calibration {N}{O}{O}{O} (reflex): permanently gain +2 damage and +1 max HP."
+card.sunkissed_ranger.flavor_text,"The glare never blinds her - it only sets the sights."
+card.raging_volt_spire.name,Raging Volt Spire
+card.raging_volt_spire.rules_text,"Volt Feed does not absorb stacks from other Volt Feed units’ explosions. Incoming {FX:overload} applications are also halved (floor). {KW:exalted}: you must have applied 6 {FX:overload} over the course of the game."
+card.raging_volt_spire.normal_rules_text,"{KW:exalted}: you must have applied 6 {FX:overload} over the course of the game. 2×2. {LIFE}14, {MOVE}10, {RANGED}1–3, {RANGE}2. {PASSIVE} Overload Hardening: takes half damage from {FX:overload} explosions and retains all {FX:overload} stacks after exploding. {PASSIVE} Volt Feed: whenever any other unit within {RANGE}2 explodes from {FX:overload}, this unit gains those stacks. Volt Surge {N}{N}{O} (channeled): gain 2 {FX:overload} on self."
+card.raging_volt_spire.flavor_text,
+card.starforged_imitation.name,Starforged Imitation
+card.starforged_imitation.rules_text,
+card.starforged_imitation.normal_rules_text,{KW:stockpile} 2. (channeled). Permanently grant an allied unit +1 damage and +1 max HP.
+card.starforged_imitation.flavor_text,The resonance doesn't fade - it builds.
+card.shocking_stimulus.name,Shocking Stimulus
+card.shocking_stimulus.rules_text,
+card.shocking_stimulus.normal_rules_text,(channeled). Target a 4×4 area. All allied units in that area gain 1 {FX:overload} and +1 movement until end of that unit’s owner’s turn.
+card.shocking_stimulus.flavor_text,Resonance doesn't ask permission before it spreads.
+card.meth.name,*M*E*T*H
+card.meth.rules_text,"Bonus is stored until next turn start, then {KW:boost|boosts} the target."
+card.meth.normal_rules_text,(channeled). {KW:boost|Boosts} a target allied unit (+8 damage on its next attack or ability at the start of its owner’s next turn).
+card.meth.flavor_text,The aether doesn't strike now. It waits.
+card.bootleg_go_go_powder.name,Bootleg Go-Go Powder
+card.bootleg_go_go_powder.rules_text,
+card.bootleg_go_go_powder.normal_rules_text,(reflex). Grant a unit (ally or enemy) a +2 damage {KW:boost|Boost} and deal 1 damage to it.
+card.bootleg_go_go_powder.flavor_text,"No label, no warranty, no problem."
+card.shock_bot.name,Shock Bot
+card.shock_bot.rules_text,
+card.shock_bot.normal_rules_text,"{KW:stockpile} 3. {KW:charge}. {LIFE}1, {MOVE}4, {MELEE}1–2. Overload on Hit: damage this unit does applies 1 {FX:overload} to each unit it damages."
+card.shock_bot.flavor_text,The last thing you feel before the charge is a soft buzz.
+card.dynamic_deployable_duplicator.name,Dynamic Deployable Duplicator
+card.dynamic_deployable_duplicator.rules_text,Bot damage has a 3-point spread (e.g. 1–3). Only enemy units can be targeted.
+card.dynamic_deployable_duplicator.normal_rules_text,"{KW:focus} ({RANGE} 3). Choose a friendly caster unit. Deal damage to a target enemy unit equal to half that caster’s attack roll. If there is an empty cell adjacent to the target, spawn a Replicator Bot there with HP and melee damage equal to the damage dealt; the bot inherits the caster’s keywords and spawns {FX:stunned}."
+card.dynamic_deployable_duplicator.flavor_text,
+card.outdated_grenade.name,Outdated Grenades
+card.outdated_grenade.rules_text,
+card.outdated_grenade.normal_rules_text,"{KW:stockpile} 2. {KW:focus} ({RANGE} 2). Choose a friendly caster unit, then a board cell. Deal 2 damage to all entities in a 3×3 area centered on that cell."
+card.outdated_grenade.flavor_text,
+card.debilitator.name,Debilitator
+card.debilitator.rules_text,{KW:boost|Boosts} expire at your turn end if unused. Drag Line and Anchor Line can coexist on the same target.
+card.debilitator.normal_rules_text,"{LIFE}6, {MOVE}3, {RANGED}2–4, {RANGE}2. Drag Line {N}{O} (channeled): {KW:boost|Boosts} an allied unit (or yourself) - its next damaging ability reduces 1 movement to each unit it damages. Anchor Line {N}{N}{O}{O} (channeled): {KW:boost|Boosts} an allied unit (or yourself) - its next damaging ability {FX:rooted|roots} each unit it damages."
+card.debilitator.flavor_text,Every shot comes with strings attached.
+card.pocket_nuke.name,Pocket Nuke
+card.pocket_nuke.rules_text,
+card.pocket_nuke.normal_rules_text,"{KW:focus} ({RANGE} 3). Choose a friendly caster unit, then a board cell. Deal 8 damage to all entities in a 3×3 area centered on that cell."
+card.pocket_nuke.flavor_text,"Portable, pocket-sized, and only slightly illegal."
+card.jacquelynne.name,Jacquelynne
+card.jacquelynne.rules_text,"Mending Shot also gains the caster’s aura ability-damage bonus and only consumes next-damage {KW:boost|boosts} as extra healing."
+card.jacquelynne.normal_rules_text,"{LIFE}8, {MOVE}3, {RANGED}3–5, {RANGE}3. Mending Shot {O} (reflex, {RANGE}2): heal a unit (or yourself) for 5; consumes all pending next-damage {KW:boost|boosts} as extra healing. Doublecast {N}{N}{O}{O}{O} (channeled): target a unit or yourself - that unit’s next activated ability casts twice on the same targets."
+card.jacquelynne.flavor_text,
+card.desperate_scan.name,Desperate Scan
+card.desperate_scan.rules_text,
+card.desperate_scan.normal_rules_text,"(blazing). Apply 3 {FX:overload} to a friendly unit (can target self), then draw 2 cards."
+card.desperate_scan.flavor_text,Push it a little further. What's the worst that could happen?
+card.synths_interlinked.name,Synths Interlinked
+card.synths_interlinked.rules_text,
+card.synths_interlinked.normal_rules_text,(reflex). {KW:boost|Boosts} an allied unit (+1 damage on its next attack or ability). {GL:chain|Chains} to every ally connected by diagonal or orthogonal adjacency.
+card.synths_interlinked.flavor_text,One spark is all it takes.
+
+card.voltcrusher_dreadnought.name,Voltcrusher Dreadnought
+card.voltcrusher_dreadnought.rules_text,"High Explosive Round may be body-intercepted (50% per blocking unit); explosion ignores LOS. Counts as an attack. {KW:exalted}: you must have dealt 12 damage with abilities over the course of the game."
+card.voltcrusher_dreadnought.normal_rules_text,"{KW:exalted}: you must have dealt 12 damage with abilities over the course of the game. 2×2. Armored Plating: {GL:armor} 1. {LIFE}11, {MOVE}8, {RANGED} 5–8, {RANGE} 2. High Explosive Round {N}{N}{O}{O}{O} (reflex, attack): fire a shell at an enemy; detonate for 4 damage in a 3×3 area where it lands. Artillery Mode {N}{O} (channeled): gain {KW:trueshot}, +1 {RANGE}, and deadzone 1 until start of your next turn."
+card.voltcrusher_dreadnought.flavor_text,
+card.the_boss.name,The Boss
+card.the_boss.rules_text,Press the Advantage stacks. {KW:command|Command Presence} does not buff basic attacks.
+card.the_boss.normal_rules_text,"{LIFE}10, {MOVE}3, {MELEE}3–5. {KW:command|Command Presence}: allied units within {RANGE}1 deal +1 damage with activated abilities. Amplify {N}{O} (channeled, 2 uses): increase {KW:command|Command Presence} range by 1 until start of your next turn. Press the Advantage {N}{N}{O} (channeled): permanently increase {KW:command|Command Presence} ability damage by +1."
+card.the_boss.flavor_text,
+card.field_upgrade.name,Field Upgrade
+card.field_upgrade.rules_text,
+card.field_upgrade.normal_rules_text,"(channeled). Permanently grant an allied unit +1 damage and +3 max HP, then draw 1 card."
+card.field_upgrade.flavor_text,A little reinforcement goes a long way.
+card.live_wire.name,Live Wire
+card.live_wire.rules_text,
+card.live_wire.normal_rules_text,(reflex). Apply 1 {FX:overload} to a unit or structure. {GL:chain|Chains} to every connected unit and structure on any team.
+card.live_wire.flavor_text,The current finds its own path.
+card.liquid_data.name,"""Liquid Data"""
+card.liquid_data.rules_text,{KW:surge} does not grant extra movement.
+card.liquid_data.normal_rules_text,"(blazing). Target an allied unit. If it has {FX:deployment_fatigue}, grant it {KW:surge} (may attack and use abilities this turn despite fatigue). If it has no fatigue, refresh all its abilities."
+card.liquid_data.flavor_text,Tired is a state of mind. Move.
+card.debonair.name,Debonair
+card.debonair.rules_text,{FX:style} stacks persist until consumed by Unleash.
+card.debonair.normal_rules_text,"{KW:slippery}. {LIFE}9, {MOVE}3, {RANGED}2–4, {RANGE}2. Cross-X Shot {N}{N}{O} (channeled, 2 uses): fire at enemies exactly {RANGE}2 away - first use is the 4 cardinal directions, then the 4 diagonals, alternating each use (LOS required); uses your ranged damage; gain 1 {FX:style}. Unleash {N}{N}{O}{O} (channeled): deal 2 damage per {FX:style} stack to a surrounding enemy, then consume all {FX:style}; scales with pending next-damage {KW:boost|boosts}."
+card.debonair.flavor_text,Every shot is a statement. Every miss? Impossible.
+card.starforged_accumulator.name,Starforged Accumulator
+card.starforged_accumulator.rules_text,
+card.starforged_accumulator.normal_rules_text,"{KW:spearhead} 4. {LIFE}6. No attacks. At start of your turn, gain 3 {GL:flux_energy|flux energy}."
+card.starforged_accumulator.flavor_text,They wired the front line straight into the spell grid.
+card.ape_foreman.name,Ape Foreman
+card.ape_foreman.rules_text,
+card.ape_foreman.normal_rules_text,"{LIFE}5, {MOVE}3, {MELEE}2–3. Reinforced Foundations: allied structures {ADJACENT} to this unit gain +2 max HP. Deploy Shock Wire {N}{O} (channeled): place a Shock Wire structure on an {ADJACENT} empty cell (2 HP, no attacks; melee attackers that damage it receive 1 {FX:overload})."
+card.ape_foreman.flavor_text,"He runs the job site like a live circuit - every wire grounded, every worker buzzing."
+card.terra.name,Terra
+card.terra.rules_text,Terra Dash must target an empty cell or pickup in a straight line; cannot pass through occupied tiles. Seismic Cone counts as an attack.
+card.terra.normal_rules_text,"{LIFE}12, {MOVE}2, {MELEE}5–7. Seismic Cone {N}{O} (reflex, attack): deal 6 damage to an {ADJACENT} tile and 3 damage to the three tiles behind it in a side-by-side row. Terra Dash {O} (channeled): dash to a tile exactly 3 tiles away."
+card.terra.flavor_text,"The ground answers when she calls - first in a fist, then in a ripple."
+card.reactive_armor.name,Reactive Armor
+card.reactive_armor.rules_text,Whenever this unit takes damage it gains 1 more {GL:armor}. The {GL:armor} and ability is lost at the start of your next turn.
+card.reactive_armor.normal_rules_text,"(reflex). Grant an allied unit 1 {GL:armor}. Whenever this unit takes damage it gains 1 more {GL:armor}. The {GL:armor} and ability is lost at the start of your next turn."
+card.reactive_armor.flavor_text,The plating learns from every blow.
+card.vulturous_nanites.name,Vulturous Nanites
+card.vulturous_nanites.rules_text,
+card.vulturous_nanites.normal_rules_text,"(reflex). Grant an allied unit {KW:last_gasp}: when it dies, spawn a melee token at its location with half its base attack and HP (rounded down); the token spawns {FX:stunned}."
+card.vulturous_nanites.flavor_text,"Even in death, they leave a mark."
+card.defective_augment.name,Defective Augment
+card.defective_augment.rules_text,Can target ally or enemy.
+card.defective_augment.normal_rules_text,(reflex). Apply 2 {FX:jammed} to a unit and permanently grant it +3 damage and +3 max HP.
+card.defective_augment.flavor_text,The upgrade works. The side effects are someone else's problem.
+card.mind_hijack.name,Mind Hijack
+card.mind_hijack.rules_text,Only swaps non-stat temporary effects.
+card.mind_hijack.normal_rules_text,(reflex). {KW:focus} ({RANGE}3). Choose a caster unit and another target unit within {RANGE}3. Swap all temporary buffs and debuffs between the two units.
+card.mind_hijack.flavor_text,Your problems are now theirs. Or maybe theirs are yours.
+card.sylvias_special_blend.name,Sylvia's Special Blend
+card.sylvias_special_blend.rules_text,Affects spells cast by that unit and its activated abilities.
+card.sylvias_special_blend.normal_rules_text,"{BLAZING}. Choose a target unit. Until end of turn, that unit’s channeled spells and abilities are treated as reflex."
+card.sylvias_special_blend.flavor_text,Overclock the mind. Pay the price later.
+card.dust_to_data.name,Dust to Data
+card.dust_to_data.rules_text,
+card.dust_to_data.normal_rules_text,(reflex). Destroy an allied unit. Gain {GL:flux_energy|flux energy} equal to double its total orange + neutral energy cost.
+card.dust_to_data.flavor_text,She gave everything to the cause. Quite literally.
+card.the_starforged_aberration.name,The Starforged Aberration
+card.the_starforged_aberration.rules_text,"Uses base stats only, not temporary modifiers."
+card.the_starforged_aberration.normal_rules_text,"(reflex). Target a 4×2 area. Sum base damage and base HP of all allied units in that area, then randomly redistribute those totals among them (each unit ends with at least 1 attack and 1 HP)."
+card.the_starforged_aberration.flavor_text,Everyone contributes. Fate decides who receives.
+card.overly_affectionate_cyberware.name,Overly Affectionate Cyberware
+card.overly_affectionate_cyberware.rules_text,Can only target a unit with a total energy cost of 5 or less.
+card.overly_affectionate_cyberware.normal_rules_text,(reflex). Can only target a unit with a total energy cost of 5 or less. It gains {PASSIVE}, Hyperactive Scanning: temporarily gain the keywords of surrounding units.
+card.overly_affectionate_cyberware.flavor_text,Warm upgrades for cold operators.
+card.explosive_graft.name,Explosive Graft
+card.explosive_graft.rules_text,{FX:explosive_graft} is consumed after triggering once.
+card.explosive_graft.normal_rules_text,"(channeled). {FX:stunned|Stun} an allied unit and grant {FX:explosive_graft}: the next time an enemy damages it, all surrounding units (allied and enemy) take 5 damage and 2 {FX:overload}."
+card.explosive_graft.flavor_text,The implant had one flaw: it worked exactly as intended.
+card.1g_gy.name,"""1G-GY"""
+card.1g_gy.rules_text,Requires a friendly caster unit within {KW:focus} range. Only unit targets.
+card.1g_gy.normal_rules_text,"{KW:stockpile} 3. {KW:focus} ({RANGE}3). (channeled). Deal 4 damage to a target unit. If this kills it, draw 1 card."
+card.1g_gy.flavor_text,Accurate enough to be lethal. Not much margin for error.
+card.test_haste_runner.name,Test Haste Runner
+card.test_haste_runner.rules_text,"{KW:haste}. On its deploy turn, may move normally but cannot attack, defend, dash, or use Quick Shot."
+card.test_haste_runner.normal_rules_text,
+card.test_haste_runner.flavor_text,
+card.test_surge_striker.name,Test Surge Striker
+card.test_surge_striker.rules_text,"{KW:surge}. On its deploy turn, may attack, defend, dash, and use Quick Shot but cannot move."
+card.test_surge_striker.normal_rules_text,
+card.test_surge_striker.flavor_text,
+card.test_charge_knight.name,Test Charge Knight
+card.test_charge_knight.rules_text,{KW:charge}. Ignores {FX:deployment_fatigue} on the turn it is deployed.
+card.test_charge_knight.normal_rules_text,
+card.test_charge_knight.flavor_text,
+card.test_haste_surge_unit.name,Test Haste Surge Unit
+card.test_haste_surge_unit.rules_text,"{KW:haste}. {KW:surge}. On its deploy turn, may move, attack, defend, dash, and use abilities."
+card.test_haste_surge_unit.normal_rules_text,
+card.test_haste_surge_unit.flavor_text,
+card.frontline_faithful.name,Frontline Faithful
+card.frontline_faithful.rules_text,
+card.frontline_faithful.normal_rules_text,"{KW:stockpile} 4. {LIFE}4, {MOVE}3, Hybrid {MELEE}1–4 / {RANGED}1–2 {RANGE}2."
+card.frontline_faithful.flavor_text,
+card.trench_runner.name,Trench Runner
+card.trench_runner.rules_text,
+card.trench_runner.normal_rules_text,"{KW:haste}. {KW:base_breaker} 3. {KW:stockpile} 2. {LIFE}5, {MOVE}4, {MELEE}2–5."
+card.trench_runner.flavor_text,
+card.overworked_operator.name,Overworked Operator
+card.overworked_operator.rules_text,The first unit to collect the pickup heals 4 HP.
+card.overworked_operator.normal_rules_text,"{KW:command} 4. {LIFE}6, {RANGED}1–3 {RANGE}2. Supply Drop {N}{G} (channeled, {RANGE}2): place a +4 HP heal pickup on an empty tile."
+card.overworked_operator.flavor_text,
+card.inspiring_commander.name,Inspiring Commander
+card.inspiring_commander.rules_text,Barrage: pay {N} again on the same activation to extend.
+card.inspiring_commander.normal_rules_text,"{LIFE}8, {MOVE}3, Hybrid {MELEE}2–5 / {RANGED}2–5 {RANGE}2. Inspiring Presence: surrounding allies gain +1 damage and +1 max HP. Inspire {G}{N} (channeled, barrage {N}): allied auras from this unit grant +1 attack and +1 HP until your next turn. Coordinate {G}{G}{N} (channeled, barrage {N}): increase this unit's aura range by 1 until your next turn."
+card.inspiring_commander.flavor_text,
+card.command_post.name,Command Post
+card.command_post.rules_text,
+card.command_post.normal_rules_text,{KW:command} 8. {LIFE}8. Deploy allied 1×1 units with total energy cost ≤ 8 on tiles {ADJACENT} to this structure.
+card.command_post.flavor_text,
+card.counter_sniper.name,Counter Sniper
+card.counter_sniper.rules_text,Each application is a separate reaction stack. Unused stacks decay at the start of your turn.
+card.counter_sniper.normal_rules_text,"{LIFE}2, {RANGED}3–6 {RANGE}4. Covering Shot {N}{G} (channeled, {RANGE}3): mark an allied unit - when an enemy attacks that ally this turn, this unit fires back."
+card.counter_sniper.flavor_text,
+card.conscript_call.name,Conscript Call
+card.conscript_call.rules_text,Conscripts enter with {FX:deployment_fatigue}.
+card.conscript_call.normal_rules_text,"(channeled). Summon Conscript tokens (Hybrid {MELEE}2–4 / {RANGED}2–4 {RANGE}2, {LIFE}4, {MOVE}3) on every empty cell in your base deployment zone (max 8)."
+card.conscript_call.flavor_text,
+card.diesel_rider.name,Diesel Rider
+card.diesel_rider.rules_text,
+card.diesel_rider.normal_rules_text,"{KW:charge}. {LIFE}6, {MOVE}3, {MELEE}3–6. Full Throttle: when this unit damages an enemy, restore one move action. Blitz {G}{G}{N} (channeled): gain a bonus attack this turn."
+card.diesel_rider.flavor_text,
+card.field_nurse.name,Field Nurse
+card.field_nurse.rules_text,
+card.field_nurse.normal_rules_text,"{KW:stockpile} 3. {LIFE}5, {RANGED}1–2 {RANGE}2. Field Dressing {G} (channeled): heal surrounding allies for 2 HP. Triage {G}{N}{N} (channeled, {RANGE}1): remove one random debuff from an {ADJACENT} ally."
+card.field_nurse.flavor_text,
+card.artillery_battalion.name,Artillery Battalion
+card.artillery_battalion.rules_text,Counts as an attack.
+card.artillery_battalion.normal_rules_text,"{KW:trueshot}. 2×2. {LIFE}7, {RANGED}4–8 {RANGE}3 (deadzone 1). Coordinated Fire {G}{G}{N}{N} (channeled, costs attack action): when a friendly unit attacks an enemy, this unit also fires (3–6 damage), up to 5 shots until your next turn."
+card.artillery_battalion.flavor_text,
+card.valiant_resolute.name,Valiant Resolute
+card.valiant_resolute.rules_text,"If triggered and not already {FX:stunned}, gain 1 {FX:stunned|stun} stack."
+card.valiant_resolute.normal_rules_text,"{LIFE}8, {MOVE}3, {MELEE}4–7. Iron Will: 50% chance to survive lethal damage at 1 HP; then permanently gain +2/+2."
+card.valiant_resolute.flavor_text,
+card.flame_trooper.name,Flame Trooper
+card.flame_trooper.rules_text,
+card.flame_trooper.normal_rules_text,"{KW:stockpile} 2. {KW:true_immunity}. {KW:volley} 3. {KW:pierce}. {KW:trueshot}. {LIFE}11, {RANGED}3–7 {RANGE}2. {KW:fire_on_hit}: damage this unit does applies 2 {FX:fire} to each unit it damages. {KW:last_gasp}: on death, set this tile and surrounding tiles on {FX:fire} for 2 turns."
+card.flame_trooper.flavor_text,
+card.mother_ship.name,The Mother Ship
+card.mother_ship.rules_text,
+card.mother_ship.normal_rules_text,"{KW:flying}. {KW:command} 6. {KW:whirlwind}. {GL:armor} 1. 2×2. {LIFE}11, {RANGED}3–6 {RANGE}1, {MOVE}8. Deploy Conscripts {G}{G}{N} (channeled): spawn 2 Conscript tokens on random unoccupied surrounding cells. Deploy Heavy Trooper {G}{G}{G}{N}{N} (channeled): spawn 1 Heavy Trooper token on a random unoccupied {ADJACENT} cell."
+card.mother_ship.flavor_text,
+card.skyreaver.name,Skyreaver
+card.skyreaver.rules_text,
+card.skyreaver.normal_rules_text,"{KW:flying}. {KW:haste}. {KW:base_breaker} 3. {LIFE}8, {MOVE}4, {RANGED}3–6 {RANGE}2. Bunker Buster {G}{G}{G} (channeled, {RANGE}1): deal 5 damage to an {ADJACENT} enemy base or structure. Bombing Run {N}{G} (channeled): fly orthogonally 2–3 tiles, dealing 3 damage to each enemy unit passed over; land on an empty tile."
+card.skyreaver.flavor_text,
+card.general_stormwell.name,General Stormwell
+card.general_stormwell.rules_text,
+card.general_stormwell.normal_rules_text,"{LIFE}7, {MOVE}3, {RANGED}2–4 {RANGE}2. Rally {G}{G}{G}{N}{N} (channeled): surrounding allies gain {KW:relentless} 3 until end of turn. Expose {G}{N} (channeled, {RANGE}2): apply 1 {FX:vulnerable} to a unit until end of their turn."
+card.general_stormwell.flavor_text,
+card.remington.name,Remington
+card.remington.rules_text,Swap Weapons suppresses {KW:volley}. Dual Wield disables Swap Weapons while active.
+card.remington.normal_rules_text,"{KW:volley} 2. {LIFE}7, {MOVE}3, {RANGED}2–6 {RANGE}2. Swap Weapons {G} (channeled): switch to ranged 3–4 with +1 range and {KW:multistrike} 1 until end of turn. Dual Wield {G}{G}{N}{N} (channeled): switch to ranged 3–6 with +1 range and {KW:multistrike} 1 until end of turn."
+card.remington.flavor_text,
+card.callahan.name,Callahan
+card.callahan.rules_text,Sworn Protector stacks once per death; each new death refreshes duration.
+card.callahan.normal_rules_text,"{KW:multistrike} 1. {GL:armor} 1. {LIFE}6, {RANGED}2–5 {RANGE}2. Sworn Protector: when a unit you were covering dies, gain +1 {KW:multistrike} for 2 turns. Cover Shot {G}{G} (channeled, {RANGE}2): grant an ally {FX:covering_fire} until your next turn; the {FX:covering_fire} reaction and this unit's ranged range gain +1."
+card.callahan.flavor_text,
+card.the_green_death.name,The Green Death
+card.the_green_death.rules_text,
+card.the_green_death.normal_rules_text,"{KW:vigilance}. {LIFE}5, {RANGED}6–9 {RANGE}4. Overwatch {N}{G} (channeled, {RANGE}4): place 2 {FX:covering_fire|covering-fire} stacks on an ally. Go Dark {G}{G}{G}{N} (channeled): gain 1 {FX:stealth}."
+card.the_green_death.flavor_text,
+card.apex_troopers.name,Apex Troopers
+card.apex_troopers.rules_text,
+card.apex_troopers.normal_rules_text,"{KW:stockpile} 2. {GL:armor} 1. {LIFE}14, {MOVE}2, Hybrid {MELEE}7–10 / {RANGED}3–7 {RANGE}2."
+card.apex_troopers.flavor_text,
+card.core_cracker.name,Core Cracker
+card.core_cracker.rules_text,{KW:crushes_on_move} cannot gain {FX:bonus_move_grant}-points; push ignores {KW:immovable}. Breaching Charge pierces base immunity.
+card.core_cracker.normal_rules_text,"{KW:immovable}. {GL:armor} 1. 2×2. {LIFE}14, {MOVE}4, {RANGED}3–6 {RANGE}1. Cold Start: pay {G}{G}{G} each turn (except deploy) to act. {KW:crushes_on_move}: moves through units, pushing them. Prime Core {G}{G}{G} (channeled): prime to act until your next turn. Breaching Charge {G} (channeled, {RANGE}1): deal 15 damage to an {ADJACENT} enemy base, then destroy this unit."
+card.core_cracker.flavor_text,
+card.mobilize.name,Mobilize
+card.mobilize.rules_text,Units that cost only colored energy are unaffected.
+card.mobilize.normal_rules_text,"(channeled). Until end of turn, all units you deploy cost 1 less neutral energy (minimum 0)."
+card.mobilize.flavor_text,
+card.second_wave.name,Second Wave
+card.second_wave.rules_text,
+card.second_wave.normal_rules_text,"(channeled). Until end of turn, each {KW:stockpile} card you control may be deployed or played a second time."
+card.second_wave.flavor_text,
+card.reinforcements.name,Reinforcements
+card.reinforcements.rules_text,
+card.reinforcements.normal_rules_text,(channeled). Draw 2 unit cards.
+card.reinforcements.flavor_text,Another truck rolls in from the rear - boots on the ground before the dust settles.
+card.mark_target.name,Mark Target
+card.mark_target.rules_text,
+card.mark_target.normal_rules_text,(reflex). Apply 1 {FX:vulnerable} to an enemy unit until end of turn.
+card.mark_target.flavor_text,A painted crosshair - one good hit and they're done.
+card.field_trench.name,Field Trench
+card.field_trench.rules_text,Subject to the normal {GL:armor} cap.
+card.field_trench.normal_rules_text,(channeled). Turn a tile on or {ADJACENT} to an allied unit into a trench (+1 {GL:armor} to 1×1 non-{KW:flying} units on it; costs 1.5 movement to enter).
+card.field_trench.flavor_text,"Shovels out, dirt flies - two minutes later the line has cover."
+card.espirit_de_corps.name,Espirit de Corps
+card.espirit_de_corps.rules_text,
+card.espirit_de_corps.normal_rules_text,(reflex). Allied units in a 3×3 area centered on a chosen cell gain +3/+3 until end of turn.
+card.espirit_de_corps.flavor_text,One shout and the whole section stands taller.
+card.cheeky_saboteur.name,Cheeky Saboteur
+card.cheeky_saboteur.rules_text,
+card.cheeky_saboteur.normal_rules_text,"{KW:stockpile} 3. {KW:charge}. {KW:base_breaker} 4. {LIFE}1, {MOVE}4, {MELEE}1–2."
+card.cheeky_saboteur.flavor_text,
+card.dottie.name,Dottie
+card.dottie.rules_text,{KW:evasive} stacks extend duration.
+card.dottie.normal_rules_text,"{KW:flying}. {LIFE}5, {MOVE}4, {RANGED}2–5 {RANGE}2. Healing Flight {N}{N}{G} (channeled): fly orthogonally 2–5 tiles, dropping +4 HP heal pickups on empty cells along the path; land on an empty tile or pickup. {KW:evasive} Maneuver {G}{G} (channeled): gain {KW:evasive} (50% miss)."
+card.dottie.flavor_text,
+card.galvanized_bunker.name,Galvanized Bunker
+card.galvanized_bunker.rules_text,
+card.galvanized_bunker.normal_rules_text,"{KW:stockpile} 2. {GL:armor} 2. {LIFE}3, {RANGED}2–3 {RANGE}2. {KW:whirlwind} Spray {G}{G} (channeled): gain {KW:whirlwind} and −1 ranged range until end of turn."
+card.galvanized_bunker.flavor_text,
+card.battle_stim.name,Battle Stim
+card.battle_stim.rules_text,
+card.battle_stim.normal_rules_text,(reflex). Target allied unit gains +1 damage until end of turn.
+card.battle_stim.flavor_text,
+card.cover_detail.name,Cover Detail
+card.cover_detail.rules_text,Hybrid units use their ranged attacks for {FX:covering_fire} reactions.
+card.cover_detail.normal_rules_text,{KW:focus} (channeled). Cast from a ranged or hybrid unit you control. Apply 1 {FX:covering_fire} stack to an allied unit within that unit's ranged range.
+card.cover_detail.flavor_text,
+card.breaching_round.name,Breaching Round
+card.breaching_round.rules_text,
+card.breaching_round.normal_rules_text,{KW:focus} (channeled). Deal 4 damage to an {ADJACENT} enemy base.
+card.breaching_round.flavor_text,
+card.relentless_volley.name,Relentless Volley
+card.relentless_volley.rules_text,{KW:relentless} lasts only for this attack.
+card.relentless_volley.normal_rules_text,{KW:focus} (channeled). Your unit attacks a target enemy with {KW:relentless} 3.
+card.relentless_volley.flavor_text,
+card.frontline_salve.name,Frontline Salve
+card.frontline_salve.rules_text,
+card.frontline_salve.normal_rules_text,(channeled). Heal target allied unit for 3 HP and remove one random debuff.
+card.frontline_salve.flavor_text,
+card.gas_strike.name,Gas Strike
+card.gas_strike.rules_text,"At the end of each unit owner's turn, units standing on gas cloud tiles take 1 {FX:poison}."
+card.gas_strike.normal_rules_text,(channeled). Place a gas cloud on target tile and its 4 cardinal neighbors (5-tile cross); units there take 1 {FX:poison}.
+card.gas_strike.flavor_text,
+card.trench_sweeper.name,Trench Sweeper
+card.trench_sweeper.rules_text,Units on those tiles take 1 {FX:poison} immediately. Reapplying gas keeps the longer duration.
+card.trench_sweeper.normal_rules_text,"{KW:true_immunity}. {KW:volley} 2. {LIFE}5, {RANGED}2–5 {RANGE}2. Gas Grenade {N}{G} (channeled, {RANGE}3): place gas on target tile and its volley flank tiles (3 tiles) for 2 turns."
+card.trench_sweeper.flavor_text,
+card.sanglante.name,Sanglante
+card.sanglante.rules_text,
+card.sanglante.normal_rules_text,"Bloodlust: when this unit kills an enemy, permanently gain +1/+1. {LIFE}8, {MOVE}3, {MELEE}2–5. True Transformation {G}{G} (reflex): permanently gain {KW:multistrike} 1 and {KW:lifesteal}; Bloodlust is disabled."
+card.sanglante.flavor_text,
+card.fumigant.name,Fumigant
+card.fumigant.rules_text,
+card.fumigant.normal_rules_text,"{KW:poison_resistance}. {GL:armor} 1. {KW:cleave}. {KW:gas_on_hit}. {LIFE}9, {RANGED}2–3 {RANGE}2. Gas Detonation {N}{N}{G} (blazing, {RANGE}3): detonate gas at a tile for 3 damage, chaining to surrounding gas."
+card.fumigant.flavor_text,
+card.dieselheart_call.name,The Dieselheart Call
+card.dieselheart_call.rules_text,{KW:stockpile} charges are consumed when spawned; cards with {KW:stockpile} remaining stay in your deck.
+card.dieselheart_call.normal_rules_text,"(channeled). Spawn units from the top 10 cards of your deck (up to 12 total mana) onto random empty tiles in your base deployment zone. Chooses a random valid combination whose costs add up to exactly 12, or the highest exact total below 12 if 12 is impossible. Spawned units are {FX:stunned}."
+card.dieselheart_call.flavor_text,
+card.miasma.name,Miasma
+card.miasma.rules_text,
+card.miasma.normal_rules_text,"{KW:poison_resistance}. {KW:gas_on_hit}. {LIFE}3, {RANGED}2–3 {RANGE}2. {KW:gas_on_hit}: damage this unit does places a gas cloud on each tile it damages for 2 of your turn-ends and applies 1 {FX:poison} to each unit on it (including {KW:cleave} hits). Billow {N}{G} (channeled): gain {KW:cleave} until end of turn."
+card.miasma.flavor_text,
+card.war_time_belles.name,War Time Belles
+card.war_time_belles.rules_text,
+card.war_time_belles.normal_rules_text,"March Aura: at start of turn, surrounding allies gain +1 movement. {LIFE}6, {MOVE}4, {RANGED}1–4 {RANGE}4. Battle Hymn {N}{G} (channeled): surrounding allies gain +1 damage this turn. The Cheers of Battle {G}{G}{G}{N} (slow: grant an {ADJACENT} ally {KW:multistrike} 1 this turn."
+card.war_time_belles.flavor_text,
+card.glorious_standard.name,The Glorious Standard
+card.glorious_standard.rules_text,
+card.glorious_standard.normal_rules_text,"Sentinel Veil: the first time each turn a surrounding ally would die, prevent death and set HP to 1. {LIFE}9, {MOVE}2, {MELEE}5–8."
+card.glorious_standard.flavor_text,
+card.lady_concordia.name,Lady Concordia
+card.lady_concordia.rules_text,
+card.lady_concordia.normal_rules_text,"{GL:armor} 1. {KW:cleave}. 2×2. {LIFE}15, {MOVE}8, {MELEE}1–4. Concordia's Promise: when an ally within {RANGE}2 takes enemy damage, permanently gain +1 attack and heal 1 HP. Concordia's Love {G}{G}{N}{N} (channeled): permanently expand Promise range by 1."
+card.lady_concordia.flavor_text,
+card.spellcasting_squire.name,Spellcasting Squire
+card.spellcasting_squire.rules_text,Temporary {T} expires at end of turn. Ineligible spells stay in the deck; only matching spells are removed.
+card.spellcasting_squire.normal_rules_text,"{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 3, 3 {HP}. Arcane Proximity: at the start of your turn, if an enemy is within 2 tiles, gain 1 {GL:flux_energy|flux energy}. Scribe's Insight {N}{T}{T}: draw a spell from your deck that costs 3 or less."
+card.spellcasting_squire.flavor_text,He keeps the grimoire dry and the blade sharp - whichever the moment demands.
+card.proclamation_unerring_barrage.name,Proclamation of the Unerring Barrage
+card.proclamation_unerring_barrage.rules_text,Skip remaining copies if you pick fewer than 4 targets. Each copy resolves independently and counts as a separate spell cast for {KW:spellbound}.
+card.proclamation_unerring_barrage.normal_rules_text,{KW:multicast} 4. {REFLEX}. Deal 1 damage to any unit. Choose up to 4 different targets.
+card.proclamation_unerring_barrage.flavor_text,"Four words, four bolts - and not one misses its mark."
+card.orphic_knight.name,Orphic Knight
+card.orphic_knight.rules_text,"Orphic Verse requires an attack action. Bonus damage includes damage buffs, keyword bonuses, and ability-damage aura."
+card.orphic_knight.normal_rules_text,"{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 2, 6 {HP}. {KW:spellbound}: whenever you play a spell, gain +1 damage this turn. Orphic Verse {T}: deal 1 damage to an enemy; convert all bonus damage into {FX:bonus_health} on this unit."
+card.orphic_knight.flavor_text,She sings the wound closed before the blade ever lands.
+card.mana_frog.name,Mana Frog
+card.mana_frog.rules_text,"Floating {T} expires when the active turn ends, even if gained on the opponent's turn."
+card.mana_frog.normal_rules_text,"{KW:stockpile} 3. {MELEE} 1–2, {MOVE} 4, 1 {HP}. Mana Release: when this unit dies, gain 3 {GL:flux_energy|flux energy} before the current turn ends."
+card.mana_frog.flavor_text,"It croaks once, brightly - then the spell you needed is suddenly affordable."
+card.chant_whispering_zephyrs_breath.name,Chant of the Whispering Zephyr's Breath
+card.chant_whispering_zephyrs_breath.rules_text,"Choose the unit, then choose an orthogonal direction. Respects {KW:immovable}; collision and terrain rules apply."
+card.chant_whispering_zephyrs_breath.normal_rules_text,{KW:stockpile} 3. {REFLEX}. Push a unit 2 tiles in a cardinal direction.
+card.chant_whispering_zephyrs_breath.flavor_text,"A breath of wind, a whispered word - and the battlefield rearranges itself."
+card.mae_and_faye.name,Mae & Faye
+card.mae_and_faye.rules_text,Echo Spell pays 1 {T} plus X {T} when activated; click a batch queue entry when the ability is armed.
+card.mae_and_faye.normal_rules_text,"{KW:multistrike} 1. {RANGED} 1–3, {RANGE}3, {MOVE} 3, 6 {HP}. Echo Spell {T} + X: copy an allied spell on the batch queue with total energy cost X. Charm & Harm {T}{T}: deal 3 damage to an enemy unit and apply 1 {FX:stunned|Stun}."
+card.mae_and_faye.flavor_text,One sings the hex; the other aims the bolt - and neither misses twice.
+card.invocation_arcane_counterweave.name,Invocation of the Arcane Counterweave
+card.invocation_arcane_counterweave.rules_text,Cannot counter attacks or other non-spell/ability batch items. Target by batch item id.
+card.invocation_arcane_counterweave.normal_rules_text,{REFLEX}. Counter a spell or ability on the batch queue.
+card.invocation_arcane_counterweave.flavor_text,The weave unravels what was only half-spoken - and the magic forgets it was ever cast.
+card.symphony_scorching_sphere.name,Symphony of the Scorching Sphere
+card.symphony_scorching_sphere.rules_text,{FX:fire} tiles last 2 of the caster's turn-ends. Units on burning tiles take {FX:fire} 1 at their owner's turn-end.
+card.symphony_scorching_sphere.normal_rules_text,{CHANNELED}. Choose a board cell. Deal 5 damage to all units in a 13-tile area (3×3 square plus one tile beyond the center of each edge). Apply {FX:fire} 1 to every unit in the area. Set unoccupied tiles in the area on {FX:fire}.
+card.symphony_scorching_sphere.flavor_text,The chorus swells - and the ground remembers every note as flame.
+card.oath_forgotten_library.name,Oath of the Forgotten Library
+card.oath_forgotten_library.rules_text,Resolves immediately; bypasses the batch queue.
+card.oath_forgotten_library.normal_rules_text,{BLAZING}. Choose a player. That player draws 3 cards.
+card.oath_forgotten_library.flavor_text,The shelves still answer - speak the oath and forgotten pages find their way into waiting hands.
+card.curse_forsaken_silence.name,Curse of the Forsaken Silence
+card.curse_forsaken_silence.rules_text,"While {FX:silenced}, keywords, passives, and buffs are disabled. {KW:focus} spells may still be cast from that unit."
+card.curse_forsaken_silence.normal_rules_text,{KW:stockpile} 3. {REFLEX}. Silence a unit until the end of that unit's owner's turn.
+card.curse_forsaken_silence.flavor_text,"The old tongue still works - one word, and even the proudest knight forgets the names of their gifts."
+card.incantation_twin_paralysis.name,Incantation of Twin Paralysis
+card.incantation_twin_paralysis.rules_text,Skip remaining copies if you pick fewer than 2 targets. One energy payment queues one batch copy per target picked.
+card.incantation_twin_paralysis.normal_rules_text,{KW:multicast} 2. {REFLEX}. {FX:stunned|Stun} up to 2 enemy units for 1 turn. Choose different targets.
+card.incantation_twin_paralysis.flavor_text,"Two syllables, two stillnesses - the old ward binds limbs faster than thought can flee."
+card.magus_apprentice.name,Magus Apprentice
+card.magus_apprentice.rules_text,Arcane Bolt targets enemies .
+card.magus_apprentice.normal_rules_text,"{KW:spellbound}. {RANGED} 2–4, {RANGE}2, {MOVE} 2, 5 {HP}. Whenever you play a spell, gain 1 Arcane Charge. Arcane Bolt {N}{T}: consume all Arcane Charge; deal that much damage to an enemy unit or structure. Arcane {KW:surge} {N}{T}{T}: consume all Arcane Charge; deal that much damage to this unit and each surrounding unit, structure, and base."
+card.magus_apprentice.flavor_text,"Every spell she hears becomes stored lightning - released all at once, or scattered in every direction."
+card.silvermane_cavalry.name,Silvermane Cavalry
+card.silvermane_cavalry.rules_text,"If your attack kills the target, they do not counterattack while you have {KW:first_strike}."
+card.silvermane_cavalry.normal_rules_text,"{KW:haste}. {MELEE} 3–5, {MOVE} 4, 7 {HP}. Trophy of the Hunt: when you defeat an enemy unit, gain 1 {KW:conduit} permanently. Silver Charge {T}{T}: gain {KW:first_strike} until end of turn."
+card.silvermane_cavalry.flavor_text,Their lances strike before the echo of the charge reaches the line.
+card.ancient_frog.name,Ancient Frog
+card.ancient_frog.rules_text,Tap zones manually during your turn to bank more float; this does not tap zones for you. Multiple reservoir units split energy evenly (turn order gets +1 remainder pips).
+card.ancient_frog.normal_rules_text,"{KW:large_unit} (2×2). {MELEE} 3–6, {MOVE} 3, 8 {HP}. Reservoir: at the end of your turn, consume all your floating energy and store it (max 16). Mana Burst: when this unit dies, grant all stored energy as {GL:flux_energy|flux energy}."
+card.ancient_frog.flavor_text,It swells with every spark you fail to spend - and croaks it all back when the pond runs dry.
+card.conjuration_vital_grace.name,Conjuration of Vital Grace
+card.conjuration_vital_grace.rules_text,{FX:bonus_health} absorbs damage before normal HP; healing does not refill {FX:bonus_health}.
+card.conjuration_vital_grace.normal_rules_text,{REFLEX}. Target allied unit gains 4 {FX:bonus_health}.
+card.conjuration_vital_grace.flavor_text,A whispered grace - and flesh remembers how to hold the blow.
+card.conjuration_thundering_vale.name,Conjuration of the Thundering Vale
+card.conjuration_thundering_vale.rules_text,"Adjacent means orthogonal only, not diagonal; any team. {KW:immovable} units still take damage but are not pushed. Cast from a unit you control, then confirm."
+card.conjuration_thundering_vale.normal_rules_text,{KW:focus}. {REFLEX}. Deal 4 damage to all units adjacent to the caster and push them 3 tiles away.
+card.conjuration_thundering_vale.flavor_text,The vale answers in thunder - and only those beside you feel the weight of the surge.
+card.valgar_the_insatiable.name,Valgar the Insatiable
+card.valgar_the_insatiable.rules_text,"Arm the spell, click Valgar, then pick a target in range and line of sight from him."
+card.valgar_the_insatiable.normal_rules_text,"{RANGED} 0–6, {RANGE} 2, {MOVE} 2, 9 {HP}. Devourer's Trophy: whenever this unit kills an enemy unit, draw a card (max 3 times per turn). Insatiable {KW:focus}: while this unit is on the board, non-{KW:focus} damaging spells you cast must be cast through this unit as a {KW:focus} caster with {RANGE} 2."
+card.valgar_the_insatiable.flavor_text,He feeds on the fallen - and the spells that follow taste all the sweeter.
+card.seraphina.name,Seraphina
+card.seraphina.rules_text,Symphony of the Scorching Sphere expires at the end of your next turn.
+card.seraphina.normal_rules_text,"{KW:cleave}. {KW:spellbound}. {RANGED} 0–4, {RANGE} 3, {MOVE} 2, 6 {HP}. {KW:spellbound}: whenever you play a spell, gain 1 Resonance; at 3 Resonance, create Symphony of the Scorching Sphere in your hand and remove 3 Resonance. Scorching Acceleration: you may play Symphony of the Scorching Sphere at {REFLEX} speed."
+card.seraphina.flavor_text,"She counts every incantation - and when the chorus reaches three, the sphere answers."
+card.sir_garrick_the_valiant.name,Sir Garrick the Valiant
+card.sir_garrick_the_valiant.rules_text,Valiant Guard: Garrick may counterattack afterward if able; the ally does not counter. {FX:barrier} blocks one hit of damage; Piercing ignores {FX:barrier}.
+card.sir_garrick_the_valiant.normal_rules_text,"{MELEE} 2–4, {MOVE} 2, 6 {HP}. Valiant Guard {N}{T}: the next time a surrounding 1×1 ally is targeted by an attack, swap positions and take that attack. Bulwark {N}{T}: gain 1 {FX:barrier} until end of this turn."
+card.sir_garrick_the_valiant.flavor_text,He steps into the blow meant for another - and stands unbowed when the steel finds him.
+card.mana_pylon.name,Mana Pylon
+card.mana_pylon.rules_text,"In team games, teammates' damaging spells count. Oldest deployed pylon with a {KW:charge} reacts first."
+card.mana_pylon.normal_rules_text,"{KW:stockpile} 2. {KW:spearhead} 4. 3 {HP}. No attacks. {KW:charge} Reservoir: at the start of your turn, gain a charge. Spell {KW:conduit}: whenever an allied damaging spell is cast, consume a {KW:charge} and add {KW:conduit} 1 to that spell cast."
+card.mana_pylon.flavor_text,The lattice hums louder with every spell that passes through it.
+card.defective_construct.name,Defective Construct
+card.defective_construct.rules_text,Does not grant another movement action.
+card.defective_construct.normal_rules_text,"{MELEE} 3–6, 0 {MOVE}, 1 movement action, 3 {HP}. {KW:spellbound}: whenever you play a spell, gain +1 movement speed this turn."
+card.defective_construct.flavor_text,The animus holds - but the legs forgot their purpose until magic reminds them.
+card.disregarded_rangers.name,Disregarded Rangers
+card.disregarded_rangers.rules_text,Hookshot {RANGE}4; pull is orthogonal or diagonal only and stops when the target is adjacent or blocked. {FX:bleed} stacks decay at the owner's turn-end and deal damage equal to the stack count.
+card.disregarded_rangers.normal_rules_text,"{RANGED} 3–5, {RANGE}3, {MOVE} 2, 5 {HP}. Serrated Bolt {N}: your next attack or ability applies 3 {FX:bleed}. Hookshot {N}{T}: deal 3 damage to a unit and pull it toward you along a straight line."
+card.disregarded_rangers.flavor_text,They saw the kingdom fall and kept walking - their bolts still bite.

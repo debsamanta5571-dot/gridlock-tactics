@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "key": "test_haste_runner",
+      "name": "Test Haste Runner",
+      "type": "unit",
+      "rules_text": "On its deploy turn, may move normally but cannot attack, defend, dash, or use Quick Shot.",
+      "normal_rules_text": "{KW:haste}. {MELEE} 1–3, {MOVE} 4, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "abilities": [
+        "quick_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Test Haste",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 4,
+        "keywords": [
+          "haste"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "key": "test_surge_striker",
+      "name": "Test Surge Striker",
+      "type": "unit",
+      "rules_text": "On its deploy turn, may attack, defend, dash, and use Quick Shot but cannot move.",
+      "normal_rules_text": "{KW:surge}. {MELEE} 1–3, {MOVE} 3, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "abilities": [
+        "quick_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Test Surge",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 3,
+        "keywords": [
+          "surge"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "key": "test_charge_knight",
+      "name": "Test Charge Knight",
+      "type": "unit",
+      "rules_text": "Ignores {FX:deployment_fatigue} on the turn it is deployed.",
+      "normal_rules_text": "{KW:charge}. {MELEE} 1–3, {MOVE} 3, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "abilities": [
+        "quick_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Test Charge",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 3,
+        "keywords": [
+          "charge"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "key": "test_haste_surge_unit",
+      "name": "Test Haste Surge Unit",
+      "type": "unit",
+      "rules_text": "On its deploy turn, may move, attack, defend, dash, and use abilities.",
+      "normal_rules_text": "{KW:haste}. {KW:surge}. {MELEE} 1–3, {MOVE} 4, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "abilities": [
+        "quick_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Test Haste Surge",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 4,
+        "keywords": [
+          "haste",
+          "surge"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  ]
+}

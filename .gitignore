@@ -1,0 +1,23 @@
+# Unreal generated
+**/Binaries/
+**/Intermediate/
+**/Saved/
+**/DerivedDataCache/
+**/Build/
+
+# C++ build
+cpp_core/build/
+cpp_core/build-ninja/
+
+# Package output
+Packaged/
+ue_build_log.txt
+
+# VS / OS
+.vs/
+*.user
+*.sdf
+*.opensdf
+Thumbs.db
+Desktop.ini
+.DS_Store

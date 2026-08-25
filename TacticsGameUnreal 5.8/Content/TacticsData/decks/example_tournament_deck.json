@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "key": "example_tournament",
+  "cards": [
+    { "card_key": "basic_infantry", "copies": 3 },
+    { "card_key": "taunt_guard", "copies": 3 },
+    { "card_key": "focus_bolt", "copies": 3 },
+    { "card_key": "kill_spell", "copies": 3 },
+    { "card_key": "poison_cloud", "copies": 3 },
+    { "card_key": "ignite", "copies": 3 },
+    { "card_key": "deep_cut", "copies": 3 },
+    { "card_key": "silence", "copies": 3 },
+    { "card_key": "cleanse_silence", "copies": 3 },
+    { "card_key": "sky_banner", "copies": 3 }
+  ],
+  "reserves": [
+    { "card_key": "basic_infantry", "copies": 2 },
+    { "card_key": "kill_spell", "copies": 2 },
+    { "card_key": "focus_bolt", "copies": 1 }
+  ],
+  "zones": [
+    { "zone_id": "neutral_0", "name": "Neutral Territory", "energy": { "neutral": 1 }, "copies": 4 },
+    { "zone_id": "red_0", "name": "Red Territory", "energy": { "red": 1 }, "copies": 3 },
+    { "zone_id": "turquoise_0", "name": "Turquoise Territory", "energy": { "turquoise": 1 }, "copies": 3 }
+  ]
+}

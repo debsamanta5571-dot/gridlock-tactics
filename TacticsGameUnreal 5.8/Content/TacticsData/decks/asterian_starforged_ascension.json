@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "key": "asterian_starforged_ascension",
+  "cards": [
+    {
+      "card_key": "grease_monkeys",
+      "copies": 3
+    },
+    {
+      "card_key": "shock_bot",
+      "copies": 3
+    },
+    {
+      "card_key": "starforged_knights",
+      "copies": 3
+    },
+    {
+      "card_key": "bootleg_go_go_powder",
+      "copies": 3
+    },
+    {
+      "card_key": "starforged_imitation",
+      "copies": 3
+    },
+    {
+      "card_key": "nurse_bot",
+      "copies": 2
+    },
+    {
+      "card_key": "field_upgrade",
+      "copies": 2
+    },
+    {
+      "card_key": "outdated_grenade",
+      "copies": 2
+    },
+    {
+      "card_key": "beam_splitter_mk2",
+      "copies": 2
+    },
+    {
+      "card_key": "shocking_stimulus",
+      "copies": 2
+    },
+    {
+      "card_key": "synths_interlinked",
+      "copies": 2
+    },
+    {
+      "card_key": "starforged_accumulator",
+      "copies": 2
+    },
+    {
+      "card_key": "starforged_sentinel",
+      "copies": 3
+    },
+    {
+      "card_key": "starforged_titan",
+      "copies": 2
+    },
+    {
+      "card_key": "the_boss",
+      "copies": 1
+    },
+    {
+      "card_key": "reactive_armor",
+      "copies": 1
+    },
+    {
+      "card_key": "live_wire",
+      "copies": 1
+    },
+    {
+      "card_key": "desperate_scan",
+      "copies": 1
+    },
+    {
+      "card_key": "sunkissed_ranger",
+      "copies": 1
+    },
+    {
+      "card_key": "vulturous_nanites",
+      "copies": 1
+    }
+  ],
+  "reserves": [
+    {
+      "card_key": "starforged_titan",
+      "copies": 1
+    },
+    {
+      "card_key": "starforged_sentinel",
+      "copies": 1
+    },
+    {
+      "card_key": "starforged_accumulator",
+      "copies": 1
+    },
+    {
+      "card_key": "starforged_knights",
+      "copies": 1
+    },
+    {
+      "card_key": "shocking_stimulus",
+      "copies": 1
+    }
+  ],
+  "zones": [
+    {
+      "zone_id": "asteria",
+      "art_id": "territories/asteria",
+      "name": "Asteria",
+      "basic": true,
+      "color": "ingenuity",
+      "copies": 7,
+      "land_abilities": [
+        {
+          "name": "Mine",
+          "energy": {
+            "ingenuity": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "flux_factory",
+      "art_id": "territories/flux_factory",
+      "name": "Flux Factory",
+      "depleted": true,
+      "copies": 2,
+      "land_abilities": [
+        {
+          "name": "Overclock",
+          "energy": {
+            "ingenuity": 2
+          },
+          "flux": true
+        }
+      ]
+    },
+    {
+      "zone_id": "neon_archive",
+      "art_id": "territories/neon_archive",
+      "name": "The Neon Archive",
+      "depleted": true,
+      "copies": 2,
+      "enter_effects": [
+        {
+          "effect_key": "scan",
+          "payload": {
+            "amount": 1
+          }
+        }
+      ],
+      "groundwork": [
+        {
+          "color": "ingenuity",
+          "ignore_depleted": true
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Retrieve",
+          "energy": {
+            "ingenuity": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "futuristic_forge",
+      "art_id": "territories/futuristic_forge",
+      "name": "Futuristic Forge",
+      "depleted": true,
+      "copies": 2,
+      "enter_effects": [
+        {
+          "effect_key": "grant_permanent_stat_growth",
+          "payload": {
+            "attack": 1,
+            "health": 1
+          },
+          "requires_target": true,
+          "board_target_kind": "any"
+        }
+      ],
+      "groundwork": [
+        {
+          "color": "ingenuity",
+          "ignore_depleted": true
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Forge",
+          "energy": {
+            "ingenuity": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "hydroponic_farm",
+      "art_id": "territories/hydroponic_farm",
+      "name": "Hydroponic Farm",
+      "copies": 2,
+      "enter_effects": [
+        {
+          "effect_key": "grant_next_damage_bonus",
+          "payload": {
+            "amount": 1
+          },
+          "requires_target": true,
+          "board_target_kind": "any"
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Irrigate",
+          "energy": {
+            "neutral": 1
+          }
+        },
+        {
+          "name": "Fertilize",
+          "cost": {
+            "orange": 1,
+            "neutral": 2
+          },
+          "effect": {
+            "effect_key": "grant_next_damage_bonus",
+            "payload": {
+              "amount": 1
+            },
+            "requires_target": true,
+            "board_target_kind": "any"
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "unstable_laboratory",
+      "art_id": "territories/unstable_laboratory",
+      "name": "Unstable Laboratory",
+      "depleted": true,
+      "copies": 1,
+      "groundwork": [
+        {
+          "color": "ingenuity",
+          "destroy_if_unmet": true
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Distill",
+          "energy": {
+            "orange": 1
+          },
+          "flux": true
+        },
+        {
+          "name": "Volatile Reaction",
+          "energy": {
+            "orange": 4
+          },
+          "flux": true,
+          "sacrifice_self": true
+        }
+      ]
+    },
+    {
+      "zone_id": "weapons_workshop",
+      "art_id": "territories/weapons_workshop",
+      "name": "Weapons Workshop",
+      "depleted": true,
+      "copies": 1,
+      "groundwork": [
+        {
+          "color": "ingenuity",
+          "effect": {
+            "effect_key": "draw_focus_spell_cards",
+            "payload": {
+              "amount": 1,
+              "max_total_cost": 3
+            }
+          }
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Fabricate",
+          "energy": {
+            "ingenuity": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "downtown_bazaar",
+      "art_id": "territories/downtown_bazaar",
+      "name": "Downtown Bazaar",
+      "depleted": true,
+      "copies": 1,
+      "enter_effects": [
+        {
+          "effect_key": "optional_discard_draw"
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Haggle",
+          "energy": {
+            "ingenuity": 1
+          },
+          "flux": true
+        }
+      ]
+    },
+    {
+      "zone_id": "shockbot_printer",
+      "art_id": "territories/shockbot_printer",
+      "name": "Shockbot Printer",
+      "depleted": true,
+      "copies": 1,
+      "enter_effects": [
+        {
+          "effect_key": "spawn_card_unit_deploy_zone",
+          "string_payload": {
+            "card_key": "shock_bot"
+          }
+        }
+      ],
+      "groundwork": [
+        {
+          "color": "ingenuity",
+          "effect": {
+            "effect_key": "spawn_card_unit_deploy_zone",
+            "string_payload": {
+              "card_key": "shock_bot"
+            }
+          }
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Power",
+          "energy": {
+            "ingenuity": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "asterian_walls",
+      "art_id": "territories/asterian_walls",
+      "name": "The Asterian Walls",
+      "copies": 1,
+      "enter_effects": [
+        {
+          "effect_key": "grant_player_base_bonus_health",
+          "payload": {
+            "amount": 2
+          }
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Garrison",
+          "energy": {
+            "neutral": 1
+          }
+        },
+        {
+          "name": "Reinforce",
+          "cost": {
+            "neutral": 2,
+            "orange": 2
+          },
+          "sacrifice_self": true,
+          "effect": {
+            "effect_key": "grant_player_base_max_health",
+            "payload": {
+              "amount": 4
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

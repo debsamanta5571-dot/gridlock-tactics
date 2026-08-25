@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "key": "dieselheart_covering_fire",
+  "name": "Dieselheart \u2014 Covering Fire",
+  "cards": [
+    {
+      "card_key": "counter_sniper",
+      "copies": 3
+    },
+    {
+      "card_key": "remington",
+      "copies": 3
+    },
+    {
+      "card_key": "callahan",
+      "copies": 3
+    },
+    {
+      "card_key": "galvanized_bunker",
+      "copies": 3
+    },
+    {
+      "card_key": "mark_target",
+      "copies": 3
+    },
+    {
+      "card_key": "cover_detail",
+      "copies": 3
+    },
+    {
+      "card_key": "relentless_volley",
+      "copies": 3
+    },
+    {
+      "card_key": "field_trench",
+      "copies": 3
+    },
+    {
+      "card_key": "the_green_death",
+      "copies": 2
+    },
+    {
+      "card_key": "artillery_battalion",
+      "copies": 2
+    },
+    {
+      "card_key": "skyreaver",
+      "copies": 2
+    },
+    {
+      "card_key": "dottie",
+      "copies": 2
+    },
+    {
+      "card_key": "general_stormwell",
+      "copies": 2
+    },
+    {
+      "card_key": "inspiring_commander",
+      "copies": 2
+    },
+    {
+      "card_key": "field_nurse",
+      "copies": 2
+    },
+    {
+      "card_key": "breaching_round",
+      "copies": 2
+    }
+  ],
+  "reserves": [
+    {
+      "card_key": "counter_sniper",
+      "copies": 1
+    },
+    {
+      "card_key": "remington",
+      "copies": 1
+    },
+    {
+      "card_key": "relentless_volley",
+      "copies": 1
+    },
+    {
+      "card_key": "cover_detail",
+      "copies": 1
+    },
+    {
+      "card_key": "mark_target",
+      "copies": 1
+    }
+  ],
+  "zones": [
+    {
+      "zone_id": "dieselheart_trench",
+      "art_id": "territories/dieselheart_trench",
+      "name": "Dieselheart Trench",
+      "basic": true,
+      "color": "gallantry",
+      "copies": 10,
+      "land_abilities": [
+        {
+          "name": "Mine",
+          "energy": {
+            "gallantry": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "supply_dump",
+      "art_id": "territories/supply_dump",
+      "name": "Supply Dump",
+      "basic": true,
+      "color": "neutral",
+      "copies": 7,
+      "land_abilities": [
+        {
+          "name": "Mine",
+          "energy": {
+            "neutral": 1
+          }
+        }
+      ]
+    },
+    {
+      "zone_id": "command_redoubt",
+      "art_id": "territories/command_redoubt",
+      "name": "Command Redoubt",
+      "copies": 3,
+      "enter_effects": [
+        {
+          "effect_key": "grant_player_base_bonus_health",
+          "payload": {
+            "amount": 2
+          }
+        }
+      ],
+      "land_abilities": [
+        {
+          "name": "Garrison",
+          "energy": {
+            "neutral": 1
+          }
+        },
+        {
+          "name": "Hold the Line",
+          "cost": {
+            "neutral": 2,
+            "gallantry": 2
+          },
+          "sacrifice_self": true,
+          "effect": {
+            "effect_key": "grant_player_base_max_health",
+            "payload": {
+              "amount": 4
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2905 @@
+{
+  "schema_version": 1,
+  "set": "asterian_civilian_militia",
+  "set_name": "Asterian Civilian Militia",
+  "colors": [
+    "ingenuity",
+    "orange"
+  ],
+  "cards": [
+    {
+      "key": "grease_monkeys",
+      "name": "Grease Monkeys",
+      "type": "unit",
+      "rules_text": "Tune-Up stacks with other {KW:boost|boosts}.",
+      "flavor_text": "If it creaks, sputters, or catches fire, the Monkeys already have three ideas and a wrench.",
+      "art_id": "ingenuity/asterian_civilian_militia/grease_monkeys",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-001",
+      "search_aliases": [
+        "grease monkey",
+        "mechanic crew",
+        "repair crew",
+        "boost",
+        "tune up"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "support",
+          "engineer"
+        ]
+      },
+      "energy_cost": {
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "abilities": [
+        "quick_repairs",
+        "tune_up"
+      ],
+      "unit_types": [
+        "civilian",
+        "engineer"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Grease Monkey",
+        "attack_type": "melee",
+        "base_health": 3,
+        "current_health": 3,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}3, {MOVE}3, {MELEE}1–2. {KW:stockpile} 3. Quick Repairs {O} (channeled): Heal 2 to an allied structure or base. Tune-Up {O}{O} (channeled): {KW:boost|Boosts} an allied unit or structure with +2 damage on its next attack or ability."
+    },
+    {
+      "key": "orion_crowe",
+      "name": "Orion Crowe",
+      "type": "unit",
+      "rules_text": "Diagonal directions use a stacked-L footprint. Energy Wave ignores cover and counts as your attack.",
+      "flavor_text": "She channels stored power through the battlefield in a single sweeping discharge.",
+      "art_id": "ingenuity/orion_crowe/orion_crowe",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-002",
+      "search_aliases": [
+        "orion",
+        "crowe",
+        "energy wave"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "keywords": [],
+      "abilities": [
+        "overcharge_burst",
+        "energy_wave"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Orion Crowe",
+        "attack_type": "melee",
+        "base_health": 8,
+        "current_health": 8,
+        "melee_damage": 4,
+        "melee_damage_min": 3,
+        "melee_damage_max": 5,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "Armored Carapace: Armor 1. {LIFE}8, {MOVE}3, {MELEE}3–5. Overcharge Burst {O} (blazing): {KW:boost|Boosts} self (+1 damage on your next attack or ability). Energy Wave {N}{O} (reflex, attack): Choose a direction ; deal 2 damage to everything in a 3×2 area in that direction.",
+      "passives": [
+        "orion_crowe_armored_carapace"
+      ]
+    },
+    {
+      "key": "electrified_death_ball",
+      "name": "Electrified Death Ball",
+      "type": "unit",
+      "rules_text": "{KW:slippery}: can path through occupied cells but cannot end movement on one.",
+      "art_id": "ingenuity/asterian_civilian_militia/electrified_death_ball",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-022",
+      "search_aliases": [
+        "electrified death ball",
+        "death ball",
+        "cleave",
+        "shock"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "unit_types": [
+        "soldier",
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Electrified Death Ball",
+        "attack_type": "melee",
+        "base_health": 9,
+        "current_health": 9,
+        "melee_damage": 1,
+        "melee_damage_min": 1,
+        "melee_damage_max": 1,
+        "movement": 3,
+        "keywords": [
+          {
+            "key": "whirlwind"
+          },
+          "slippery"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:whirlwind}. {KW:slippery}. Armored Hull: Armor 2. {LIFE}9, {MOVE}3, {MELEE}1–1. Shock Field: Damage this unit does applies 1 {FX:overload} to each unit it damages.",
+      "passives": [
+        "electrified_death_ball_shock_field",
+        "electrified_death_ball_armored_hull"
+      ]
+    },
+    {
+      "key": "sylvia",
+      "name": "Sylvia",
+      "type": "unit",
+      "rules_text": "{KW:boost|Boosts} expire at your turn end if unused. {FX:overload} and {FX:jammed} {KW:boost|boosts} are mutually exclusive on the same target.",
+      "flavor_text": "She threads disruption through every shot her allies take.",
+      "art_id": "ingenuity/sylvia/sylvia",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-003",
+      "search_aliases": [
+        "sylvia",
+        "overcharge",
+        "jamming"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "support",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "abilities": [
+        "sylvia_static_charge",
+        "sylvia_jamming_array"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Sylvia",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 2,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 3,
+        "ranged_range": 3,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}5, {MOVE}3, {RANGED}2–3, {RANGE}3. Static Charge {N}{O} (channeled): {KW:boost|Boosts} an allied unit, structure, or yourself - its next attack or ability applies 1 {FX:overload} to each entity it damages. Jamming Array {N}{N}{O}{O}{O} (channeled): same targeting; {KW:boost|Boosts} its next attack or ability to apply 1 {FX:jammed} to each entity it damages."
+    },
+    {
+      "key": "starforged_knights",
+      "name": "Starforged Knights",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "Each strike rings louder than the last, and the echo pays in power.",
+      "art_id": "ingenuity/starforged_knights/starforged_knights",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-004",
+      "search_aliases": [
+        "starforged knights",
+        "knights",
+        "knight"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "passives": [
+        "starforged_tithe"
+      ],
+      "abilities": [
+        "starforged_growth"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Starforged Knight",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {LIFE}5, {MOVE}3, {MELEE}1–3. Starforged Growth {N}{O} (reflex): permanently gain +1 max HP and +1 damage. Starforged Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 1 {GL:flux_energy|flux energy} (max 2 per turn)."
+    },
+    {
+      "key": "clawbreaker_mk5",
+      "name": "Clawbreaker Mk 5",
+      "type": "unit",
+      "rules_text": "On-hit effects and damage bonuses apply to every Fury Strikes hit. Fury Strikes counts as your attack.",
+      "flavor_text": "The chain arm doesn't stop. Neither does the damage counter.",
+      "art_id": "ingenuity/asterian_civilian_militia/clawbreaker_mk5",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-006",
+      "search_aliases": [
+        "clawbreaker",
+        "mk5",
+        "mk 5",
+        "fury",
+        "missile"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 2
+      },
+      "abilities": [
+        "fury_strikes",
+        "missile_storm"
+      ],
+      "unit_types": [
+        "soldier",
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Clawbreaker Mk 5",
+        "attack_type": "melee",
+        "base_health": 11,
+        "current_health": 11,
+        "melee_damage": 4,
+        "melee_damage_min": 3,
+        "melee_damage_max": 6,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "Overload Strikes: Damage this unit does applies 1 {FX:overload} to each unit it damages. Bleeding Strikes: Damage this unit does applies 1 {FX:bleed} to each unit it damages. {LIFE}11, {MOVE}3, {MELEE}3–6. Fury Strikes {N}{O}{O} (channeled, attack): strike a target enemy three times for 1 damage each. Missile Storm {N}{N}{O}{O} (reflex): fire missiles at up to 4 nearest enemies for 2 damage each.",
+      "passives": [
+        "clawbreaker_overload_strikes",
+        "clawbreaker_bleeding_strikes"
+      ]
+    },
+    {
+      "key": "blackmarket_battery",
+      "name": "Blackmarket Battery",
+      "type": "spell",
+      "rules_text": "{KW:surge} does not grant extra movement.",
+      "flavor_text": "Fully illegal, definitely overpriced, and worth every credit.",
+      "art_id": "ingenuity/asterian_civilian_militia/blackmarket_battery",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-009",
+      "search_aliases": [
+        "blackmarket",
+        "battery",
+        "surge",
+        "refresh"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "liquid_data",
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(reflex). Target an allied unit. If it has {FX:deployment_fatigue}, grant it {KW:surge} (may attack and use abilities this turn despite fatigue). If it has no fatigue, refresh all its abilities (resets abilities used this turn and barrage cast counts)."
+    },
+    {
+      "key": "beam_splitter_mk2",
+      "name": "Beam Splitter Mk II",
+      "type": "spell",
+      "rules_text": "Uses the caster’s pierce, lifesteal, soul steal, and on-damage primers on each hit.",
+      "flavor_text": "Twin-phase refraction turns one beam into a weaving lattice of ruin.",
+      "art_id": "ingenuity/beam_splitter_mk2/beam_splitter_mk2",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-005",
+      "search_aliases": [
+        "beam splitter",
+        "helix",
+        "focus"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "damage"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        },
+        "focus"
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "directional_damage",
+        "effect_payload": {
+          "amount": 2,
+          "max_range": 4,
+          "cardinal_only": 1
+        },
+        "effect_string_payload": {
+          "shape": "helix"
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{KW:stockpile} 2. {KW:focus} ({RANGE} 4). Choose a friendly caster unit, then a cardinal direction ; fires a helix-shaped beam in that direction, dealing 2 damage to everything in 6 tiles along that ray."
+    },
+    {
+      "key": "starforged_sentinel",
+      "name": "Starforged Sentinel",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "It absorbs every blow like a toll - and the resonance pays back double.",
+      "art_id": "ingenuity/asterian_civilian_militia/starforged_sentinel",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-007",
+      "search_aliases": [
+        "starforged sentinel",
+        "sentinel",
+        "tithe"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 3
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "passives": [
+        "sentinels_tithe"
+      ],
+      "abilities": [
+        "starforged_surge"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Starforged Sentinel",
+        "attack_type": "melee",
+        "base_health": 11,
+        "current_health": 11,
+        "melee_damage": 4,
+        "melee_damage_min": 3,
+        "melee_damage_max": 5,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {LIFE}11, {MOVE}2, {MELEE}3–5. Sentinel’s Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 2 {GL:flux_energy|flux energy} (max 4 per turn). Starforged Surge {N}{O} (reflex, 3 uses per turn): permanently gain +1 max HP and +1 damage."
+    },
+    {
+      "key": "starforged_titan",
+      "name": "Starforged Titan",
+      "type": "unit",
+      "rules_text": "Starforged Feast fires last among this unit’s end-of-turn passives. {KW:exalted}: you must have generated 8 {GL:flux_energy|flux energy} over the course of the game.",
+      "keywords": [
+        {
+          "key": "exalted",
+          "amount": 8,
+          "requirement": "flux_generated"
+        }
+      ],
+      "flavor_text": "Where the Sentinel endures, the Titan devours.",
+      "art_id": "ingenuity/asterian_civilian_militia/starforged_titan",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-010",
+      "search_aliases": [
+        "starforged titan",
+        "titan",
+        "feast",
+        "tithe"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 5,
+        "orange": 5
+      },
+      "passives": [
+        "titans_tithe",
+        "starforged_feast_passive"
+      ],
+      "abilities": [],
+      "unit_types": [
+        "soldier",
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Starforged Titan",
+        "attack_type": "melee",
+        "base_health": 16,
+        "current_health": 16,
+        "melee_damage": 7,
+        "melee_damage_min": 6,
+        "melee_damage_max": 8,
+        "movement": 4,
+        "keywords": [
+          "large_unit",
+          {
+            "key": "cleave"
+          }
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:exalted}: you must have generated 8 {GL:flux_energy|flux energy} over the course of the game. 2×2. {KW:cleave}. {LIFE}16, {MOVE}4, {MELEE}6–8. Titan’s Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 4 {GL:flux_energy|flux energy} (max 12 per turn). Starforged Feast: at end of your turn, consume all {GL:flux_energy|flux energy} not generated by zones; gain +1 damage and +1 max HP for each point consumed."
+    },
+    {
+      "key": "rapid_ranged_replicator",
+      "name": "Rapid Ranged Replicator",
+      "type": "building",
+      "rules_text": "No bot spawns if no {ADJACENT} empty tile is available.",
+      "flavor_text": "Every hit is an investment.",
+      "art_id": "ingenuity/asterian_civilian_militia/rapid_ranged_replicator",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-011",
+      "search_aliases": [
+        "rapid ranged replicator",
+        "rapid replicator",
+        "replicator",
+        "bot spawner",
+        "turret"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "structure",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "passives": [
+        "replication_protocol"
+      ],
+      "abilities": [
+        "replicate_power"
+      ],
+      "unit_types": [
+        "structure"
+      ],
+      "unit": {
+        "entity_type": "building",
+        "unit_type": "Rapid Replicator",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 2,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 2,
+        "ranged_range": 4,
+        "ranged_deadzone": 0,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}5, {RANGED}2, {RANGE}4. Replication Protocol: whenever this structure damages an enemy, spawn a Replicator Bot on a random unoccupied {ADJACENT} tile to that enemy - the bot’s attack and HP equal the damage dealt; it spawns {FX:stunned}. Replicate Power {N}{O} (channeled): permanently gain +1 damage."
+    },
+    {
+      "key": "estelle_novara",
+      "name": "Estelle Novara",
+      "type": "unit",
+      "rules_text": "Piercing Shot ignores {FX:shield}, {GL:armor}, and {FX:bonus_health}, ignores line of sight, and does not damage bases.",
+      "flavor_text": "She doesn't aim for one target. She aims through all of them.",
+      "art_id": "ingenuity/estelle_novara/estelle_novara",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-012",
+      "search_aliases": [
+        "estelle",
+        "novara",
+        "piercing shot",
+        "resonance echo"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "passives": [
+        "surrounding_buff_mirror"
+      ],
+      "abilities": [
+        "piercing_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Estelle Novara",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 5,
+        "ranged_damage_min": 4,
+        "ranged_damage_max": 6,
+        "ranged_range": 3,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}5, {MOVE}3, {RANGED}4–6, {RANGE}3. Resonance Echo: whenever a surrounding allied or enemy unit gains any temporary buff, you gain a copy too. Piercing Shot {N}{N}{O} (channeled): fire a piercing bolt in one direction up to {RANGE}8 dealing 3 damage to every unit and structure hit."
+    },
+    {
+      "key": "the_macrowave",
+      "name": "The Macrowave",
+      "type": "spell",
+      "rules_text": "Can target any unit on either team.",
+      "flavor_text": "The frequency is perfectly tuned to cook everything in range.",
+      "art_id": "ingenuity/asterian_civilian_militia/the_macrowave",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-013",
+      "search_aliases": [
+        "the macrowave",
+        "macrowave",
+        "pulse",
+        "aoe",
+        "end of turn"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "grant_passive_ability",
+        "effect_string_payload": {
+          "passive_key": "the_macrowave_pulse"
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(channeled). Grant a target unit The Macrowave Pulse: at end of its owner’s turn, deal 3 damage to all surrounding units (allies and enemies)."
+    },
+    {
+      "key": "power_of_the_sun",
+      "name": "Power of the Sun",
+      "type": "spell",
+      "rules_text": "X must be at least 1. Cannot target the casting unit itself.",
+      "flavor_text": "The longer it charges, the smaller the shadow it leaves.",
+      "art_id": "ingenuity/asterian_civilian_militia/power_of_the_sun",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-014",
+      "search_aliases": [
+        "power of the sun",
+        "solar",
+        "x cost",
+        "variable"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "damage"
+        ]
+      },
+      "energy_cost": {
+        "orange": 2
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "deal_damage",
+        "effect_payload": {},
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "focus_range": 1,
+        "x_cost": {
+          "type": "neutral",
+          "min": 1
+        }
+      },
+      "normal_rules_text": "{KW:focus} (channeled). Choose X. Deal X damage to a unit within {RANGE} 1 of your caster. Costs 2 {O} + X {N}."
+    },
+    {
+      "key": "jury_rigged_mortar",
+      "name": "Jury-Rigged Mortar",
+      "type": "building",
+      "rules_text": "Mortar Barrage cannot target {ADJACENT} tiles (minimum range 2).",
+      "flavor_text": "Calibration is for people with time.",
+      "art_id": "ingenuity/asterian_civilian_militia/jury_rigged_mortar",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-008",
+      "search_aliases": [
+        "mortar",
+        "jury rigged",
+        "artillery"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "structure",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "keywords": [],
+      "passives": [
+        "mortar_barrage_passive",
+        "final_barrage_detonation_passive"
+      ],
+      "abilities": [
+        "final_barrage"
+      ],
+      "unit_types": [
+        "structure"
+      ],
+      "unit": {
+        "entity_type": "building",
+        "unit_type": "Jury-Rigged Mortar",
+        "base_health": 6,
+        "current_health": 6,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}6. Mortar Barrage: at end of your turn, deal 3 damage and apply 1 {FX:overload} to a random enemy within {RANGE}4 (not {ADJACENT}) and all {ADJACENT} entities to that enemy. Final Barrage {N}{N}{N}{O}{O}{O} (channeled): at start of your next turn, fire Mortar Barrage 6 times, then self-destruct for 3 damage and 1 {FX:overload} to all {ADJACENT} entities."
+    },
+    {
+      "key": "nurse_bot",
+      "name": "Nurse Bot",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "Sometimes the best offence is someone else's defence.",
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "art_id": "ingenuity/asterian_civilian_militia/nurse_bot",
+      "set": "asterian_civilian_militia",
+      "abilities": [
+        "quick_heal",
+        "medical_override"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Nurse Bot",
+        "attack_type": "ranged",
+        "ranged_damage": 2,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 2,
+        "ranged_range": 3,
+        "ranged_deadzone": 0,
+        "base_health": 4,
+        "current_health": 4,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "collector_number": "ING-032",
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "normal_rules_text": "{LIFE}4, {MOVE}3, {RANGED}2, {RANGE}3. Quick Heal {O} (reflex): Heal a target allied unit for 4. Medical Override {N}{N}{O} (channeled): Grant an allied unit {FX:medical_override} until the end of that unit's turn."
+    },
+    {
+      "key": "sunkissed_ranger",
+      "name": "Sunkissed Ranger",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "The glare never blinds her - it only sets the sights.",
+      "art_id": "ingenuity/asterian_civilian_militia/sunkissed_ranger",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-015",
+      "search_aliases": [
+        "sunkissed ranger",
+        "ranger",
+        "tithe"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 3
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "passives": [
+        "rangers_tithe"
+      ],
+      "abilities": [
+        "sunkissed_calibration"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Sunkissed Ranger",
+        "attack_type": "ranged",
+        "base_health": 9,
+        "current_health": 9,
+        "ranged_damage": 4,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 6,
+        "ranged_range": 3,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 2. {LIFE}9, {MOVE}3, {RANGED}3–6, {RANGE}3. Ranger's Tithe: whenever this unit deals damage to an enemy unit and {GL:survives|survives}, gain 3 {GL:flux_energy|flux energy} (max 6 per turn). Sunkissed Calibration {N}{O}{O}{O} (reflex): permanently gain +2 damage and +1 max HP."
+    },
+    {
+      "key": "raging_volt_spire",
+      "name": "Raging Volt Spire",
+      "type": "unit",
+      "rules_text": "Volt Feed does not absorb stacks from other Volt Feed units’ explosions. Incoming {FX:overload} applications are also halved (floor). {KW:exalted}: you must have applied 6 {FX:overload} over the course of the game.",
+      "keywords": [
+        {
+          "key": "exalted",
+          "amount": 6,
+          "requirement": "overload_applied"
+        }
+      ],
+      "art_id": "ingenuity/asterian_civilian_militia/raging_volt_spire",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-021",
+      "search_aliases": [
+        "raging volt spire",
+        "volt spire",
+        "overload tank",
+        "spire"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 4
+      },
+      "abilities": [
+        "volt_surge"
+      ],
+      "unit_types": [
+        "soldier",
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Raging Volt Spire",
+        "attack_type": "ranged",
+        "base_health": 14,
+        "current_health": 14,
+        "ranged_damage": 2,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 3,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 10,
+        "keywords": [
+          "large_unit"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:exalted}: you must have applied 6 {FX:overload} over the course of the game. 2×2. {LIFE}14, {MOVE}10, {RANGED}1–3, {RANGE}2. {PASSIVE} Overload Hardening: takes half damage from {FX:overload} explosions and retains all {FX:overload} stacks after exploding. {PASSIVE} Volt Feed: whenever any other unit within {RANGE}2 explodes from {FX:overload}, this unit gains those stacks. Volt Surge {N}{N}{O} (channeled): gain 2 {FX:overload} on self.",
+      "passives": [
+        "raging_volt_spire_overload_hardening",
+        "raging_volt_spire_volt_feed"
+      ]
+    },
+    {
+      "key": "starforged_imitation",
+      "name": "Starforged Imitation",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "The resonance doesn't fade - it builds.",
+      "art_id": "ingenuity/asterian_civilian_militia/starforged_imitation",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-016",
+      "search_aliases": [
+        "starforged imitation",
+        "spark of resonance",
+        "resonance buff",
+        "stat growth"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "grant_stat_growth_draw",
+        "effect_payload": {
+          "attack": 1,
+          "health": 1,
+          "draw": 0
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "{KW:stockpile} 2. (channeled). Permanently grant an allied unit +1 damage and +1 max HP."
+    },
+    {
+      "key": "shocking_stimulus",
+      "name": "Shocking Stimulus",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "Resonance doesn't ask permission before it spreads.",
+      "art_id": "ingenuity/asterian_civilian_militia/shocking_stimulus",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-017",
+      "search_aliases": [
+        "shocking stimulus",
+        "volatile surge",
+        "aoe buff",
+        "overcharge aoe",
+        "movement buff"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "shocking_stimulus_aoe",
+        "effect_payload": {
+          "overload": 1,
+          "movement": 1
+        },
+        "requires_mandatory_board_cell": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(channeled). Target a 4×4 area. All allied units in that area gain 1 {FX:overload} and +1 movement until end of that unit’s owner’s turn."
+    },
+    {
+      "key": "meth",
+      "name": "*M*E*T*H",
+      "type": "spell",
+      "rules_text": "Bonus is stored until next turn start, then {KW:boost|boosts} the target.",
+      "flavor_text": "The aether doesn't strike now. It waits.",
+      "art_id": "ingenuity/asterian_civilian_militia/meth",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-018",
+      "search_aliases": [
+        "*m*e*t*h",
+        "meth",
+        "m e t h",
+        "spark of aether",
+        "delayed damage",
+        "aether buff"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 4
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "grant_delayed_next_damage_bonus",
+        "effect_payload": {
+          "amount": 8
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(channeled). {KW:boost|Boosts} a target allied unit (+8 damage on its next attack or ability at the start of its owner’s next turn)."
+    },
+    {
+      "key": "bootleg_go_go_powder",
+      "name": "Bootleg Go-Go Powder",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "No label, no warranty, no problem.",
+      "art_id": "ingenuity/asterian_civilian_militia/bootleg_go_go_powder",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-019",
+      "search_aliases": [
+        "bootleg go-go powder",
+        "go-go powder",
+        "bootleg spice",
+        "damage boost",
+        "damage buff",
+        "boost"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_next_damage_bonus",
+        "effect_payload": {
+          "amount": 2,
+          "cast_damage": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(reflex). Grant a unit (ally or enemy) a +2 damage {KW:boost|Boost} and deal 1 damage to it."
+    },
+    {
+      "key": "shock_bot",
+      "name": "Shock Bot",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "The last thing you feel before the charge is a soft buzz.",
+      "art_id": "ingenuity/asterian_civilian_militia/shock_bot",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-020",
+      "search_aliases": [
+        "shock bot",
+        "shockbot",
+        "overload",
+        "charge bot"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "mech"
+        ]
+      },
+      "energy_cost": {
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "unit_types": [
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Shock Bot",
+        "attack_type": "melee",
+        "base_health": 1,
+        "current_health": 1,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 4,
+        "keywords": [
+          "charge"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {KW:charge}. {LIFE}1, {MOVE}4, {MELEE}1–2. Overload on Hit: Damage this unit does applies 1 {FX:overload} to each unit it damages.",
+      "passives": [
+        "shock_bot_overload_strikes"
+      ]
+    },
+    {
+      "key": "dynamic_deployable_duplicator",
+      "name": "Dynamic Deployable Duplicator",
+      "type": "spell",
+      "rules_text": "Bot damage has a 3-point spread (e.g. 1–3). Only enemy units can be targeted.",
+      "art_id": "ingenuity/asterian_civilian_militia/dynamic_deployable_duplicator",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-023",
+      "search_aliases": [
+        "dynamic deployable duplicator",
+        "portable replicator",
+        "replicator",
+        "bot spawn",
+        "focus spawn"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 3
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "dynamic_deployable_replicate",
+        "requires_board_target": true,
+        "board_target_kind": "enemy",
+        "require_target_unit_types": [
+          "unit"
+        ],
+        "focus_range": 3
+      },
+      "normal_rules_text": "{KW:focus} ({RANGE} 3). Choose a friendly caster unit. Deal damage to a target enemy unit equal to half that caster’s attack roll. If there is an empty cell adjacent to the target, spawn a Replicator Bot there with HP and melee damage equal to the damage dealt; the bot inherits the caster’s keywords and spawns {FX:stunned}."
+    },
+    {
+      "key": "outdated_grenade",
+      "name": "Outdated Grenades",
+      "type": "spell",
+      "rules_text": "",
+      "art_id": "ingenuity/asterian_civilian_militia/outdated_grenade",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-024",
+      "search_aliases": [
+        "outdated grenades",
+        "outdated grenade",
+        "grenades",
+        "grenade",
+        "aoe",
+        "area damage"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "damage"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        },
+        "focus"
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "aoe_damage_square",
+        "effect_payload": {
+          "amount": 2,
+          "radius": 1
+        },
+        "requires_mandatory_board_cell": true,
+        "board_target_kind": "any",
+        "focus_range": 2
+      },
+      "normal_rules_text": "{KW:stockpile} 2. {KW:focus} ({RANGE} 2). Choose a friendly caster unit, then a board cell. Deal 2 damage to all entities in a 3×3 area centered on that cell."
+    },
+    {
+      "key": "debilitator",
+      "name": "Debilitator",
+      "type": "unit",
+      "rules_text": "{KW:boost|Boosts} expire at your turn end if unused. Drag Line and Anchor Line can coexist on the same target.",
+      "flavor_text": "Every shot comes with strings attached.",
+      "art_id": "ingenuity/asterian_civilian_militia/debilitator",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-040",
+      "search_aliases": [
+        "debilitator",
+        "drag line",
+        "anchor line",
+        "root",
+        "slow"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 2
+      },
+      "abilities": [
+        "debilitator_drag_line",
+        "debilitator_anchor_line"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Debilitator",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 4,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{LIFE}6, {MOVE}3, {RANGED}2–4, {RANGE}2. Drag Line {N}{O} (channeled): {KW:boost|Boosts} an allied unit (or yourself) - its next damaging ability reduces 1 movement to each unit it damages. Anchor Line {N}{N}{O}{O} (channeled): {KW:boost|Boosts} an allied unit (or yourself) - its next damaging ability {FX:rooted|roots} each unit it damages."
+    },
+    {
+      "key": "pocket_nuke",
+      "name": "Pocket Nuke",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "Portable, pocket-sized, and only slightly illegal.",
+      "art_id": "ingenuity/asterian_civilian_militia/pocket_nuke",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-039",
+      "search_aliases": [
+        "pocket nuke",
+        "nuke",
+        "aoe",
+        "area damage"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "damage"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 4
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "aoe_damage_square",
+        "effect_payload": {
+          "amount": 8,
+          "radius": 1
+        },
+        "requires_mandatory_board_cell": true,
+        "board_target_kind": "any",
+        "focus_range": 3
+      },
+      "normal_rules_text": "{KW:focus} ({RANGE} 3). Choose a friendly caster unit, then a board cell. Deal 8 damage to all entities in a 3×3 area centered on that cell."
+    },
+    {
+      "key": "jacquelynne",
+      "name": "Jacquelynne",
+      "type": "unit",
+      "rules_text": "Mending Shot also gains the caster’s aura ability-damage bonus and only consumes next-damage {KW:boost|boosts} as extra healing.",
+      "art_id": "ingenuity/asterian_civilian_militia/jacquelynne",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-027",
+      "search_aliases": [
+        "jacquelynne",
+        "mending shot",
+        "doublecast",
+        "support"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Jacquelynne",
+        "attack_type": "ranged",
+        "base_health": 8,
+        "current_health": 8,
+        "ranged_damage": 4,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 5,
+        "ranged_range": 3,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "mending_shot",
+            "name": "Mending Shot",
+            "speed": "reflex",
+            "energy_cost": {
+              "orange": 1
+            },
+            "effect_key": "heal_boosted",
+            "effect_payload": {
+              "amount": 5
+            },
+            "requires_board_target": true,
+            "board_target_kind": "ally",
+            "uses_ranged_targeting": true,
+            "range_max": 2,
+            "description": "Also gains the caster’s aura ability-damage bonus (e.g. {KW:command|Command Presence}).",
+            "normal_description": "Mending Shot {O} (reflex, {RANGE}2): heal a unit (or yourself) for 5; consumes all pending next-damage {KW:boost|boosts} as extra healing."
+          },
+          {
+            "key": "doublecast",
+            "name": "Doublecast",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "orange": 3
+            },
+            "effect_key": "grant_doubled_next_ability",
+            "requires_board_target": true,
+            "board_target_kind": "ally",
+            "description": "The echo resolves before the original on the stack.",
+            "normal_description": "Doublecast {N}{N}{O}{O}{O} (channeled): target a unit or yourself - that unit’s next activated ability casts twice on the same targets."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}8, {MOVE}3, {RANGED}3–5, {RANGE}3. Mending Shot {O} (reflex, {RANGE}2): heal a unit (or yourself) for 5; consumes all pending next-damage {KW:boost|boosts} as extra healing. Doublecast {N}{N}{O}{O}{O} (channeled): target a unit or yourself - that unit’s next activated ability casts twice on the same targets."
+    },
+    {
+      "key": "desperate_scan",
+      "name": "Desperate Scan",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "Push it a little further. What's the worst that could happen?",
+      "art_id": "ingenuity/asterian_civilian_militia/desperate_scan",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-028",
+      "search_aliases": [
+        "desperate scan",
+        "supercharge",
+        "overload",
+        "draw"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "combo"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "blazing",
+        "effect_key": "apply_overload_ally_draw",
+        "effect_payload": {
+          "amount": 3,
+          "draw": 2
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(blazing). Apply 3 {FX:overload} to a friendly unit (can target self), then draw 2 cards."
+    },
+    {
+      "key": "synths_interlinked",
+      "name": "Synths Interlinked",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "One spark is all it takes.",
+      "art_id": "ingenuity/asterian_civilian_militia/synths_interlinked",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-029",
+      "search_aliases": [
+        "synths interlinked",
+        "chain surge",
+        "chain",
+        "damage boost",
+        "buff",
+        "boost"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "buff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_next_damage_bonus",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally",
+        "chain": true
+      },
+      "normal_rules_text": "(reflex). {KW:boost|Boosts} an allied unit (+1 damage on its next attack or ability). {GL:chain|Chains} to every ally connected by diagonal or orthogonal adjacency."
+    },
+    {
+      "key": "voltcrusher_dreadnought",
+      "name": "Voltcrusher Dreadnought",
+      "type": "unit",
+      "rules_text": "High Explosive Round may be body-intercepted (50% per blocking unit); explosion ignores LOS. Counts as an attack. {KW:exalted}: you must have dealt 12 damage with abilities over the course of the game.",
+      "keywords": [
+        {
+          "key": "exalted",
+          "amount": 12,
+          "requirement": "ability_damage_dealt"
+        }
+      ],
+      "art_id": "ingenuity/asterian_civilian_militia/voltcrusher_dreadnought",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-026",
+      "search_aliases": [
+        "voltcrusher",
+        "dreadnought",
+        "high explosive",
+        "artillery mode"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "soldier",
+          "artillery",
+          "tank"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 3
+      },
+      "unit_types": [
+        "soldier",
+        "mech"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Voltcrusher Dreadnought",
+        "attack_type": "ranged",
+        "base_health": 11,
+        "current_health": 11,
+        "ranged_damage": 6,
+        "ranged_damage_min": 5,
+        "ranged_damage_max": 8,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 8,
+        "keywords": [
+          "large_unit"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "high_explosive_round",
+            "name": "High Explosive Round",
+            "speed": "reflex",
+            "energy_cost": {
+              "neutral": 2,
+              "orange": 3
+            },
+            "effect_key": "high_explosive_round",
+            "effect_payload": {
+              "amount": 4
+            },
+            "requires_board_target": true,
+            "board_target_kind": "enemy",
+            "uses_ranged_targeting": true,
+            "consumes_attack_action": true,
+            "description": "Shot may be body-intercepted (50% per blocking unit), redirecting the blast. Explosion ignores LOS. Counts as your attack.",
+            "normal_description": "High Explosive Round {N}{N}{O}{O}{O} (reflex, attack): fire a shell at an enemy; detonate for 4 damage in a 3×3 area where it lands."
+          },
+          {
+            "key": "artillery_mode",
+            "name": "Artillery Mode",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "orange": 1
+            },
+            "effect_key": "artillery_mode",
+            "description": "",
+            "normal_description": "Artillery Mode {N}{O} (channeled): gain {KW:trueshot}, +1 {RANGE}, and deadzone 1 until start of your next turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:exalted}: you must have dealt 12 damage with abilities over the course of the game. 2×2. Armored Plating: {GL:armor} 1. {LIFE}11, {MOVE}8, {RANGED} 5–8, {RANGE} 2. High Explosive Round {N}{N}{O}{O}{O} (reflex, attack): fire a shell at an enemy; detonate for 4 damage in a 3×3 area where it lands. Artillery Mode {N}{O} (channeled): gain {KW:trueshot}, +1 {RANGE}, and deadzone 1 until start of your next turn.",
+      "passives": [
+        "voltcrusher_armored_plating"
+      ]
+    },
+    {
+      "key": "the_boss",
+      "name": "The Boss",
+      "type": "unit",
+      "rules_text": "Press the Advantage stacks. {KW:command|Command Presence} does not buff basic attacks.",
+      "art_id": "ingenuity/asterian_civilian_militia/the_boss",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-025",
+      "search_aliases": [
+        "the boss",
+        "boss",
+        "command presence",
+        "amplify",
+        "press the advantage"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "aura"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "orange": 2
+      },
+      "unit": {
+        "attack_type": "melee",
+        "melee_damage_min": 3,
+        "melee_damage_max": 5,
+        "base_health": 10,
+        "current_health": 10,
+        "movement": 3,
+        "passives": [
+          "boss_ability_aura"
+        ],
+        "abilities": [
+          {
+            "key": "amplify",
+            "name": "Amplify",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "orange": 1
+            },
+            "effect_key": "extend_aura_range",
+            "effect_payload": {
+              "amount": 1
+            },
+            "uses_per_turn": 2,
+            "description": "Stacks with Press the Advantage.",
+            "normal_description": "Amplify {N}{O} (channeled, 2 uses): increase {KW:command|Command Presence} range by 1 until start of your next turn."
+          },
+          {
+            "key": "press_the_advantage",
+            "name": "Press the Advantage",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "orange": 1
+            },
+            "effect_key": "grant_permanent_aura_ability_damage",
+            "effect_payload": {
+              "amount": 1
+            },
+            "description": "Stacks on repeated use.",
+            "normal_description": "Press the Advantage {N}{N}{O} (channeled): permanently increase {KW:command|Command Presence} ability damage by +1."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}10, {MOVE}3, {MELEE}3–5. {KW:command|Command Presence}: allied units within {RANGE}1 deal +1 damage with activated abilities. Amplify {N}{O} (channeled, 2 uses): increase {KW:command|Command Presence} range by 1 until start of your next turn. Press the Advantage {N}{N}{O} (channeled): permanently increase {KW:command|Command Presence} ability damage by +1."
+    },
+    {
+      "key": "field_upgrade",
+      "name": "Field Upgrade",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "A little reinforcement goes a long way.",
+      "art_id": "ingenuity/asterian_civilian_militia/field_upgrade",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-031",
+      "search_aliases": [
+        "field upgrade",
+        "buff",
+        "stat growth",
+        "draw"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "buff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "grant_stat_growth_draw",
+        "effect_payload": {
+          "attack": 1,
+          "health": 3,
+          "draw": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(channeled). Permanently grant an allied unit +1 damage and +3 max HP, then draw 1 card."
+    },
+    {
+      "key": "live_wire",
+      "name": "Live Wire",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "The current finds its own path.",
+      "art_id": "ingenuity/asterian_civilian_militia/live_wire",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-034",
+      "search_aliases": [
+        "live wire",
+        "overload",
+        "chain"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "control",
+          "combo"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 3
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_overload",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "chain": true
+      },
+      "normal_rules_text": "(reflex). Apply 1 {FX:overload} to a unit or structure. {GL:chain|Chains} to every connected unit and structure on any team."
+    },
+    {
+      "key": "liquid_data",
+      "name": "\"Liquid Data\"",
+      "type": "spell",
+      "rules_text": "{KW:surge} does not grant extra movement.",
+      "flavor_text": "Tired is a state of mind. Move.",
+      "art_id": "ingenuity/asterian_civilian_militia/liquid_data",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-033",
+      "search_aliases": [
+        "liquid data",
+        "surge protocol",
+        "surge",
+        "refresh",
+        "deployment fatigue"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "tempo"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "blazing",
+        "effect_key": "liquid_data",
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(blazing). Target an allied unit. If it has {FX:deployment_fatigue}, grant it {KW:surge} (may attack and use abilities this turn despite fatigue). If it has no fatigue, refresh all its abilities."
+    },
+    {
+      "key": "debonair",
+      "name": "Debonair",
+      "type": "unit",
+      "rules_text": "{FX:style} stacks persist until consumed by Unleash.",
+      "flavor_text": "Every shot is a statement. Every miss? Impossible.",
+      "art_id": "ingenuity/asterian_civilian_militia/debonair",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-035",
+      "search_aliases": [
+        "debonair",
+        "cross x shot",
+        "cross shot",
+        "x shot",
+        "unleash",
+        "style stacks"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "unit",
+          "damage",
+          "combo"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "orange": 3
+      },
+      "keywords": [
+        {
+          "key": "slippery"
+        }
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Debonair",
+        "attack_type": "ranged",
+        "base_health": 9,
+        "current_health": 9,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 4,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "cross_x_shot",
+            "name": "Cross-X Shot",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "orange": 1
+            },
+            "effect_key": "alternating_cross_x_shot",
+            "effect_payload": {
+              "range": 2
+            },
+            "uses_per_turn": 2,
+            "description": "Line of sight required to each target cell. Starts as Cross Shot, then alternates to X Shot on each use.",
+            "normal_description": "Cross-X Shot {N}{N}{O} (channeled, 2 uses): fire at enemies exactly {RANGE}2 away - first use is the 4 cardinal directions, then the 4 diagonals, alternating each use; uses your ranged damage; gain 1 {FX:style}."
+          },
+          {
+            "key": "unleash",
+            "name": "Unleash",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "orange": 2
+            },
+            "effect_key": "unleash_style",
+            "requires_board_target": true,
+            "board_target_kind": "enemy",
+            "uses_ranged_targeting": true,
+            "range_max": 1,
+            "scales_with_ability_damage": true,
+            "description": "Also scales with pending next-damage {KW:boost|boosts} on Debonair (+ ability bonuses).",
+            "normal_description": "Unleash {N}{N}{O}{O} (channeled): deal 2 damage per {FX:style} stack to a surrounding enemy, then consume all {FX:style}."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:slippery}. {LIFE}9, {MOVE}3, {RANGED}2–4, {RANGE}2. Cross-X Shot {N}{N}{O} (channeled, 2 uses): fire at enemies exactly {RANGE}2 away - first use is the 4 cardinal directions, then the 4 diagonals, alternating each use (LOS required); uses your ranged damage; gain 1 {FX:style}. Unleash {N}{N}{O}{O} (channeled): deal 2 damage per {FX:style} stack to a surrounding enemy, then consume all {FX:style}; scales with pending next-damage {KW:boost|boosts}."
+    },
+    {
+      "key": "starforged_accumulator",
+      "name": "Starforged Accumulator",
+      "type": "building",
+      "rules_text": "",
+      "flavor_text": "They wired the front line straight into the spell grid.",
+      "art_id": "ingenuity/asterian_civilian_militia/starforged_accumulator",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-036",
+      "search_aliases": [
+        "starforged accumulator",
+        "forward resonance depot",
+        "resonance depot",
+        "spell depot",
+        "forward depot"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "structure",
+          "ramp",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 3
+      },
+      "keywords": [
+        {
+          "key": "spearhead",
+          "amount": 4
+        }
+      ],
+      "passives": [
+        "forward_depot_supply_passive"
+      ],
+      "unit_types": [
+        "structure"
+      ],
+      "unit": {
+        "entity_type": "building",
+        "unit_type": "Starforged Accumulator",
+        "attack_type": "utility",
+        "melee_damage": 0,
+        "melee_damage_min": 0,
+        "melee_damage_max": 0,
+        "base_health": 6,
+        "current_health": 6,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:spearhead} 4. {LIFE}6. No attacks. At start of your turn, gain 3 {GL:flux_energy|flux energy}."
+    },
+    {
+      "key": "ape_foreman",
+      "name": "Ape Foreman",
+      "type": "unit",
+      "rules_text": "",
+      "flavor_text": "He runs the job site like a live circuit - every wire grounded, every worker buzzing.",
+      "art_id": "ingenuity/asterian_civilian_militia/ape_foreman",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-037",
+      "search_aliases": [
+        "ape foreman",
+        "foreman",
+        "shock wire",
+        "ape"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "unit",
+          "structure",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 2
+      },
+      "passives": [
+        "ape_foreman_structure_aura"
+      ],
+      "unit_types": [
+        "soldier",
+        "engineer"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Ape Foreman",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 3,
+        "melee_damage_min": 2,
+        "melee_damage_max": 3,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "deploy_shock_wire",
+            "name": "Deploy Shock Wire",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "orange": 1
+            },
+            "effect_key": "spawn_shock_wire_adjacent",
+            "range_max": 1,
+            "uses_per_turn": 2,
+            "description": "Shock Wire has no attacks. Hybrid units using ranged attacks do not trigger retaliation.",
+            "normal_description": "Deploy Shock Wire {N}{O} (channeled): place a 2 HP Shock Wire on an {ADJACENT} empty cell; melee attackers that damage it receive 1 {FX:overload}."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}5, {MOVE}3, {MELEE}2–3. Reinforced Foundations: allied structures {ADJACENT} to this unit gain +2 max HP. Deploy Shock Wire {N}{O} (channeled, 2 uses): place a Shock Wire structure on an {ADJACENT} empty cell (2 HP, no attacks; melee attackers that damage it receive 1 {FX:overload})."
+    },
+    {
+      "key": "terra",
+      "name": "Terra",
+      "type": "unit",
+      "rules_text": "Terra Dash must target an empty cell or pickup in a straight line; cannot pass through occupied tiles. Seismic Cone counts as an attack.",
+      "flavor_text": "The ground answers when she calls - first in a fist, then in a ripple.",
+      "art_id": "ingenuity/asterian_civilian_militia/terra",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-038",
+      "search_aliases": [
+        "terra",
+        "seismic",
+        "cone",
+        "dash"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "unit",
+          "soldier"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "orange": 4
+      },
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Terra",
+        "attack_type": "melee",
+        "base_health": 12,
+        "current_health": 12,
+        "melee_damage": 6,
+        "melee_damage_min": 5,
+        "melee_damage_max": 7,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "terra_cone_strike",
+            "name": "Seismic Cone",
+            "speed": "reflex",
+            "energy_cost": {
+              "neutral": 1,
+              "orange": 1
+            },
+            "effect_key": "terra_cone_strike",
+            "effect_payload": {
+              "amount": 6,
+              "splash_amount": 3,
+              "max_range": 1
+            },
+            "requires_board_target": true,
+            "consumes_attack_action": true,
+            "description": "Counts as your attack. Splash hits the three tiles directly behind the primary cell.",
+            "normal_description": "Seismic Cone {N}{O} (reflex, attack): deal 6 damage to tile and 3 damage to the three tiles behind it in a side-by-side row."
+          },
+          {
+            "key": "terra_dash",
+            "name": "Terra Dash",
+            "speed": "channeled",
+            "energy_cost": {
+              "orange": 1
+            },
+            "effect_key": "terra_dash",
+            "effect_payload": {
+              "exact_range": 3,
+              "min_range": 3,
+              "max_range": 3
+            },
+            "requires_board_target": true,
+            "description": "Cannot pass through occupied tiles.",
+            "normal_description": "Terra Dash {O} (channeled): dash exactly 3 tiles in a straight line to an empty cell or pickup."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}12, {MOVE}2, {MELEE}5–7. Seismic Cone {N}{O} (reflex, attack): deal 6 damage to an {ADJACENT} tile and 3 damage to the three tiles behind it in a side-by-side row. Terra Dash {O} (channeled): dash to a tile exactly 3 tiles away."
+    },
+    {
+      "key": "reactive_armor",
+      "name": "Reactive Armor",
+      "type": "spell",
+      "rules_text": "Whenever this unit takes damage it gains 1 more {GL:armor}. The {GL:armor} and ability is lost at the start of your next turn.",
+      "flavor_text": "The plating learns from every blow.",
+      "art_id": "ingenuity/asterian_civilian_militia/reactive_armor",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-041",
+      "search_aliases": [
+        "reactive armor",
+        "armor buff",
+        "defensive",
+        "combat trick"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "defense"
+        ]
+      },
+      "energy_cost": {
+        "orange": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_reactive_armor",
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(reflex). Grant an allied unit 1 {GL:armor}. Whenever this unit takes damage it gains 1 more {GL:armor}. The {GL:armor} and ability is lost at the start of your next turn."
+    },
+    {
+      "key": "vulturous_nanites",
+      "name": "Vulturous Nanites",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "Even in death, they leave a mark.",
+      "art_id": "ingenuity/asterian_civilian_militia/vulturous_nanites",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-042",
+      "search_aliases": [
+        "vulturous nanites",
+        "death imprint",
+        "last gasp",
+        "token",
+        "spawn"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "token"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_passive_ability",
+        "effect_string_payload": {
+          "passive_key": "vulturous_nanites"
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(reflex). Grant an allied unit {KW:last_gasp}: when it dies, spawn a melee token at its location with half its base attack and HP (rounded down); the token spawns {FX:stunned}."
+    },
+    {
+      "key": "defective_augment",
+      "name": "Defective Augment",
+      "type": "spell",
+      "rules_text": "Can target ally or enemy.",
+      "flavor_text": "The upgrade works. The side effects are someone else's problem.",
+      "art_id": "ingenuity/asterian_civilian_militia/defective_augment",
+      "set": "asterian_civilian_militia",
+      "rarity": "common",
+      "collector_number": "ING-043",
+      "search_aliases": [
+        "defective augment",
+        "volatile augment",
+        "jammed",
+        "stat boost",
+        "buff debuff"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "debuff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_jammed_grant_stats",
+        "effect_payload": {
+          "jammed": 2,
+          "attack": 3,
+          "health": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(reflex). Apply 2 {FX:jammed} to a unit and permanently grant it +3 damage and +3 max HP."
+    },
+    {
+      "key": "mind_hijack",
+      "name": "Mind Hijack",
+      "type": "spell",
+      "rules_text": "Only swaps non-stat temporary effects.",
+      "flavor_text": "Your problems are now theirs. Or maybe theirs are yours.",
+      "art_id": "ingenuity/asterian_civilian_militia/mind_hijack",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-044",
+      "search_aliases": [
+        "mind hijack",
+        "status relay",
+        "swap buffs",
+        "swap debuffs",
+        "transfer effects",
+        "focus"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 2
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "swap_temporary_effects",
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "focus_range": 3
+      },
+      "normal_rules_text": "(reflex). {KW:focus} ({RANGE}3). Choose a caster unit and another target unit within {RANGE}3. Swap all temporary buffs and debuffs between the two units."
+    },
+    {
+      "key": "sylvias_special_blend",
+      "name": "Sylvia's Special Blend",
+      "type": "spell",
+      "rules_text": "Affects spells cast by that unit and its activated abilities.",
+      "flavor_text": "Overclock the mind. Pay the price later.",
+      "art_id": "ingenuity/asterian_civilian_militia/sylvias_special_blend",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-045",
+      "search_aliases": [
+        "sylvia's special blend",
+        "sylvias special blend",
+        "rapid processing",
+        "overclock",
+        "fast spell",
+        "speed up"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "blazing",
+        "effect_key": "grant_slow_becomes_fast",
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{BLAZING}. Choose a target unit. Until end of turn, that unit’s channeled spells and abilities are treated as reflex."
+    },
+    {
+      "key": "dust_to_data",
+      "name": "Dust to Data",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "She gave everything to the cause. Quite literally.",
+      "art_id": "ingenuity/asterian_civilian_militia/dust_to_data",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-046",
+      "search_aliases": [
+        "dust to data",
+        "strip for parts",
+        "sacrifice",
+        "gain mana",
+        "destroy ally"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "ramp",
+          "sacrifice"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 2
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "sacrifice_ally_gain_mana",
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(reflex). Destroy an allied unit. Gain {GL:flux_energy|flux energy} equal to double its total orange + neutral energy cost."
+    },
+    {
+      "key": "the_starforged_aberration",
+      "name": "The Starforged Aberration",
+      "type": "spell",
+      "rules_text": "Uses base stats only, not temporary modifiers.",
+      "flavor_text": "Everyone contributes. Fate decides who receives.",
+      "art_id": "ingenuity/asterian_civilian_militia/the_starforged_aberration",
+      "set": "asterian_civilian_militia",
+      "rarity": "rare",
+      "collector_number": "ING-047",
+      "search_aliases": [
+        "the starforged aberration",
+        "starforged aberration",
+        "equalization protocol",
+        "stat share",
+        "randomize",
+        "redistribute"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 4,
+        "orange": 4
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "randomize_stats_area",
+        "effect_payload": {
+          "width": 4,
+          "height": 2
+        },
+        "requires_mandatory_board_cell": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(reflex). Target a 4×2 area. Sum base damage and base HP of all allied units in that area, then randomly redistribute those totals among them (each unit ends with at least 1 attack and 1 HP)."
+    },
+    {
+      "key": "overly_affectionate_cyberware",
+      "name": "Overly Affectionate Cyberware",
+      "type": "spell",
+      "rules_text": "Can only target a unit with a total energy cost of 5 or less.",
+      "flavor_text": "Warm upgrades for cold operators.",
+      "art_id": "ingenuity/asterian_civilian_militia/overly_affectionate_cyberware",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-048",
+      "search_aliases": [
+        "overly affectionate cyberware",
+        "cyberware",
+        "keyword copy",
+        "keyword mirror",
+        "hyperactive scanning",
+        "surrounding keywords",
+        "resonance node",
+        "overly affectionate cyberpet"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "buff"
+        ]
+      },
+      "energy_cost": {
+        "orange": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_keyword_mirror_passive",
+        "effect_payload": {
+          "max_deploy_cost": 5
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "(reflex). Can only target a unit with a total energy cost of 5 or less. It gains {PASSIVE}, Hyperactive Scanning: temporarily gain the keywords of surrounding units."
+    },
+    {
+      "key": "explosive_graft",
+      "name": "Explosive Graft",
+      "type": "spell",
+      "rules_text": "{FX:explosive_graft} is consumed after triggering once.",
+      "flavor_text": "The implant had one flaw: it worked exactly as intended.",
+      "art_id": "ingenuity/asterian_civilian_militia/explosive_graft",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-049",
+      "search_aliases": [
+        "explosive graft",
+        "defective graft",
+        "stun",
+        "on damage",
+        "trap",
+        "overload"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "utility",
+          "trap"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "orange": 3
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "grant_explosive_graft",
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(channeled). {FX:stunned|Stun} an allied unit and grant {FX:explosive_graft}: the next time an enemy damages it, all surrounding units (allied and enemy) take 5 damage and 2 {FX:overload}."
+    },
+    {
+      "key": "1g_gy",
+      "name": "\"1G-GY\"",
+      "type": "spell",
+      "rules_text": "Requires a friendly caster unit within {KW:focus} range. Only unit targets.",
+      "flavor_text": "Accurate enough to be lethal. Not much margin for error.",
+      "art_id": "ingenuity/asterian_civilian_militia/1g_gy",
+      "set": "asterian_civilian_militia",
+      "rarity": "uncommon",
+      "collector_number": "ING-050",
+      "search_aliases": [
+        "1g-gy",
+        "1g gy",
+        "precision igniter",
+        "damage",
+        "draw",
+        "kill draw",
+        "focus"
+      ],
+      "search_facets": {
+        "faction": [
+          "asterian_civilian_militia"
+        ],
+        "color": [
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "spell",
+          "damage"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "orange": 3
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        },
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "focused_lethal_draw",
+        "effect_payload": {
+          "amount": 4
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any",
+        "require_target_unit_types": [
+          "unit"
+        ],
+        "focus_range": 3
+      },
+      "normal_rules_text": "{KW:stockpile} 3. {KW:focus} ({RANGE}3). (channeled). Deal 4 damage to a target unit. If this kills it, draw 1 card."
+    }
+  ]
+}

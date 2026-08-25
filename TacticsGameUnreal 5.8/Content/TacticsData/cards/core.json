@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "key": "field_requisition",
+      "name": "Field Requisition",
+      "type": "spell",
+      "rules_text": "Given to later seats for turn-order balance (2p: P2; 4p: P3–P4). Does not count toward your hand limit.",
+      "flavor_text": "Whatever the front needs, the quartermaster improvises.",
+      "art_id": "general/field_requisition",
+      "set": "general",
+      "rarity": "uncommon",
+      "collector_number": "GEN-001",
+      "search_aliases": ["field requisition", "requisition", "signature", "modal", "choose"],
+      "search_facets": {
+        "faction": ["general"],
+        "role": ["spell", "utility", "signature"]
+      },
+      "energy_cost": {},
+      "ignores_hand_limit": true,
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "gain_omni_flux",
+        "modes": [
+          { "label": "Gain 2 Omni Flux", "rules_text": "Gain 2 Omni flux energy.", "effect_key": "gain_omni_flux", "effect_payload": { "amount": 2 }, "requires_board_target": false },
+          { "label": "Deal 5 Damage", "rules_text": "Deal 5 damage to any unit.", "effect_key": "deal_damage", "effect_payload": { "amount": 5 }, "requires_board_target": true, "board_target_kind": "any" },
+          { "label": "Spawn Trooper", "rules_text": "Spawn a Requisition Trooper (4 HP, 2-4 melee, 3 move) in your deployment zone.", "effect_key": "spawn_requisition_trooper", "requires_board_target": false }
+        ]
+      },
+      "normal_rules_text": "(channeled, 0 energy). Choose one: gain 2 Omni {GL:flux_energy|flux energy}; deal 5 damage to any unit; or spawn a Requisition Trooper ({LIFE}4, {MELEE}2–4, {MOVE}3) in your deployment zone. Given to later seats for turn-order balance (2p: P2; 4p: P3–P4); does not count toward your hand limit."
+    },
+    {
+      "key": "basic_infantry",
+      "name": "Basic Infantry",
+      "type": "unit",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "abilities": [
+        "quick_shot"
+      ],
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Infantry",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 3,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:stockpile} 2. {MELEE} 1–3, {MOVE} 3, 5 {HP}. Quick Shot {N}: deal 2 damage to an enemy."
+    },
+    {
+      "key": "sandbox_rifleman",
+      "name": "Sandbox Rifleman",
+      "type": "unit",
+      "rules_text": "Sandbox testing unit.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "unit_types": [
+        "soldier"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Rifleman",
+        "attack_type": "ranged",
+        "base_health": 4,
+        "current_health": 4,
+        "ranged_damage": 2,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 2,
+        "ranged_range": 6,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{RANGED} 2 at {RANGE} 6, {MOVE} 3, 4 {HP}."
+    },
+    {
+      "key": "taunt_guard",
+      "name": "Taunt Guard",
+      "type": "unit",
+      "rules_text": "Enemies orthogonally adjacent cannot move away and must target this unit. Any move that ends on a tile next to this unit stops there. Pathfinding cannot enter this unit's tile.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Taunt Guard",
+        "attack_type": "melee",
+        "base_health": 6,
+        "current_health": 6,
+        "melee_damage": 1,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 2,
+        "keywords": [
+          {
+            "key": "taunt",
+            "amount": 1
+          }
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{KW:taunt}. {MELEE} 1–2, {MOVE} 2, 6 {HP}."
+    },
+    {
+      "key": "sky_banner",
+      "name": "Sky Banner",
+      "type": "unit",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "Sky Banner",
+        "attack_type": "melee",
+        "base_health": 4,
+        "current_health": 4,
+        "melee_damage": 0,
+        "movement": 3,
+        "passives": [
+          "sky_banner_aura"
+        ],
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "{MELEE} 0, {MOVE} 3, 4 {HP}. Allied units get +1/+1 and {KW:flying} while this unit is alive."
+    },
+    {
+      "key": "kill_spell",
+      "name": "Kill Spell",
+      "type": "spell",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "deal_damage",
+        "effect_payload": {
+          "amount": 999
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Destroy any target by dealing lethal damage."
+    },
+    {
+      "key": "poison_cloud",
+      "name": "Poison Cloud",
+      "type": "spell",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_poison",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Apply {FX:poison} 3 to any target that can receive {FX:poison}."
+    },
+    {
+      "key": "ignite",
+      "name": "Ignite",
+      "type": "spell",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_fire",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Apply {FX:fire} 3 to any target."
+    },
+    {
+      "key": "deep_cut",
+      "name": "Deep Cut",
+      "type": "spell",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_bleed",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Apply {FX:bleed} 3 to any target that can receive {FX:bleed}."
+    },
+    {
+      "key": "silence",
+      "name": "Silence",
+      "type": "spell",
+      "rules_text": "While {FX:silenced}, keywords, passives, and buffs are disabled. {KW:focus} spells may still be cast from that unit.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_silenced",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Apply {FX:silenced}."
+    },
+    {
+      "key": "cleanse_silence",
+      "name": "Cleanse Silence",
+      "type": "spell",
+      "rules_text": "",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "remove_silenced",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "any"
+      },
+      "normal_rules_text": "{REFLEX}. Remove {FX:silenced} from any target."
+    },
+    {
+      "key": "stealth",
+      "name": "Stealth",
+      "type": "spell",
+      "rules_text": "Stealthed units cannot be directly targeted by enemy attacks or abilities. Area effects still apply. Attacking removes all {FX:stealth}. Lose 1 stack at the start of your turn.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_stealth",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "{REFLEX}. Apply 1 {FX:stealth} to an allied unit."
+    },
+    {
+      "key": "low_cover",
+      "name": "Low Cover",
+      "type": "obstacle",
+      "rules_text": "Enemy units adjacent to this tile have 50% evasion vs ranged attacks when this tile is on the line of {FX:fire}; evaded shots damage this obstacle. {KW:flying} and {KW:trueshot} ignore this evasion.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "unit": {
+        "entity_type": "low_cover",
+        "unit_type": "Low Cover",
+        "attack_type": "utility",
+        "base_health": 4,
+        "current_health": 4,
+        "movement": 0,
+        "line_of_sight_blocked": false,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "normal_rules_text": "4 {HP}. Does not block line of sight."
+    },
+    {
+      "key": "focus_bolt",
+      "name": "Focus Bolt",
+      "type": "spell",
+      "rules_text": "Casts from a unit you control and uses that unit's keywords.",
+      "energy_cost": {
+        "neutral": 1
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "deal_damage",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "enemy",
+        "focus_range": 4
+      },
+      "normal_rules_text": "{KW:focus}. {REFLEX}. Deal 3 damage to an enemy within {RANGE} 4."
+    }
+  ]
+}

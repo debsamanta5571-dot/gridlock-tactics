@@ -1,0 +1,3024 @@
+{
+  "schema_version": 1,
+  "set": "99th_dieselheart_company",
+  "set_name": "99th Dieselheart Company",
+  "colors": [
+    "gallantry",
+    "green"
+  ],
+  "cards": [
+    {
+      "key": "frontline_faithful",
+      "name": "Frontline Faithful",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/frontline_faithful",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-001",
+      "search_aliases": [
+        "frontline faithful",
+        "hybrid",
+        "infantry",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "hybrid",
+        "base_health": 4,
+        "current_health": 4,
+        "melee_damage": 3,
+        "melee_damage_min": 1,
+        "melee_damage_max": 4,
+        "ranged_damage": 2,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 2,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 4
+        }
+      ],
+      "normal_rules_text": "{KW:stockpile} 4. {LIFE}4, {MOVE}3, Hybrid {MELEE}1–4 / {RANGED}1–2 {RANGE}2."
+    },
+    {
+      "key": "trench_runner",
+      "name": "Trench Runner",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/trench_runner",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-002",
+      "search_aliases": [
+        "trench runner",
+        "infantry",
+        "gallantry",
+        "base breaker",
+        "haste"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 5,
+        "current_health": 5,
+        "melee_damage": 4,
+        "melee_damage_min": 2,
+        "melee_damage_max": 5,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "haste"
+          },
+          {
+            "key": "base_breaker",
+            "amount": 3
+          },
+          {
+            "key": "stockpile",
+            "amount": 2
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "normal_rules_text": "{KW:haste}. {KW:base_breaker} 3. {KW:stockpile} 2. {LIFE}5, {MOVE}4, {MELEE}2–5."
+    },
+    {
+      "key": "overworked_operator",
+      "name": "Overworked Operator",
+      "type": "unit",
+      "rules_text": "The first unit to collect the pickup heals 4 HP.",
+      "art_id": "gallantry/99th_dieselheart_company/overworked_operator",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-003",
+      "search_aliases": [
+        "overworked operator",
+        "infantry",
+        "gallantry",
+        "command",
+        "supply drop",
+        "heal pickup"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 2,
+        "neutral": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 2,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 3,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "command",
+            "amount": 4
+          }
+        ],
+        "abilities": [
+          {
+            "key": "supply_drop",
+            "name": "Supply Drop",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "gallantry": 1
+            },
+            "effect_key": "place_supply_drop",
+            "effect_payload": {
+              "amount": 4
+            },
+            "uses_ranged_targeting": true,
+            "range_max": 2,
+            "description": "The first unit to collect it heals 4 HP.",
+            "normal_description": "Supply Drop {N}{G} (slow: place a +4 HP heal pickup on an empty tile."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:command} 4. {LIFE}6, {RANGED}1–3 {RANGE}2. Supply Drop {N}{G} (channeled, {RANGE}2): place a +4 HP heal pickup on an empty tile."
+    },
+    {
+      "key": "inspiring_commander",
+      "name": "Inspiring Commander",
+      "type": "unit",
+      "rules_text": "Barrage: pay {N} again on the same activation to extend.",
+      "art_id": "gallantry/99th_dieselheart_company/inspiring_commander",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-004",
+      "search_aliases": [
+        "inspiring commander",
+        "infantry",
+        "gallantry",
+        "inspiring presence",
+        "inspire",
+        "coordinate",
+        "aura",
+        "barrage"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green",
+          "ingenuity",
+          "orange"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "aura"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "hybrid",
+        "base_health": 8,
+        "current_health": 8,
+        "melee_damage": 4,
+        "melee_damage_min": 2,
+        "melee_damage_max": 5,
+        "ranged_damage": 4,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 5,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "passives": [
+          "inspiring_commander_aura"
+        ],
+        "abilities": [
+          {
+            "key": "inspire",
+            "name": "Inspire",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1,
+              "neutral": 1
+            },
+            "effect_key": "amplify_aura_stats",
+            "effect_payload": {
+              "attack": 1,
+              "health": 1
+            },
+            "barrage": true,
+            "barrage_cost": {
+              "neutral": 1
+            },
+            "description": "Barrage: pay {N} again to extend.",
+            "normal_description": "Inspire {G}{N} (channeled, barrage {N}): allied auras from this unit grant +1 attack and +1 HP until your next turn."
+          },
+          {
+            "key": "coordinate",
+            "name": "Coordinate",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2,
+              "neutral": 1
+            },
+            "effect_key": "extend_aura_range",
+            "effect_payload": {
+              "amount": 1
+            },
+            "barrage": true,
+            "barrage_cost": {
+              "neutral": 1
+            },
+            "description": "Barrage: pay {N} again to extend.",
+            "normal_description": "Coordinate {G}{G}{N} (channeled, barrage {N}): increase this unit's aura range by 1 until your next turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}8, {MOVE}3, Hybrid {MELEE}2–5 / {RANGED}2–5 {RANGE}2. Inspiring Presence: surrounding allies gain +1 damage and +1 max HP. Inspire {G}{N} (channeled, barrage {N}): allied auras from this unit grant +1 attack and +1 HP until your next turn. Coordinate {G}{G}{N} (channeled, barrage {N}): increase this unit's aura range by 1 until your next turn."
+    },
+    {
+      "key": "command_post",
+      "name": "Command Post",
+      "type": "building",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/command_post",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-005",
+      "search_aliases": [
+        "command post",
+        "structure",
+        "building",
+        "gallantry",
+        "command"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "building",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "gallantry": 2
+      },
+      "unit": {
+        "attack_type": "utility",
+        "base_health": 8,
+        "current_health": 8,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "command",
+            "amount": 8
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:command} 8. {LIFE}8. Deploy allied 1×1 units with total energy cost ≤ 8 on tiles {ADJACENT} to this structure."
+    },
+    {
+      "key": "counter_sniper",
+      "name": "Counter Sniper",
+      "type": "unit",
+      "rules_text": "Each application is a separate reaction stack. Unused stacks decay at the start of your turn.",
+      "art_id": "gallantry/99th_dieselheart_company/counter_sniper",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-006",
+      "search_aliases": [
+        "counter sniper",
+        "sniper",
+        "infantry",
+        "gallantry",
+        "covering fire",
+        "covering shot"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 2,
+        "current_health": 2,
+        "ranged_damage": 5,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 6,
+        "ranged_range": 4,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "abilities": [
+          {
+            "key": "covering_shot",
+            "name": "Covering Shot",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "gallantry": 1
+            },
+            "effect_key": "apply_covering_fire",
+            "board_target_kind": "ally",
+            "uses_ranged_targeting": true,
+            "range_max": 3,
+            "description": "Each application is a separate reaction stack. Unused stacks decay at the start of your turn.",
+            "normal_description": "Covering Shot {N}{G} (slow: mark an allied unit - when an enemy attacks that ally this turn, this unit fires back."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}2, {RANGED}3–6 {RANGE}4. Covering Shot {N}{G} (channeled, {RANGE}3): mark an allied unit - when an enemy attacks that ally this turn, this unit fires back."
+    },
+    {
+      "key": "conscript_call",
+      "name": "Conscript Call",
+      "type": "spell",
+      "rules_text": "Conscripts enter with {FX:deployment_fatigue}.",
+      "art_id": "gallantry/99th_dieselheart_company/conscript_call",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-007",
+      "search_aliases": [
+        "conscript call",
+        "summon",
+        "token",
+        "gallantry",
+        "deploy"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "aggro",
+          "token"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 2
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "summon_on_deployment_zone",
+        "effect_payload": {
+          "max_count": 8
+        }
+      },
+      "normal_rules_text": "(channeled). Summon Conscript tokens (Hybrid {MELEE}2–4 / {RANGED}2–4 {RANGE}2, {LIFE}4, {MOVE}3) on every empty cell in your base deployment zone (max 8)."
+    },
+    {
+      "key": "diesel_rider",
+      "name": "Diesel Rider",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/diesel_rider",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-008",
+      "search_aliases": [
+        "diesel rider",
+        "infantry",
+        "gallantry",
+        "charge",
+        "full throttle",
+        "movement refresh",
+        "blitz",
+        "bonus attack"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 6,
+        "current_health": 6,
+        "melee_damage": 5,
+        "melee_damage_min": 3,
+        "melee_damage_max": 6,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "charge"
+          }
+        ],
+        "passives": [
+          "diesel_rider_movement_refresh"
+        ],
+        "abilities": [
+          {
+            "key": "blitz",
+            "name": "Blitz",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2,
+              "neutral": 1
+            },
+            "effect_key": "grant_bonus_attack",
+            "description": "",
+            "normal_description": "Blitz {G}{G}{N} (channeled): gain a bonus attack this turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:charge}. {LIFE}6, {MOVE}3, {MELEE}3–6. Full Throttle: when this unit damages an enemy, restore one move action. Blitz {G}{G}{N} (channeled): gain a bonus attack this turn."
+    },
+    {
+      "key": "field_nurse",
+      "name": "Field Nurse",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/field_nurse",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-009",
+      "search_aliases": [
+        "field nurse",
+        "nurse",
+        "infantry",
+        "gallantry",
+        "heal",
+        "cleanse",
+        "stockpile",
+        "support"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 1,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 2,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "stockpile",
+            "amount": 3
+          }
+        ],
+        "abilities": [
+          {
+            "key": "field_dressing",
+            "name": "Field Dressing",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1
+            },
+            "effect_key": "heal_surrounding_allies",
+            "effect_payload": {
+              "amount": 2
+            },
+            "description": "",
+            "normal_description": "Field Dressing {G} (channeled): heal surrounding allies for 2 HP."
+          },
+          {
+            "key": "triage",
+            "name": "Triage",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1,
+              "neutral": 2
+            },
+            "effect_key": "triage",
+            "board_target_kind": "ally",
+            "uses_ranged_targeting": true,
+            "range_max": 1,
+            "description": "",
+            "normal_description": "Triage {G}{N}{N} (slow: remove one random debuff from an {ADJACENT} ally."
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "normal_rules_text": "{KW:stockpile} 3. {LIFE}5, {RANGED}1–2 {RANGE}2. Field Dressing {G} (channeled): heal surrounding allies for 2 HP. Triage {G}{N}{N} (channeled, {RANGE}1): remove one random debuff from an {ADJACENT} ally."
+    },
+    {
+      "key": "artillery_battalion",
+      "name": "Artillery Battalion",
+      "type": "unit",
+      "rules_text": "Counts as an attack.",
+      "art_id": "gallantry/99th_dieselheart_company/artillery_battalion",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-010",
+      "search_aliases": [
+        "artillery battalion",
+        "artillery",
+        "infantry",
+        "gallantry",
+        "coordinated fire",
+        "support fire",
+        "large unit",
+        "trueshot"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 5
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 7,
+        "current_health": 7,
+        "ranged_damage": 6,
+        "ranged_damage_min": 4,
+        "ranged_damage_max": 8,
+        "ranged_range": 3,
+        "ranged_deadzone": 1,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "large_unit"
+          },
+          {
+            "key": "trueshot"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "coordinated_fire",
+            "name": "Coordinated Fire",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2,
+              "neutral": 2
+            },
+            "consumes_attack_action": true,
+            "effect_key": "apply_coordinated_fire",
+            "effect_payload": {
+              "amount": 5,
+              "damage_min": 3,
+              "damage_max": 6
+            },
+            "description": "Counts as an attack.",
+            "normal_description": "Coordinated Fire {G}{G}{N}{N} (channeled, costs attack action): when a friendly unit attacks an enemy, this unit also fires (3–6 damage), up to 5 shots until your next turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:trueshot}. 2×2. {LIFE}7, {RANGED}4–8 {RANGE}3 (deadzone 1). Coordinated Fire {G}{G}{N}{N} (channeled, costs attack action): when a friendly unit attacks an enemy, this unit also fires (3–6 damage), up to 5 shots until your next turn."
+    },
+    {
+      "key": "valiant_resolute",
+      "name": "Valiant Resolute",
+      "type": "unit",
+      "rules_text": "If triggered and not already {FX:stunned}, gain 1 {FX:stunned|stun} stack.",
+      "art_id": "gallantry/99th_dieselheart_company/valiant_resolute",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-011",
+      "search_aliases": [
+        "ironhide grunt",
+        "infantry",
+        "gallantry",
+        "last gasp",
+        "survive",
+        "stubborn"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 2,
+        "neutral": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 8,
+        "current_health": 8,
+        "melee_damage": 5,
+        "melee_damage_min": 4,
+        "melee_damage_max": 7,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "passives": [
+          "valiant_resolute_iron_will"
+        ]
+      },
+      "normal_rules_text": "{LIFE}8, {MOVE}3, {MELEE}4–7. Iron Will: 50% chance to survive lethal damage at 1 HP; then permanently gain +2/+2."
+    },
+    {
+      "key": "flame_trooper",
+      "name": "Flame Trooper",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/flame_trooper",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-012",
+      "search_aliases": [
+        "heavy trooper",
+        "infantry",
+        "gallantry",
+        "hybrid",
+        "stockpile"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 11,
+        "current_health": 11,
+        "ranged_damage": 5,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 7,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "true_immunity"
+          },
+          {
+            "key": "pierce"
+          },
+          {
+            "key": "volley",
+            "amount": 3
+          },
+          {
+            "key": "trueshot"
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "art": "flame_trooper.jpg",
+      "normal_rules_text": "{KW:stockpile} 2. {KW:true_immunity}. {KW:volley} 3. {KW:pierce}. {KW:trueshot}. {LIFE}11, {RANGED}3–7 {RANGE}2. Incendiary Rounds: Damage this unit does applies 2 {FX:fire} to each unit it damages. {KW:last_gasp}: on death, set this tile and surrounding tiles on {FX:fire} for 2 turns.",
+      "passives": [
+        "flame_trooper_incendiary_rounds",
+        "flame_trooper_last_gasp_fire"
+      ]
+    },
+    {
+      "key": "mother_ship",
+      "name": "The Mother Ship",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/mother_ship",
+      "set": "99th_dieselheart_company",
+      "rarity": "legendary",
+      "collector_number": "GAL-013",
+      "search_aliases": [
+        "mother ship",
+        "the mother ship",
+        "gallantry",
+        "flying",
+        "command",
+        "cleave",
+        "summon",
+        "conscript",
+        "heavy trooper",
+        "large unit"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro",
+          "support",
+          "token"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 6,
+        "gallantry": 4
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 11,
+        "current_health": 11,
+        "ranged_damage": 5,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 6,
+        "ranged_range": 1,
+        "ranged_deadzone": 0,
+        "movement": 8,
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "flying"
+          },
+          {
+            "key": "command",
+            "amount": 6
+          },
+          {
+            "key": "whirlwind"
+          },
+          {
+            "key": "large_unit"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "deploy_conscripts",
+            "name": "Deploy Conscripts",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2,
+              "neutral": 1
+            },
+            "effect_key": "spawn_conscripts_adjacent",
+            "effect_payload": {
+              "count": 2
+            },
+            "description": "",
+            "normal_description": "Deploy Conscripts {G}{G}{N} (channeled): spawn 2 Conscript tokens on random unoccupied surrounding cells."
+          },
+          {
+            "key": "deploy_flame_trooper",
+            "name": "Deploy Heavy Trooper",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 3,
+              "neutral": 2
+            },
+            "effect_key": "spawn_flame_trooper_adjacent",
+            "description": "",
+            "normal_description": "Deploy Heavy Trooper {G}{G}{G}{N}{N} (channeled): spawn 1 Heavy Trooper token cell."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:flying}. {KW:command} 6. {KW:whirlwind}. Armored Hull: Armor 1. 2×2. {LIFE}11, {RANGED}3–6 {RANGE}1, {MOVE}8. Deploy Conscripts {G}{G}{N} (channeled): spawn 2 Conscript tokens on random unoccupied surrounding cells. Deploy Heavy Trooper {G}{G}{G}{N}{N} (channeled): spawn 1 Heavy Trooper token on a random unoccupied {ADJACENT} cell.",
+      "passives": [
+        "mother_ship_armored_hull"
+      ]
+    },
+    {
+      "key": "skyreaver",
+      "name": "Skyreaver",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/skyreaver",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-014",
+      "search_aliases": [
+        "skyreaver",
+        "flying",
+        "haste",
+        "gallantry",
+        "infantry",
+        "base breaker",
+        "bunker buster",
+        "bombing run",
+        "dash"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 8,
+        "current_health": 8,
+        "ranged_damage": 5,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 6,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "flying"
+          },
+          {
+            "key": "haste"
+          },
+          {
+            "key": "base_breaker",
+            "amount": 3
+          }
+        ],
+        "abilities": [
+          {
+            "key": "bunker_buster",
+            "name": "Bunker Buster",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 3
+            },
+            "effect_key": "bunker_buster_strike",
+            "effect_payload": {
+              "amount": 5
+            },
+            "board_target_kind": "enemy",
+            "uses_ranged_targeting": true,
+            "range_max": 1,
+            "require_target_unit_types": [
+              "base",
+              "building"
+            ],
+            "description": "",
+            "normal_description": "Bunker Buster {G}{G}{G} (slow: deal 5 damage to an {ADJACENT} enemy base or structure."
+          },
+          {
+            "key": "bombing_run",
+            "name": "Bombing Run",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "gallantry": 1
+            },
+            "effect_key": "bombing_run",
+            "effect_payload": {
+              "amount": 3,
+              "max_range": 3,
+              "min_range": 2,
+              "cardinal_only": 1
+            },
+            "description": "Must land on an empty tile.",
+            "normal_description": "Bombing Run {N}{G} (channeled): fly orthogonally 2–3 tiles, dealing 3 damage to each enemy unit passed over."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:flying}. {KW:haste}. {KW:base_breaker} 3. {LIFE}8, {MOVE}4, {RANGED}3–6 {RANGE}2. Bunker Buster {G}{G}{G} (channeled, {RANGE}1): deal 5 damage to an {ADJACENT} enemy base or structure. Bombing Run {N}{G} (channeled): fly orthogonally 2–3 tiles, dealing 3 damage to each enemy unit passed over; land on an empty tile."
+    },
+    {
+      "key": "general_stormwell",
+      "name": "General Stormwell",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/general_stormwell",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-015",
+      "search_aliases": [
+        "general stormwell",
+        "stormwell",
+        "gallantry",
+        "infantry",
+        "relentless",
+        "vulnerable",
+        "rally",
+        "expose"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 4
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 7,
+        "current_health": 7,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 4,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [],
+        "abilities": [
+          {
+            "key": "rally",
+            "name": "Rally",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 3,
+              "neutral": 2
+            },
+            "effect_key": "grant_relentless_aura",
+            "effect_payload": {
+              "amount": 3
+            },
+            "description": "",
+            "normal_description": "Rally {G}{G}{G}{N}{N} (channeled): surrounding allied units gain {KW:relentless} 3 until end of your turn."
+          },
+          {
+            "key": "expose",
+            "name": "Expose",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1,
+              "neutral": 1
+            },
+            "effect_key": "apply_vulnerable",
+            "effect_payload": {
+              "amount": 1
+            },
+            "board_target_kind": "any",
+            "uses_ranged_targeting": true,
+            "range_max": 2,
+            "description": "",
+            "normal_description": "Expose {G}{N} (slow: apply 1 {FX:vulnerable} to a target until end of their turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{LIFE}7, {MOVE}3, {RANGED}2–4 {RANGE}2. Rally {G}{G}{G}{N}{N} (channeled): surrounding allies gain {KW:relentless} 3 until end of turn. Expose {G}{N} (channeled, {RANGE}2): apply 1 {FX:vulnerable} to a unit until end of their turn."
+    },
+    {
+      "key": "remington",
+      "name": "Remington",
+      "type": "unit",
+      "art_id": "gallantry/99th_dieselheart_company/remington",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-016",
+      "energy_cost": {
+        "gallantry": 1,
+        "neutral": 2
+      },
+      "unit": {
+        "attack_type": "ranged",
+        "unit_types": [
+          "infantry"
+        ],
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 6,
+        "ranged_range": 2,
+        "base_health": 7,
+        "movement": 3,
+        "keywords": [
+          {
+            "key": "volley",
+            "amount": 2
+          }
+        ],
+        "abilities": [
+          {
+            "key": "swap_weapons",
+            "name": "Swap Weapons",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1
+            },
+            "effect_key": "swap_weapons",
+            "effect_payload": {
+              "ranged_min": 3,
+              "ranged_max": 4,
+              "range_bonus": 1
+            },
+            "effect_string_payload": {
+              "suppress": "volley",
+              "grant": "multistrike:1"
+            },
+            "description": "{KW:volley} is suppressed while active.",
+            "normal_description": "Swap Weapons {G} (channeled): switch to ranged 3–4 with +1 range and {KW:multistrike} 1 until end of turn."
+          },
+          {
+            "key": "apply_dual_wield",
+            "name": "Dual Wield",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2,
+              "neutral": 2
+            },
+            "effect_key": "apply_dual_wield",
+            "effect_payload": {
+              "ranged_min": 3,
+              "ranged_max": 6,
+              "range_bonus": 1
+            },
+            "effect_string_payload": {
+              "grant": "multistrike:1",
+              "disable": "swap_weapons"
+            },
+            "description": "Swap Weapons is disabled while active.",
+            "normal_description": "Dual Wield {G}{G}{N}{N} (channeled): switch to ranged 3–6 with +1 range and {KW:multistrike} 1 until end of turn."
+          }
+        ]
+      },
+      "rules_text": "Swap Weapons suppresses {KW:volley}. Dual Wield disables Swap Weapons while active.",
+      "normal_rules_text": "{KW:volley} 2. {LIFE}7, {MOVE}3, {RANGED}2–6 {RANGE}2. Swap Weapons {G} (channeled): switch to ranged 3–4 with +1 range and {KW:multistrike} 1 until end of turn. Dual Wield {G}{G}{N}{N} (channeled): switch to ranged 3–6 with +1 range and {KW:multistrike} 1 until end of turn."
+    },
+    {
+      "key": "callahan",
+      "name": "Callahan",
+      "type": "unit",
+      "rules_text": "Sworn Protector stacks once per death; each new death refreshes duration.",
+      "art_id": "gallantry/99th_dieselheart_company/callahan",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-017",
+      "search_aliases": [
+        "callahan",
+        "cover shot",
+        "covering fire",
+        "sworn protector",
+        "multistrike",
+        "armor"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "ranged"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 5,
+        "ranged_range": 2,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "multistrike",
+            "amount": 1
+          }
+        ],
+        "passives": [
+          "callahan_sworn_protector"
+        ],
+        "abilities": [
+          {
+            "key": "cover_shot",
+            "name": "Cover Shot",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2
+            },
+            "effect_key": "apply_covering_fire_range_buff",
+            "requires_board_target": true,
+            "board_target_kind": "ally",
+            "uses_ranged_targeting": true,
+            "range_max": 2,
+            "description": "",
+            "normal_description": "Cover Shot {G}{G} (slow: grant an ally {FX:covering_fire} until your next turn; the {FX:covering_fire} reaction and this unit's ranged range gain +1."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:multistrike} 1. Armored Coat: Armor 1. {LIFE}6, {RANGED}2–5 {RANGE}2. Sworn Protector: when a unit you were covering dies, gain +1 {KW:multistrike} for 2 turns. Cover Shot {G}{G} (channeled, {RANGE}2): grant an ally {FX:covering_fire} until your next turn; the {FX:covering_fire} reaction and this unit's ranged range gain +1.",
+      "passives": [
+        "callahan_armored_coat"
+      ]
+    },
+    {
+      "key": "the_green_death",
+      "name": "The Green Death",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/the_green_death",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-018",
+      "search_aliases": [
+        "the green death",
+        "green death",
+        "sniper",
+        "vigilance",
+        "stealth",
+        "overwatch",
+        "covering fire"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "ranged"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 6,
+        "neutral": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 7,
+        "ranged_damage_min": 6,
+        "ranged_damage_max": 9,
+        "ranged_range": 4,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "vigilance"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "overwatch",
+            "name": "Overwatch",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "gallantry": 1
+            },
+            "effect_key": "apply_covering_fire_stacks",
+            "effect_payload": {
+              "amount": 2
+            },
+            "requires_board_target": true,
+            "board_target_kind": "ally",
+            "uses_ranged_targeting": true,
+            "range_max": 4,
+            "description": "",
+            "normal_description": "Overwatch {N}{G} (slow: place 2 {FX:covering_fire|covering-fire} stacks on an ally."
+          },
+          {
+            "key": "go_dark",
+            "name": "Go Dark",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 3,
+              "neutral": 1
+            },
+            "effect_key": "grant_stealth_self",
+            "description": "",
+            "normal_description": "Go Dark {G}{G}{G}{N} (channeled): gain 1 {FX:stealth}."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:vigilance}. {LIFE}5, {RANGED}6–9 {RANGE}4. Overwatch {N}{G} (channeled, {RANGE}4): place 2 {FX:covering_fire|covering-fire} stacks on an ally. Go Dark {G}{G}{G}{N} (channeled): gain 1 {FX:stealth}."
+    },
+    {
+      "key": "apex_troopers",
+      "name": "Apex Troopers",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/apex_troopers",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-019",
+      "search_aliases": [
+        "apex troopers",
+        "apex",
+        "troopers",
+        "infantry",
+        "gallantry",
+        "hybrid",
+        "armor",
+        "stockpile"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "frontline"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 4,
+        "neutral": 5
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "hybrid",
+        "base_health": 14,
+        "current_health": 14,
+        "melee_damage": 8,
+        "melee_damage_min": 7,
+        "melee_damage_max": 10,
+        "ranged_damage": 5,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 7,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "stockpile",
+            "amount": 2
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "normal_rules_text": "{KW:stockpile} 2. Armored Carapace: Armor 1. {LIFE}14, {MOVE}2, Hybrid {MELEE}7–10 / {RANGED}3–7 {RANGE}2.",
+      "passives": [
+        "apex_troopers_armored_carapace"
+      ]
+    },
+    {
+      "key": "core_cracker",
+      "name": "Core Cracker",
+      "type": "unit",
+      "rules_text": "{KW:crushes_on_move} cannot gain {FX:bonus_move_grant}-points; push ignores {KW:immovable}. Breaching Charge pierces base immunity.",
+      "art_id": "gallantry/99th_dieselheart_company/core_cracker",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-020",
+      "search_aliases": [
+        "core cracker",
+        "core",
+        "cracker",
+        "gallantry",
+        "immovable",
+        "crushing advance",
+        "large",
+        "armor"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "frontline",
+          "control"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 5,
+        "neutral": 5
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "core_cracker",
+        "attack_type": "ranged",
+        "base_health": 14,
+        "current_health": 14,
+        "ranged_damage": 4,
+        "ranged_damage_min": 3,
+        "ranged_damage_max": 6,
+        "ranged_range": 1,
+        "ranged_deadzone": 0,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "large_unit"
+          },
+          {
+            "key": "immovable"
+          },
+          {
+            "key": "crushes_on_move"
+          }
+        ],
+        "passives": [
+          "core_cracker_advance_passive",
+          "core_cracker_prime_passive"
+        ],
+        "abilities": [
+          {
+            "key": "core_cracker_prime_ability",
+            "name": "Prime Core",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 3
+            },
+            "effect_key": "core_cracker_prime",
+            "requires_board_target": false,
+            "description": "",
+            "normal_description": "Prime Core {G}{G}{G} (channeled): prime this unit; it may act and react until your next turn."
+          },
+          {
+            "key": "core_cracker_breach_ability",
+            "name": "Breaching Charge",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 1
+            },
+            "effect_key": "core_cracker_breach",
+            "effect_payload": {
+              "amount": 15
+            },
+            "board_target_kind": "enemy",
+            "range_min": 1,
+            "range_max": 1,
+            "require_target_entity_types": [
+              "base"
+            ],
+            "consumes_attack_action": false,
+            "description": "Pierces base immunity.",
+            "normal_description": "Breaching Charge {G} (slow: deal 15 damage to an {ADJACENT} enemy base, then destroy this unit."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:immovable}. Armored Shell: Armor 1. 2×2. {LIFE}14, {MOVE}4, {RANGED}3–6 {RANGE}1. Cold Start: pay {G}{G}{G} each turn (except deploy) to act. {KW:crushes_on_move}: moves through units, pushing them. Prime Core {G}{G}{G} (channeled): prime to act until your next turn. Breaching Charge {G} (channeled, {RANGE}1): deal 15 damage to an {ADJACENT} enemy base, then destroy this unit.",
+      "passives": [
+        "core_cracker_armored_shell"
+      ]
+    },
+    {
+      "key": "mobilize",
+      "name": "Mobilize",
+      "type": "spell",
+      "rules_text": "Units that cost only colored energy are unaffected.",
+      "art_id": "gallantry/99th_dieselheart_company/mobilize",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-021",
+      "search_aliases": [
+        "mobilize",
+        "deploy",
+        "discount",
+        "gallantry",
+        "cost reduction"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "support",
+          "deploy"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 2,
+        "neutral": 1
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "mobilize",
+        "effect_payload": {
+          "amount": 1
+        }
+      },
+      "normal_rules_text": "(channeled). Until end of turn, all units you deploy cost 1 less neutral energy (minimum 0)."
+    },
+    {
+      "key": "second_wave",
+      "name": "Second Wave",
+      "type": "spell",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/second_wave",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-022",
+      "search_aliases": [
+        "second wave",
+        "stockpile",
+        "double",
+        "gallantry",
+        "deploy"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "support",
+          "deploy"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 2
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "second_wave"
+      },
+      "normal_rules_text": "(channeled). Until end of turn, each {KW:stockpile} card you control may be deployed or played a second time."
+    },
+    {
+      "key": "reinforcements",
+      "name": "Reinforcements",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "Another truck rolls in from the rear - boots on the ground before the dust settles.",
+      "art_id": "gallantry/99th_dieselheart_company/reinforcements",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-023",
+      "search_aliases": [
+        "reinforcements",
+        "draw",
+        "units",
+        "recruit",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "support",
+          "draw"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "gallantry": 2
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "draw_unit_cards",
+        "effect_payload": {
+          "amount": 2
+        }
+      },
+      "normal_rules_text": "(channeled). Draw 2 unit cards."
+    },
+    {
+      "key": "mark_target",
+      "name": "Mark Target",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "A painted crosshair - one good hit and they're done.",
+      "art_id": "gallantry/99th_dieselheart_company/mark_target",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-024",
+      "search_aliases": [
+        "mark target",
+        "vulnerable",
+        "debuff",
+        "gallantry",
+        "fast"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "control",
+          "debuff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "apply_vulnerable_turn_end",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "enemy"
+      },
+      "normal_rules_text": "(reflex). Apply 1 {FX:vulnerable} to an enemy unit until end of turn."
+    },
+    {
+      "key": "field_trench",
+      "name": "Field Trench",
+      "type": "spell",
+      "rules_text": "Subject to the normal {GL:armor} cap.",
+      "flavor_text": "Shovels out, dirt flies - two minutes later the line has cover.",
+      "art_id": "gallantry/99th_dieselheart_company/field_trench",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-025",
+      "search_aliases": [
+        "field trench",
+        "trench",
+        "terrain",
+        "armor",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "terrain",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 1
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "place_trench"
+      },
+      "normal_rules_text": "(channeled). Turn a tile on or {ADJACENT} to an allied unit into a trench (+1 {GL:armor} to 1×1 non-{KW:flying} units on it; costs 1.5 movement to enter)."
+    },
+    {
+      "key": "espirit_de_corps",
+      "name": "Espirit de Corps",
+      "type": "spell",
+      "rules_text": "",
+      "flavor_text": "One shout and the whole section stands taller.",
+      "art_id": "gallantry/99th_dieselheart_company/espirit_de_corps",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-026",
+      "search_aliases": [
+        "espirit de corps",
+        "esprit",
+        "buff",
+        "aoe",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "buff",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "gallantry": 4
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_aoe_stat_buff_turn_end",
+        "effect_payload": {
+          "attack": 3,
+          "health": 3,
+          "radius": 1
+        }
+      },
+      "normal_rules_text": "(reflex). Allied units in a 3×3 area centered on a chosen cell gain +3/+3 until end of turn."
+    },
+    {
+      "key": "cheeky_saboteur",
+      "name": "Cheeky Saboteur",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/cheeky_saboteur",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-027",
+      "search_aliases": [
+        "cheeky saboteur",
+        "saboteur",
+        "base breaker",
+        "charge",
+        "stockpile",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 1,
+        "current_health": 1,
+        "melee_damage": 1,
+        "melee_damage_min": 1,
+        "melee_damage_max": 2,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "stockpile",
+            "amount": 3
+          },
+          {
+            "key": "charge"
+          },
+          {
+            "key": "base_breaker",
+            "amount": 4
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 3
+        }
+      ],
+      "normal_rules_text": "{KW:stockpile} 3. {KW:charge}. {KW:base_breaker} 4. {LIFE}1, {MOVE}4, {MELEE}1–2."
+    },
+    {
+      "key": "dottie",
+      "name": "Dottie",
+      "type": "unit",
+      "rules_text": "{KW:evasive} stacks extend duration.",
+      "art_id": "gallantry/99th_dieselheart_company/dottie",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-028",
+      "search_aliases": [
+        "dottie",
+        "healing flight",
+        "evasive",
+        "flying",
+        "gallantry",
+        "support"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support",
+          "flying"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 5,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "flying"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "dottie_healing_flight",
+            "name": "Healing Flight",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 2,
+              "gallantry": 1
+            },
+            "effect_key": "healing_flight",
+            "effect_payload": {
+              "amount": 4,
+              "max_range": 5,
+              "min_range": 2,
+              "cardinal_only": 1
+            },
+            "requires_board_target": true,
+            "uses_ranged_targeting": false,
+            "description": "Land on an empty tile or pickup.",
+            "normal_description": "Healing Flight {N}{N}{G} (channeled): fly orthogonally 2–5 tiles, dropping +4 HP heal pickups on empty cells along the path."
+          },
+          {
+            "key": "dottie_evasive_maneuver",
+            "name": "Evasive Maneuver",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2
+            },
+            "effect_key": "grant_evasive_self",
+            "effect_payload": {
+              "amount": 1
+            },
+            "requires_board_target": false,
+            "description": "Stacks extend duration.",
+            "normal_description": "{KW:evasive} Maneuver {G}{G} (channeled): gain {KW:evasive} (50% miss chance)."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:flying}. {LIFE}5, {MOVE}4, {RANGED}2–5 {RANGE}2. Healing Flight {N}{N}{G} (channeled): fly orthogonally 2–5 tiles, dropping +4 HP heal pickups on empty cells along the path; land on an empty tile or pickup. {KW:evasive} Maneuver {G}{G} (channeled): gain {KW:evasive} (50% miss)."
+    },
+    {
+      "key": "galvanized_bunker",
+      "name": "Galvanized Bunker",
+      "type": "building",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/galvanized_bunker",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-029",
+      "search_aliases": [
+        "galvanized bunker",
+        "galvanized",
+        "bunker",
+        "structure",
+        "building",
+        "turret",
+        "whirlwind",
+        "stockpile",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "building",
+          "structure",
+          "artillery"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "gallantry": 1
+      },
+      "unit_types": [
+        "structure"
+      ],
+      "unit": {
+        "entity_type": "building",
+        "unit_type": "structure",
+        "attack_type": "ranged",
+        "base_health": 3,
+        "current_health": 3,
+        "ranged_damage": 2,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 3,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "stockpile",
+            "amount": 2
+          }
+        ],
+        "abilities": [
+          {
+            "key": "galvanized_bunker_whirlwind_spray",
+            "name": "Whirlwind Spray",
+            "speed": "channeled",
+            "energy_cost": {
+              "gallantry": 2
+            },
+            "effect_key": "whirlwind_spray",
+            "effect_payload": {
+              "range_bonus": -1
+            },
+            "requires_board_target": false,
+            "description": "",
+            "normal_description": "{KW:whirlwind} Spray {G}{G} (channeled): gain {KW:whirlwind} and −1 ranged range until end of your turn."
+          }
+        ]
+      },
+      "keywords": [
+        {
+          "key": "stockpile",
+          "amount": 2
+        }
+      ],
+      "normal_rules_text": "{KW:stockpile} 2. Armored Walls: Armor 2. {LIFE}3, {RANGED}2–3 {RANGE}2. {KW:whirlwind} Spray {G}{G} (channeled): gain {KW:whirlwind} and −1 ranged range until end of turn.",
+      "passives": [
+        "galvanized_bunker_armored_walls"
+      ]
+    },
+    {
+      "key": "battle_stim",
+      "name": "Battle Stim",
+      "type": "spell",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/battle_stim",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-030",
+      "search_aliases": [
+        "battle stim",
+        "stim",
+        "damage buff",
+        "buff",
+        "gallantry",
+        "fast"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "buff",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 1
+      },
+      "spell": {
+        "speed": "reflex",
+        "effect_key": "grant_damage_buff_turn_end",
+        "effect_payload": {
+          "amount": 1
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(reflex). Target allied unit gains +1 damage until end of turn."
+    },
+    {
+      "key": "cover_detail",
+      "name": "Cover Detail",
+      "type": "spell",
+      "rules_text": "Hybrid units use their ranged attacks for {FX:covering_fire} reactions.",
+      "art_id": "gallantry/99th_dieselheart_company/cover_detail",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-031",
+      "search_aliases": [
+        "cover detail",
+        "covering fire",
+        "focus",
+        "buff",
+        "support",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "support",
+          "buff"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "apply_covering_fire",
+        "requires_board_target": true,
+        "board_target_kind": "ally",
+        "require_caster_attack_types": [
+          "ranged",
+          "hybrid"
+        ],
+        "use_caster_ranged_range": true
+      },
+      "normal_rules_text": "{KW:focus} (channeled). Cast from a ranged or hybrid unit you control. Apply 1 {FX:covering_fire} stack to an allied unit within that unit's ranged range."
+    },
+    {
+      "key": "breaching_round",
+      "name": "Breaching Round",
+      "type": "spell",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/breaching_round",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-032",
+      "search_aliases": [
+        "breaching round",
+        "base damage",
+        "focus",
+        "adjacent",
+        "gallantry",
+        "base breaker"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "damage",
+          "base"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "gallantry": 2
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "bunker_buster_strike",
+        "effect_payload": {
+          "amount": 4
+        },
+        "requires_board_target": true,
+        "board_target_kind": "enemy",
+        "focus_range": 1,
+        "require_target_unit_types": [
+          "base"
+        ]
+      },
+      "normal_rules_text": "{KW:focus} (channeled). Deal 4 damage to an {ADJACENT} enemy base."
+    },
+    {
+      "key": "relentless_volley",
+      "name": "Relentless Volley",
+      "type": "spell",
+      "rules_text": "{KW:relentless} lasts only for this attack.",
+      "art_id": "gallantry/99th_dieselheart_company/relentless_volley",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-033",
+      "search_aliases": [
+        "relentless volley",
+        "relentless",
+        "focus attack",
+        "gallantry",
+        "damage"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "damage",
+          "attack"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 3
+      },
+      "keywords": [
+        "focus"
+      ],
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "focus_relentless_attack",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "enemy",
+        "require_target_unit_types": [
+          "unit"
+        ],
+        "use_caster_attack_range": true
+      },
+      "normal_rules_text": "{KW:focus} (channeled). Your unit attacks a target enemy with {KW:relentless} 3."
+    },
+    {
+      "key": "frontline_salve",
+      "name": "Frontline Salve",
+      "type": "spell",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/frontline_salve",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-034",
+      "search_aliases": [
+        "frontline salve",
+        "heal",
+        "triage",
+        "cleanse",
+        "support",
+        "gallantry"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "heal",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 1,
+        "gallantry": 1
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "heal_and_triage",
+        "effect_payload": {
+          "amount": 3
+        },
+        "requires_board_target": true,
+        "board_target_kind": "ally"
+      },
+      "normal_rules_text": "(channeled). Heal target allied unit for 3 HP and remove one random debuff."
+    },
+    {
+      "key": "gas_strike",
+      "name": "Gas Strike",
+      "type": "spell",
+      "rules_text": "At the end of each unit owner's turn, units standing on gas cloud tiles take 1 {FX:poison}.",
+      "art_id": "gallantry/99th_dieselheart_company/gas_strike",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-035",
+      "search_aliases": [
+        "gas strike",
+        "gas cloud",
+        "poison",
+        "aoe",
+        "gallantry",
+        "cross"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "control",
+          "aoe",
+          "poison"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "gas_strike"
+      },
+      "normal_rules_text": "(channeled). Place a gas cloud on target tile and its 4 cardinal neighbors (5-tile cross); units there take 1 {FX:poison}."
+    },
+    {
+      "key": "trench_sweeper",
+      "name": "Trench Sweeper",
+      "type": "unit",
+      "rules_text": "Units on those tiles take 1 {FX:poison} immediately. Reapplying gas keeps the longer duration.",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-036",
+      "search_aliases": [
+        "trench sweeper",
+        "gas grenade",
+        "cleave",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "control",
+          "poison"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 5,
+        "current_health": 5,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 5,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "true_immunity"
+          },
+          {
+            "key": "volley",
+            "amount": 2
+          }
+        ],
+        "abilities": [
+          {
+            "key": "trench_sweeper_gas_grenade",
+            "name": "Gas Grenade",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "gallantry": 1
+            },
+            "effect_key": "gas_grenade",
+            "effect_payload": {
+              "duration": 2
+            },
+            "requires_board_target": true,
+            "board_target_kind": "any",
+            "uses_ranged_targeting": true,
+            "range_max": 3,
+            "description": "Units on those tiles take 1 {FX:poison} immediately. Reapplying gas keeps the longer duration.",
+            "normal_description": "Gas Grenade {N}{G} (slow: place gas on target tile and its volley flank tiles (3 tiles) for 2 turns."
+          }
+        ]
+      },
+      "art_id": "gallantry/99th_dieselheart_company/trench_sweeper",
+      "normal_rules_text": "{KW:true_immunity}. {KW:volley} 2. {LIFE}5, {RANGED}2–5 {RANGE}2. Gas Grenade {N}{G} (channeled, {RANGE}3): place gas on target tile and its volley flank tiles (3 tiles) for 2 turns."
+    },
+    {
+      "key": "sanglante",
+      "name": "Sanglante",
+      "type": "unit",
+      "rules_text": "",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-037",
+      "search_aliases": [
+        "sanglante",
+        "bloodlust",
+        "true transformation",
+        "lifesteal",
+        "multistrike",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "aggro"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 2,
+        "gallantry": 2
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 8,
+        "current_health": 8,
+        "melee_damage": 4,
+        "melee_damage_min": 2,
+        "melee_damage_max": 5,
+        "movement": 3,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "passives": [
+          "sanglante_bloodlust"
+        ],
+        "abilities": [
+          {
+            "key": "sanglante_true_transformation",
+            "name": "True Transformation",
+            "speed": "reflex",
+            "energy_cost": {
+              "gallantry": 2
+            },
+            "effect_key": "true_transformation",
+            "effect_string_payload": {
+              "grant": "multistrike:1,lifesteal",
+              "suppress_passive": "sanglante_bloodlust"
+            },
+            "requires_board_target": false,
+            "description": "",
+            "normal_description": "True Transformation {G}{G} (reflex): permanently gain {KW:multistrike} 1 and {KW:lifesteal}; Bloodlust is disabled."
+          }
+        ]
+      },
+      "art_id": "gallantry/99th_dieselheart_company/sanglante",
+      "normal_rules_text": "Bloodlust: when this unit kills an enemy, permanently gain +1/+1. {LIFE}8, {MOVE}3, {MELEE}2–5. True Transformation {G}{G} (reflex): permanently gain {KW:multistrike} 1 and {KW:lifesteal}; Bloodlust is disabled."
+    },
+    {
+      "key": "fumigant",
+      "name": "Fumigant",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/fumigant",
+      "set": "99th_dieselheart_company",
+      "rarity": "uncommon",
+      "collector_number": "GAL-038",
+      "search_aliases": [
+        "fumigant",
+        "gas detonation",
+        "gas on hit",
+        "poison resistance",
+        "cleave",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "control",
+          "poison"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 3,
+        "gallantry": 3
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 9,
+        "current_health": 9,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 3,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "poison_resistance"
+          },
+          {
+            "key": "cleave"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "fumigant_gas_detonation",
+            "name": "Gas Detonation",
+            "speed": "blazing",
+            "energy_cost": {
+              "neutral": 2,
+              "gallantry": 1
+            },
+            "effect_key": "gas_chain_detonate",
+            "effect_payload": {
+              "amount": 3
+            },
+            "requires_board_target": true,
+            "board_target_kind": "any",
+            "uses_ranged_targeting": true,
+            "range_max": 3,
+            "description": "",
+            "normal_description": "Gas Detonation {N}{N}{G} (burst: detonate gas at a tile for 3 damage, chaining to surrounding gas."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:poison_resistance}. Armored Canister: Armor 1. {KW:cleave}. Gas Emission. {LIFE}9, {RANGED}2–3 {RANGE}2. Gas Detonation {N}{N}{G} (blazing, {RANGE}3): detonate gas at a tile for 3 damage, chaining to surrounding gas.",
+      "passives": [
+        "fumigant_armored_canister",
+        "fumigant_gas_emission"
+      ]
+    },
+    {
+      "key": "dieselheart_call",
+      "name": "The Dieselheart Call",
+      "type": "spell",
+      "rules_text": "{KW:stockpile} charges are consumed when spawned; cards with {KW:stockpile} remaining stay in your deck.",
+      "art_id": "gallantry/99th_dieselheart_company/dieselheart_call",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-039",
+      "search_aliases": [
+        "the dieselheart call",
+        "dieselheart call",
+        "deployment surge",
+        "deck spawn",
+        "summon from deck",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "spell",
+          "aggro",
+          "token"
+        ]
+      },
+      "energy_cost": {
+        "neutral": 5,
+        "gallantry": 5
+      },
+      "spell": {
+        "speed": "channeled",
+        "effect_key": "spawn_deck_units_deploy_zone",
+        "effect_payload": {
+          "mana_budget": 12,
+          "deck_top": 10
+        }
+      },
+      "normal_rules_text": "(channeled). Spawn units from the top 10 cards of your deck (up to 12 total mana) onto random empty tiles in your base deployment zone. Chooses a random valid combination whose costs add up to exactly 12, or the highest exact total below 12 if 12 is impossible. Spawned units are {FX:stunned}."
+    },
+    {
+      "key": "miasma",
+      "name": "Miasma",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/miasma",
+      "set": "99th_dieselheart_company",
+      "rarity": "common",
+      "collector_number": "GAL-040",
+      "search_aliases": [
+        "miasma",
+        "gas on hit",
+        "poison resistance",
+        "billow",
+        "cleave",
+        "gallantry",
+        "dieselheart"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "control",
+          "poison"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 1
+      },
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 3,
+        "current_health": 3,
+        "ranged_damage": 3,
+        "ranged_damage_min": 2,
+        "ranged_damage_max": 3,
+        "ranged_range": 2,
+        "ranged_deadzone": 0,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": [
+          {
+            "key": "poison_resistance"
+          }
+        ],
+        "abilities": [
+          {
+            "key": "miasma_billow",
+            "name": "Billow",
+            "speed": "channeled",
+            "energy_cost": {
+              "neutral": 1,
+              "gallantry": 1
+            },
+            "effect_key": "grant_cleave_self",
+            "requires_board_target": false,
+            "description": "",
+            "normal_description": "Billow {N}{G} (channeled): gain {KW:cleave} until end of your turn."
+          }
+        ]
+      },
+      "normal_rules_text": "{KW:poison_resistance}. Gas Emission. {LIFE}3, {RANGED}2–3 {RANGE}2. Gas Emission: Damage this unit does places a gas cloud on each tile it damages for 2 of your turn-ends and applies 1 {FX:poison} to each unit on it (including {KW:cleave} hits). Billow {N}{G} (channeled): gain {KW:cleave} until end of turn.",
+      "passives": [
+        "miasma_gas_emission"
+      ]
+    },
+    {
+      "key": "war_time_belles",
+      "name": "War Time Belles",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/war_time_belles",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-041",
+      "search_aliases": [
+        "war time belles",
+        "belles",
+        "gallantry",
+        "support",
+        "aura",
+        "multistrike",
+        "movement"
+      ],
+      "search_facets": {
+        "faction": [
+          "99th_dieselheart_company"
+        ],
+        "color": [
+          "gallantry",
+          "green"
+        ],
+        "role": [
+          "unit",
+          "support"
+        ]
+      },
+      "energy_cost": {
+        "gallantry": 3,
+        "neutral": 2
+      },
+      "passives": [
+        "war_time_belles_march"
+      ],
+      "abilities": [
+        "war_time_belles_battle_hymn",
+        "war_time_belles_cheers_of_battle"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "ranged",
+        "base_health": 6,
+        "current_health": 6,
+        "ranged_damage": 2,
+        "ranged_damage_min": 1,
+        "ranged_damage_max": 4,
+        "ranged_range": 4,
+        "ranged_deadzone": 0,
+        "movement": 4,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": []
+      },
+      "normal_rules_text": "March Aura: at start of turn, surrounding allies gain +1 movement. {LIFE}6, {MOVE}4, {RANGED}1–4 {RANGE}4. Battle Hymn {N}{G} (channeled): surrounding allies gain +1 damage this turn. The Cheers of Battle {G}{G}{G}{N} (channeled): grant an {ADJACENT} ally {KW:multistrike} 1 this turn."
+    },
+    {
+      "key": "glorious_standard",
+      "name": "The Glorious Standard",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/glorious_standard",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-042",
+      "energy_cost": {
+        "gallantry": 5,
+        "neutral": 4
+      },
+      "passives": [
+        "glorious_standard_sentinel_veil"
+      ],
+      "abilities": [],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 9,
+        "current_health": 9,
+        "melee_damage": 6,
+        "melee_damage_min": 5,
+        "melee_damage_max": 8,
+        "movement": 2,
+        "shape": [
+          [
+            0,
+            0
+          ]
+        ],
+        "keywords": []
+      },
+      "normal_rules_text": "Sentinel Veil: the first time each turn a surrounding ally would die, prevent death and set HP to 1. {LIFE}9, {MOVE}2, {MELEE}5–8."
+    },
+    {
+      "key": "lady_concordia",
+      "name": "Lady Concordia",
+      "type": "unit",
+      "rules_text": "",
+      "art_id": "gallantry/99th_dieselheart_company/lady_concordia",
+      "set": "99th_dieselheart_company",
+      "rarity": "rare",
+      "collector_number": "GAL-043",
+      "energy_cost": {
+        "gallantry": 6,
+        "neutral": 4
+      },
+      "passives": [
+        "lady_concordia_promise",
+        "lady_concordia_armored_regalia"
+      ],
+      "abilities": [
+        "lady_concordia_love"
+      ],
+      "unit": {
+        "entity_type": "unit",
+        "unit_type": "infantry",
+        "attack_type": "melee",
+        "base_health": 15,
+        "current_health": 15,
+        "melee_damage": 2,
+        "melee_damage_min": 1,
+        "melee_damage_max": 4,
+        "movement": 8,
+        "shape": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "keywords": [
+          "cleave"
+        ]
+      },
+      "normal_rules_text": "Armored Regalia: Armor 1. {KW:cleave}. 2×2. {LIFE}15, {MOVE}8, {MELEE}1–4. Concordia's Promise: when an ally within {RANGE}2 takes enemy damage, permanently gain +1 attack and heal 1 HP. Concordia's Love {G}{G}{N}{N} (channeled): permanently expand Promise range by 1."
+    }
+  ]
+}

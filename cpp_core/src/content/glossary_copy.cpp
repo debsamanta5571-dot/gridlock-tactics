@@ -1,0 +1,491 @@
+#include "tactics/content/glossary_copy.hpp"
+
+#include <nlohmann/json.hpp>
+
+#include <mutex>
+#include <optional>
+#include <stdexcept>
+#include <unordered_map>
+
+// Windows/Unreal headers may define `key` / `status` macros that break nlohmann/json and field names.
+#ifdef key
+#undef key
+#endif
+#ifdef status
+#undef status
+#endif
+
+namespace tactics {
+namespace {
+
+using json = nlohmann::json;
+
+struct GlossarySidebarCopy {
+	std::string normal;
+	std::string advanced;
+};
+
+std::recursive_mutex g_glossary_mutex;
+std::unordered_map<std::string, GlossarySidebarCopy> g_keyword_bodies;
+std::unordered_map<std::string, GlossarySidebarCopy> g_term_bodies;
+std::unordered_map<std::string, GlossarySidebarCopy> g_speed_bodies;
+std::unordered_map<std::string, GlossarySidebarCopy> g_icon_bodies;
+std::unordered_map<std::string, GlossarySidebarCopy> g_status_bodies;
+bool g_builtins_loaded{false};
+
+std::optional<GlossarySidebarCopy> parse_glossary_entry_value(const json& value, std::string& err_out)
+{
+	GlossarySidebarCopy entry;
+	if (value.is_string()) {
+		entry.normal = value.get<std::string>();
+		entry.advanced = entry.normal;
+		return entry;
+	}
+	if (value.is_object()) {
+		entry.normal = value.value("normal", std::string{});
+		entry.advanced = value.value("advanced", std::string{});
+		if (entry.normal.empty() && !entry.advanced.empty()) {
+			entry.normal = entry.advanced;
+		}
+		if (entry.advanced.empty() && !entry.normal.empty()) {
+			entry.advanced = entry.normal;
+		}
+		if (entry.normal.empty() && entry.advanced.empty()) {
+			err_out = "glossary_copy entry must be a string or object with normal/advanced text";
+			return std::nullopt;
+		}
+		return entry;
+	}
+	err_out = "glossary_copy entry must be a string or object";
+	return std::nullopt;
+}
+
+std::string pick_glossary_body(const GlossarySidebarCopy& entry, bool advanced)
+{
+	if (advanced && !entry.advanced.empty()) {
+		return entry.advanced;
+	}
+	if (!entry.normal.empty()) {
+		return entry.normal;
+	}
+	return entry.advanced;
+}
+
+bool merge_glossary_section(const json& section, std::unordered_map<std::string, GlossarySidebarCopy>& out,
+	std::string& err_out)
+{
+	if (!section.is_object()) {
+		return false;
+	}
+	for (const auto& [key, value] : section.items()) {
+		const std::optional<GlossarySidebarCopy> parsed = parse_glossary_entry_value(value, err_out);
+		if (!parsed) {
+			return false;
+		}
+		out[key] = *parsed;
+	}
+	return true;
+}
+
+bool merge_glossary_json(const json& root, std::string& err_out)
+{
+	if (!root.is_object()) {
+		err_out = "glossary_copy root must be an object";
+		return false;
+	}
+	if (root.contains("keywords")) {
+		const json& keyword_node = root.at("keywords");
+		if (!keyword_node.is_object()) {
+			err_out = "glossary_copy.keywords must be an object";
+			return false;
+		}
+		if (!merge_glossary_section(keyword_node, g_keyword_bodies, err_out)) {
+			return false;
+		}
+	}
+	if (root.contains("terms")) {
+		const json& term_node = root.at("terms");
+		if (!term_node.is_object()) {
+			err_out = "glossary_copy.terms must be an object";
+			return false;
+		}
+		if (!merge_glossary_section(term_node, g_term_bodies, err_out)) {
+			return false;
+		}
+	}
+	if (root.contains("speeds")) {
+		const json& speed_node = root.at("speeds");
+		if (!speed_node.is_object()) {
+			err_out = "glossary_copy.speeds must be an object";
+			return false;
+		}
+		if (!merge_glossary_section(speed_node, g_speed_bodies, err_out)) {
+			return false;
+		}
+	}
+	if (root.contains("icons")) {
+		const json& icon_node = root.at("icons");
+		if (!icon_node.is_object()) {
+			err_out = "glossary_copy.icons must be an object";
+			return false;
+		}
+		if (!merge_glossary_section(icon_node, g_icon_bodies, err_out)) {
+			return false;
+		}
+	}
+	if (root.contains("status_effects")) {
+		const json& status_node = root.at("status_effects");
+		if (!status_node.is_object()) {
+			err_out = "glossary_copy.status_effects must be an object";
+			return false;
+		}
+		if (!merge_glossary_section(status_node, g_status_bodies, err_out)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+// BEGIN_GENERATED_GLOSSARY_COPY
+static const char kBuiltinGlossaryCopyJson[] =
+    R"JSON({
+  "schema_version": 1,
+  "keywords": {
+    "base_breaker": "Deals extra damage to enemy bases.",
+    "boost": {
+      "normal": "Applies a bonus effect on your next attack or ability.",
+      "advanced": "Boosts your next attack or activated ability, then is consumed. Different boosts stack on the same action; duplicate stacks queue for later actions. Some expire at your turn end if unused."
+    },
+    "berserk": "Bonus damage below half HP.",
+    "bleed_resistance": "Cannot gain Bleed.",
+    "charge": "Ignores deployment fatigue the turn it enters play (may move, use abilities, and attack normally).",
+    "cleave": "Attacks also hit tiles next to the target.",
+    "command": "You can deploy allies next to this unit with an equal or lower energy cost.",
+    "conduit": "Your spells deal extra damage.",
+    "coordinated": "Deals extra damage if an ally already damaged that target this turn.",
+    "crit_immunity": "Critical hits deal rolled damage instead of max ×1.5.",
+    "crushes_on_move": "Crushes and pushes units in your path.",
+    "defender": "Reactions deal bonus damage.",
+    "exalted": "Has an additional play requirement beyond its energy cost. The requirement is listed on the card.",
+    "entrenched": "Deals extra damage if it hasn't moved this turn.",
+    "evasive": "While it has Evasive stacks, attacks against it have a 50% chance to miss. Loses 1 stack at the start of its controller's turn.",
+    "fire_resistance": "Fire damage doesn't hurt this unit (stacks can still apply).",
+    "first_strike": "When this unit attacks, if it kills the defender, the defender doesn't counterattack.",
+    "flying": "Ignores terrain and can move over other units. Attacks ignore line of sight.",
+    "focus": "Choose one of your units to cast this spell from.",
+    "frenzy": "First kill each turn refreshes move and attack.",
+    "haste": "On the turn it enters play, it can move but can't attack or use abilities.",
+    "immovable": "Cannot be pushed or pulled.",
+    "indestructible": "Can't take damage or be destroyed. Cannot be granted or copied onto other units.",
+    "large_unit": "Ignores rough terrain. Won't fall into void unless most of the unit is over empty space.",
+    "last_gasp": "Triggers an effect when this unit dies.",
+    "lifesteal": "Damage this unit deals heals this unit for the same amount.",
+    "loose_formation": "Does not block movement or LOS; units can pass through.",
+    "low_profile": "This unit doesn't block line of sight.",
+    "magic_resist": "Reduces magic damage (up to 3 per hit).",
+    "multicast": "When you cast this spell, it resolves extra times equal to multicast; you may choose different targets.",
+    "multistrike": "Each attack hits the same target several times.",
+    "pierce": "Damage ignores Shield, Armor, and bonus HP.",
+    "poison_resistance": "Cannot gain Poison.",
+    "precise": "Always rolls maximum damage.",
+    "reach": "Melee attacks can reach 2 tiles away.",
+    "regen": "Heals at its controller's turn end.",
+    "relentless": "Keeps attacking based on the relentless amount; the defender will counterattack no matter what.",
+    "return_fire": "Can shoot back with ranged attacks when attacked in range.",
+    "shadowstrike": "Your attacks don't provoke counterattacks or other reactions.",
+    "slippery": "Can move through occupied cells.",
+    "soul_steal": "Damage this unit deals heals a chosen allied base.",
+    "spearhead": "Must deploy near an enemy base.",
+    "spellbound": "Triggers when you cast a spell.",
+    "stockpile": "You can play this card again until it is used up. Can only be played once per turn.",
+    "surge": "On the turn it enters play, can attack and use abilities but can't move.",
+    "taunt": "Adjacent enemy units must attack and cannot move away from this unit.",
+    "thorns": "Melee attackers take damage when they hit this unit.",
+    "true_immunity": "Immune to Poison and Bleed. Fire can't damage this unit.",
+    "trueshot": "Attacks ignore line of sight and cover.",
+    "vigilance": "Unlimited reactions each turn.",
+    "volley": "Can only attack cardinally. Attacks fire in a cone that does less damage the further away it is.",
+    "whirlwind": "Attacks hit all surrounding tiles."
+  },
+  "terms": {
+    "aether_tiles": {
+      "normal": "Center map tiles that blast the nearest enemy base and units on them once your team holds them uncontested.",
+      "advanced": "Permanent terrain grouped into independent clusters (maps may place more than one). Objectives contest from round 3 (first full round where every player has taken a turn); payouts begin round 4. At the start of your turn from round 4 onward, if your team has a qualifying unit on any tile in a cluster and no enemy team does, that cluster deals escalating damage to the closest hostile base (from your base) and to every entity on its tiles (including large units). Each team fires each cluster at most once per round. +1 damage per successful burst per cluster; pauses while an enemy stands on any tile in that cluster; resets when your team leaves that cluster or control flips. Large units never count for control; 1×1 structures count. Overlays (gas, etc.) can stack on aether; the terrain itself cannot be replaced."
+    },
+    "scanner_tiles": {
+      "normal": "Far-left tiles beside each base. From round 4, hold the enemy scanner uncontested at turn start to scan 1 before your draw.",
+      "advanced": "Permanent terrain on the standard duel map: one tile per side on the far-left column (col 0, row 4 near P1; col 0, row 7 near P2), two rows toward center from each base. Each tile is tied to the adjacent base seat (`home_seat`). Contest from round 3; payouts from round 4 (`kObjectiveActivationRound`). At the start of your turn from round 4 onward, if your team has sole control of a hostile scanner tile (same qualifying/control rules as aether: team-wide presence, no enemy qualifying unit on that tile, once per round per team per tile), you scan 1 via the `scan` effect before your turn draw; the draw waits until scan selection finishes. Terrain cannot be replaced; overlays can stack. Snapshot v5: `scanner_clusters[]`."
+    },
+    "omni_energy_tiles": {
+      "normal": "Far-right tiles beside each base. From round 4, hold the enemy omni-energy tile uncontested at turn start to gain 1 floating omni energy.",
+      "advanced": "Permanent terrain on the standard duel map: one tile per side on the far-right column (col 7, row 4 near P1; col 7, row 7 near P2), two rows toward center from each base. Each tile is tied to the adjacent base seat (`home_seat`). Contest from round 3; payouts from round 4 (`kObjectiveActivationRound`). At the start of your turn from round 4 onward, if your team has sole control of a hostile omni-energy tile (same qualifying/control rules as scanner/aether: team-wide presence, no enemy qualifying unit on that tile, once per round per team per tile), you gain 1 unrestricted floating omni energy (`player_energy[Omni]`). Terrain cannot be replaced; overlays can stack. Snapshot v6: `omni_energy_clusters[]`."
+    },
+    "armor": "Reduces incoming attack and ability damage (capped at 5).",
+    "chain": {
+      "normal": "After the primary target resolves, the effect chains to each connected unit or structure - cardinally or diagonally.",
+      "advanced": "After the primary target resolves successfully, the effect floods through every unit and structure reachable from that target via 8-way adjacency (orthogonal or diagonal). Each entity is hit at most once. Ally-targeted chains stay on allies; any-target chains cross team lines. Bases and pure obstacles are skipped."
+    },
+    "flux_energy": "Energy that can only be spent to cast spells or use activated abilities (not deployment).",
+    "player_base_turret": {
+      "normal": "Innate base turret: ignores cover/LOS, your shots don't provoke counters, crits deal rolled damage.",
+      "advanced": "Player bases bundle three innate traits: **Trueshot** (turret attacks ignore line of sight and cover), **Shadowstrike** (turret fire does not provoke counterattacks or other combat reactions), and **Crit Immunity** (critical hits against the base deal rolled damage instead of max ×1.5)."
+    },
+    "survives": {
+      "normal": "This unit must still be alive when the phase fully resolves.",
+      "advanced": "Phase survival: the source must still be on the board with HP above 0 after every queued action in the committed phase batch resolves - not just after its own combat exchange. Counterattacks, thorns, and any later attacks or spells in the same batch all count. If the unit dies before the batch ends, the effect does not trigger. Tithe passives use this level. Engine: reactive_string_payload.source_survive_until = phase_resolution."
+    },
+    "survives_exchange": {
+      "normal": "This unit must still be alive after the full combat exchange on that strike.",
+      "advanced": "Exchange survival: the source must survive the immediate strike and all reactions on that exchange (counterattack, thorns, etc.) before deferred reactives fire. It does not wait for later actions in the phase batch. Default for damage_dealt reactives without source_survive_until. Engine: defer_reactive on the damage packet; fire_pending_reactives after counterattack or ability handler return."
+    },
+    "scan": {
+      "normal": "Look at the top cards of your deck and discard any you choose. The rest stay on top in the same order.",
+      "advanced": "Effect key `scan` with payload `amount` (X). Peeks the top X deck cards without drawing them. You may discard any subset (CLI: `scan_discard <idx>`, `scan_finish`; Unreal: tap a peeked card to discard, or Keep all). Resolution pauses until you finish. Cards not discarded remain on top of the deck in peek order."
+    },
+    "depleted": {
+      "normal": "A depleted land has already spent its one 'use land' charge for the turn, so you can't use its ability now. It refreshes at the start of your next turn. A land with the depleted keyword enters play depleted the turn you conquer it.",
+      "advanced": "Territory state (`depleted`). A land has one shared use per turn across its abilities (`land_use_available`); using an ability sets `depleted` and spends the charge. `refresh_land_use` at your turn start clears `depleted` and restores the charge. The `depleted` keyword makes a territory enter depleted (charge starts spent); `groundwork <color> (ignore depleted)` overrides that and lets it enter ready. Auto-tapping a land for payment also depletes it."
+    },
+    "groundwork": {
+      "normal": "An entrance bonus on a land that only triggers if the previous territory you conquered was a basic territory of the named color (e.g. groundwork ingenuity checks for a basic ingenuity land). Set up your basics first to unlock it.",
+      "advanced": "Territory entrance trigger (`groundwork <color>`), evaluated on placement against your previously-conquered territory. It fires only if that prior land was a basic territory of the matching color. Variants: `ignore depleted` (the land enters ready instead of depleted) and `destroy if unmet` (the land is destroyed on entry if the condition fails). An optional effect resolves when the condition is met."
+    }
+  },
+  "speeds": {
+    "channeled_spell": "This spell can only be cast during the main phases of your turn.",
+    "channeled_ability": "This ability can only be cast during the main phases of your turn.",
+    "reflex_spell": "This spell can be cast during any phase of your turn and can be played during reaction phases on other players turns.",
+    "reflex_ability": "This ability can be cast during any phase of your turn and can be played during reaction phases on other players turns.",
+    "blazing_spell": "This spell can be cast during any phase of your turn and can be played during reaction phases on other players turns. This spell resolves immediately.",)JSON"
+    R"JSON(    "blazing_ability": "This ability can be cast during any phase of your turn and can be played during reaction phases on other players turns. This ability resolves immediately."
+  },
+  "icons": {
+    "energy_orange": "Orange (Ingenuity) energy. Spend from your orange zones to deploy, cast spells, and use abilities.",
+    "energy_green": "Green (Gallantry) energy. Spend from your green zones to deploy, cast spells, and use abilities.",
+    "energy_turquoise": "Turquoise (Mythology) energy. Spend from your turquoise zones to deploy, cast spells, and use abilities.",
+    "energy_red": "Red energy. Spend from your red zones to deploy, cast spells, and use abilities.",
+    "energy_purple": "Purple energy. Spend from your purple zones to deploy, cast spells, and use abilities.",
+    "energy_omni": "Omni energy. Can pay for any single-color energy requirement.",
+    "energy_neutral": "You can use any energy to pay for neutral energy.",
+    "energy_neutral_x": "Variable neutral energy (X). You choose how much to spend when you play it.",
+    "passive_passive": "Passive. Always active while this unit is on the board (unless silenced).",
+    "passive_aura": "Aura. Ongoing effect that reaches nearby units or structures.",
+    "stats_life": "Hit points. How much damage this unit can take before it is destroyed.",
+    "stats_armor": "Armor. Reduces incoming attack and ability damage (capped at 5).",
+    "stats_melee": "Melee attack damage.",
+    "stats_movement": "Movement. How many tiles this unit can move with one move action.",
+    "stats_ranged": "Ranged attack damage.",
+    "stats_range": "How far an attack or ability can hit.",
+    "stats_range_self": "How far an attack or ability can hit. You may also target the caster.",
+    "stats_adjacent": "Targets or affects adjacent tiles.",
+    "stats_adjacent_self": "Targets or affects tiles adjacent to this unit.",
+    "actions_movement_ready": "Move action available this turn.",
+    "actions_movement_used": "Move action already spent this turn.",
+    "actions_attack_ready": "Attack action available this turn.",
+    "actions_attack_used": "Attack action already spent this turn.",
+    "actions_reaction_ready": "Reaction available this turn (counterattack, Return Fire, etc.).",
+    "actions_reaction_used": "Reaction already spent this turn.",
+    "actions_ability_ready": "Ability use still available this turn.",
+    "actions_ability_used": "Ability use already spent this turn."
+  },
+  "status_effects": {
+    "artillery_mode_buff": "Artillery stance.",
+    "aura_range_boost": "Aura reaches farther.",
+    "aura_stats_boost": "Stronger aura.",
+    "barrier": "Blocks damage until its controller's turn end.",
+    "bleed": "Takes damage each time it moves. Loses 1 stack at its controller's turn end.",
+    "bonus_health": "Extra hit points above normal max health.",
+    "bonus_move_grant": "Extra move this turn.",
+    "damage_aura_grant": "Bonus damage this turn from Battle Hymn.",
+    "grant_cleave_self_buff": "Cleave until end of turn.",
+    "grant_first_strike_self_buff": "First Strike until end of turn.",
+    "movement_aura_grant": "Bonus movement this turn from March Aura.",
+    "multistrike_ally_grant": "Multistrike this turn.",
+    "hyperactive_scanning": {
+      "normal": "Temporarily gain the keywords of surrounding units.",
+      "advanced": "Temporarily gain the keywords of surrounding units."
+    },
+    "reactive_armor_grant": {
+      "normal": "Gained 1 Armor. Whenever this unit takes damage it gains 1 more Armor until your next turn.",
+      "advanced": "Gained 1 Armor from Reactive Armor. Whenever this unit takes damage it gains 1 more Armor. The armor and ability is lost at the start of your next turn."
+    },
+    "relentless_aura_grant": "Relentless until end of turn.",
+    "boost": {
+      "normal": "Applies a bonus effect on your next attack or ability.",
+      "advanced": "Boosts your next attack or activated ability, then is consumed. Different boosts stack on the same action; duplicate stacks queue for later actions. Some expire at your turn end if unused."
+    },
+    "covering_fire": "Covering fire ready.",
+    "dash_movement": "+1 move this turn.",
+    "defend_stance": "Defending (+armor).",
+    "recover_stance": "Recovering - heal 2 HP at your next turn start if you take no damage.",
+    "delayed_next_damage_bonus": "At your next turn start, becomes extra damage on your next attack or ability.",
+    "explosive_graft": "The next time an enemy damages this unit, all surrounding units take 5 damage and 2 overload.",
+    "deployment_fatigue": {
+      "normal": "Can't move, defend, dash, use abilities, or make ranged attacks on the turn it enters play.",
+      "advanced": "Until your next turn start: can't move, use abilities, or make voluntary ranged attacks (melee attacks OK). Ranged counterattacks still work when a keyword or passive triggers them (e.g. Return Fire). Can't defend or dash unless you have Surge. Haste: move only. Surge: attack, abilities, defend, and dash without moving. Charge and buildings ignore fatigue."
+    },
+    "fire": "Takes damage at its controller's turn end; may spread.",
+    "jammed": "Can't use activated abilities. Loses 1 stack at its controller's turn end.",
+    "medical_override": "Damaging abilities heal allies for that damage; enemies still take damage. Expires at end of that unit's turn.",
+    "next_ability_doubled": "Your next activated ability is echoed once at reflex speed.",
+    "next_damage_bonus": "Extra damage on your next attack or ability. One stack per action.",
+    "on_damage_apply_bleed_next_ability": "Your next attack or ability applies bleed to each unit it damages.",
+    "on_damage_apply_jammed": "Each time you deal damage, apply 1 jammed. Expires at your turn end.",
+    "on_damage_apply_jammed_next_ability": "Your next attack or ability applies 1 jammed to each entity it damages.",
+    "on_damage_apply_movement_reduction_next_ability": "Your next damaging ability reduces 1 movement to each unit it damages.",
+    "on_damage_apply_overload": "Each time you deal damage, apply 1 overload. Expires at your turn end.",
+    "on_damage_apply_overload_next_ability": "Your next attack or ability applies 1 overload to each entity it damages.",
+    "on_damage_apply_rooted_next_ability": "Your next damaging ability roots each unit it damages.",
+    "overload": "Explodes at its controller's turn end at 3+ stacks.",
+    "poison": "Takes damage at its controller's turn end (−1 attack per stack). Loses 1 stack.",
+    "rooted": "Can't move. Loses 1 stack at its controller's turn end.",
+    "shield": "Blocks one instance of damage from attacks or abilities.",
+    "silenced": "Disables keywords, passives, and buffs.",
+    "stealth": "Can't be targeted directly. Loses 1 stack at its controller's turn end.",
+    "valiant_guard": "The next time a surrounding 1×1 ally is targeted by an attack, swap positions and take that attack.",
+    "stunned": "Can't move, attack, or use reactions or abilities. Loses 1 stack at its controller's turn end.",
+    "style": "Flavor counter.",
+    "volatile_surge_buff": "May attack and use abilities despite deployment fatigue until your next turn.",
+    "whirlwind_spray_buff": "Whirlwind with adjusted ranged range until end of turn.",
+    "shocking_stimulus_movement": "Extra movement this turn.",
+    "vulnerable": "Takes 1 extra damage from attacks and abilities per stack. Loses 1 stack at its controller's turn end."
+  }
+})JSON";
+// END_GENERATED_GLOSSARY_COPY
+
+bool load_builtins_unlocked(std::string& err_out)
+{
+	g_keyword_bodies.clear();
+	g_term_bodies.clear();
+	g_speed_bodies.clear();
+	g_icon_bodies.clear();
+	g_status_bodies.clear();
+	try {
+		const json root = json::parse(kBuiltinGlossaryCopyJson);
+		if (!merge_glossary_json(root, err_out)) {
+			return false;
+		}
+		g_builtins_loaded = true;
+		return true;
+	} catch (const json::exception& ex) {
+		err_out = ex.what();
+		return false;
+	}
+}
+
+/** Caller must hold g_glossary_mutex. */
+bool ensure_builtin_glossary_copy_loaded_unlocked(std::string& err_out)
+{
+	if (g_builtins_loaded) {
+		return true;
+	}
+	return load_builtins_unlocked(err_out);
+}
+
+}  // namespace
+
+void clear_glossary_copy()
+{
+	std::lock_guard lock(g_glossary_mutex);
+	g_keyword_bodies.clear();
+	g_term_bodies.clear();
+	g_speed_bodies.clear();
+	g_icon_bodies.clear();
+	g_status_bodies.clear();
+	g_builtins_loaded = false;
+}
+
+bool load_glossary_copy_from_json_utf8(const std::string& utf8, std::string& err_out)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	if (!ensure_builtin_glossary_copy_loaded_unlocked(err_out)) {
+		return false;
+	}
+	try {
+		const json root = json::parse(utf8);
+		return merge_glossary_json(root, err_out);
+	} catch (const json::exception& ex) {
+		err_out = ex.what();
+		return false;
+	}
+}
+
+void ensure_builtin_glossary_copy_loaded()
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+}
+
+std::string keyword_glossary_body(const std::string& keyword_id, bool advanced)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+	if (const auto it = g_keyword_bodies.find(keyword_id); it != g_keyword_bodies.end()) {
+		return pick_glossary_body(it->second, advanced);
+	}
+	return {};
+}
+
+std::string term_glossary_body(const std::string& term_id, bool advanced)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+	if (const auto it = g_term_bodies.find(term_id); it != g_term_bodies.end()) {
+		return pick_glossary_body(it->second, advanced);
+	}
+	return {};
+}
+
+std::string speed_glossary_body(const std::string& speed_id, bool advanced)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+	if (const auto it = g_speed_bodies.find(speed_id); it != g_speed_bodies.end()) {
+		return pick_glossary_body(it->second, advanced);
+	}
+	return {};
+}
+
+std::string icon_glossary_body(const std::string& icon_id, bool advanced)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+	if (const auto it = g_icon_bodies.find(icon_id); it != g_icon_bodies.end()) {
+		return pick_glossary_body(it->second, advanced);
+	}
+	return {};
+}
+
+std::string status_glossary_body(const StatusEffectSpec& spec, bool advanced)
+{
+	std::lock_guard lock(g_glossary_mutex);
+	std::string err;
+	(void)ensure_builtin_glossary_copy_loaded_unlocked(err);
+	const std::string status_id = spec.key;
+	if (const auto it = g_status_bodies.find(status_id); it != g_status_bodies.end()) {
+		return pick_glossary_body(it->second, advanced);
+	}
+	if (spec.blocks_activated_abilities) {
+		return "No activated abilities.";
+	}
+	if (spec.expire_on == "owner_turn_end") {
+		return "Loses 1 stack at its controller's turn end.";
+	}
+	if (spec.expire_on == "owner_turn_start") {
+		return "Loses 1 stack at its controller's turn start.";
+	}
+	if (spec.explosion_threshold > 0) {
+		return "Explodes at its controller's turn end when stacks get too high.";
+	}
+	if (spec.expire_on == "never") {
+		return "Does not decay on its own.";
+	}
+	return {};
+}
+
+}  // namespace tactics
