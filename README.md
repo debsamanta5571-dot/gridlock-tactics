@@ -19,7 +19,7 @@ Unreal sends commands to its own running C++ instance and draws the 3D board fro
 Advanced C++ module that is extendable and can be used alone or with unreal
 Extendable json system for storing cards
 Advanced AI using mtchts
-Unreal Gui.
+Unreal Gui. extend more
 
 ## Downloads
 
