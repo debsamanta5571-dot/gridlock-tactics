@@ -8,27 +8,20 @@ This is a work in progress prototype for a multiplayer tactical card game me and
 
 ## Architecture
 
-## Architecture
-
 The real purpose of this is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
 
 The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
-
 ## Downloads
 
 - [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
 - [Standalone C++ host + CLI (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
 
-
-
-
-
 ## Unreal build
 
-Unreal zip: unzip and run `TacticsGameUnreal.exe`.
+Unzip the Unreal zip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
 
 - Play vs AI
 - Host LAN / Join (default port 8788)
@@ -37,7 +30,9 @@ Unreal zip: unzip and run `TacticsGameUnreal.exe`.
 
 I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
-If you still want the headless host:
+The C++ zip has `run_net_server.bat` / `tactics_net_server.exe` (headless host) and `run_cli.bat` (text match). Card data is already in the zip.
+
+If you want to build it from this repo instead:
 
 ```
 .\build_standalone.bat
@@ -45,7 +40,6 @@ If you still want the headless host:
 ```
 
 That builds `tactics_net_server` if it isn't there yet and loads cards from `TacticsGameUnreal 5.8\Content`. From the packaged game, Join `ws://127.0.0.1:8788/`.
-
 
 LAN bind (0.0.0.0):
 
@@ -55,8 +49,6 @@ LAN bind (0.0.0.0):
 
 Extra args go through (`--port 9000`, `--token secret`).
 
-
-C++ zip: `run_net_server.bat` / `tactics_net_server.exe` is the headless host, `run_cli.bat` is the text match. Card data is already in the zip.
 Interactive C++ match with no Unreal at all:
 
 ```
