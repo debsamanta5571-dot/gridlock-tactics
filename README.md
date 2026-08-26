@@ -37,6 +37,16 @@ Unzip and run `TacticsGameUnreal.exe`.
 
 The rules are a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws the match; nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns.
 
+### How the core runs
+
+The sources are grouped by job. Headers live in `include/tactics/`, implementation in `src/`: `board`, `cards`, `combat`, `energy`, `core`, `actions`, `effects`. All of it is under the `tactics` namespace. Match data is structs. The running match is classes (`GameState`, `TurnManager`, `CombatResolver`). If an action is illegal, it returns `ActionResult` and does not change the board.
+
+A command is one line of tokens. `dispatch_master_cli_line` reads the first word and constructs a `GameAction` (`play`, `move_confirm`, `attack`, `end_main`, and the rest). The action validates, then executes.
+
+`TurnManager` is the clock. It walks Energy, Main, a reaction window if spells were queued, Attack, Defense, Second Main, and a bonus-attack step when a unit has earned one. `GameState` holds the grid, the decks, energy, and the stack.
+
+Spells and abilities do not write damage themselves. They become `StackItem`s: an `effect_key` and a payload. `EffectRegistry` records whether that key needs a board target and whether it deals damage. The handlers are pulled into `game_state.cpp` from smaller include files (`game_state_effects_combat.inc` and others like it). Attacks go through `CombatResolver` (range, line of sight, cover, the roll, armor or magic resist, then a counterattack if there is one). A move is previewed, rotated if the piece covers more than one tile, then confirmed. Energy spend is stored so a cancelled play can refund the same lands.
+
 ### Same C++ in Unreal
 
 Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list. It can `--check` that they still match. Every client sends commands through `dispatch_master_cli_line`. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
