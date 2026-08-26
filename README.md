@@ -37,8 +37,6 @@ Unzip and run `TacticsGameUnreal.exe`.
 
 The rules are a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws the match; nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns.
 
-The library has multi-tile units, A* pathing, and line of sight. Energy comes from territories; flux only pays for spells and abilities. A turn manager and a phase batch queue run the phases. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
-
 ### Same C++ in Unreal
 
 Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list. It can `--check` that they still match. Every client sends commands through `dispatch_master_cli_line`. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
