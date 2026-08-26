@@ -20,27 +20,27 @@ Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine`
 
 ### Rules core
 
-The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws it; nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns.
+The rules are a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws the match; nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns.
 
-The library covers multi-tile units, A* pathing, line of sight, territories and energy (including flux, which only pays for spells and abilities), a turn manager, and a phase batch queue. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
+The library has multi-tile units, A* pathing, and line of sight. Energy comes from territories; flux only pays for spells and abilities. A turn manager and a phase batch queue run the phases. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
 
 ### Same C++ in Unreal
 
-Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A Python script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list, including a `--check` mode. Every client uses the same command entry point (`dispatch_master_cli_line`). The core also builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
+Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list. It can `--check` that they still match. Every client sends commands through `dispatch_master_cli_line`. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
 
 ### Cards and data
 
-Cards, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A legal list is 40 cards, 5 reserves, and 20 territories.
+Cards, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A legal setup is 40 cards, 5 reserves, and 20 territories.
 
 ### Networking
 
-The host's `GameState` is authoritative. Clients talk over WebSocket (port 8788, wire version 4). The host replies with full snapshots, JSON-patch deltas, and a command journal. A room token, if set, is HMAC-SHA256 over seat, a rising counter, and the line, so captured frames cannot be replayed. TLS is optional if the server is built with OpenSSL. `tactics_net_server` is the headless host (P1 is the server, joiners are P2+). `tactics_net_client` joins that same socket in text.
+The host is the authority. Clients connect over WebSocket (port 8788, wire version 4). The host sends full snapshots, JSON-patch deltas, and a command journal. If a room token is set, each command is signed with HMAC-SHA256 over the seat, a rising counter, and the text. A captured packet cannot be replayed. TLS is optional if the server is built with OpenSSL. `tactics_net_server` is the headless host (P1 is the server, joiners are P2+). `tactics_net_client` joins that same socket as a text client.
 
 ## Reasoning
 
 The real purpose of this c++ architecture is to hook it up to a physical smart board later. The board would register the positions of the pieces straight into the software over WebSockets.
 
-The rules are not Unreal objects. They are a separate C++ module loaded in separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
+The rules are not Unreal objects. They are a separate C++ module loaded separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
 
@@ -54,15 +54,15 @@ The features treat this as both a card game and a tactics game.
 
 **Win condition.** Base health comes first (`difference / 30`). That outweighs everything else.
 
-**Cards and tempo.** After that: cards in hand, float energy (it expires at end of turn), flux, how many cards are left in the deck, and how strong that remaining deck is.
+**Cards and tempo.** After that it looks at cards in hand, float energy (it expires at end of turn), flux, how many cards are left in the deck, and how strong that remaining deck is.
 
 **Piece value.** Units are not counted as equals. Each piece is scored from HP, attack, movement, ranged reach, keywords, activated abilities, engine passives, and status. A large Sentinel is worth more than a 1/1 token. Spawners, energy generators, and auras are worth more still, so the AI does not trade them away cheaply. Armor and damage boosts add to the number. Stun, silence, jammed, damage-over-time, and overload subtract. Evasive adds, because half the attacks miss.
 
-**Position.** Units get credit for closing on the enemy base. Enemy units within two tiles of our base are a penalty, scaled by their attack. Scanner, omni-energy, and aether tiles have hold values. Taking or contesting one scores. Stacking extra units onto a tile that is already contested does not.
+**Position.** Units get credit for closing on the enemy base. Enemy units within two tiles of our base are a penalty, scaled by their attack. Scanner, omni-energy, and aether tiles have hold values. Taking or contesting one scores; stacking extra units onto a tile that is already contested does not.
 
 **Attacks.** It prefers high `piece_value` targets and pays extra for a kill rather than chip damage. Evasive targets and low cover cut the expected value in half unless the attacker has trueshot or flying. It accounts for the counterattack, including lines where our unit dies for almost nothing. The enemy base stays the best target because it never hits back.
 
-**Spells and abilities.** Damage and debuffs on a valuable enemy score high. Heals and buffs score when an ally actually needs them. Reflex energy is often held for the opponent's turn. Float that would expire is spent now. Wide area effects wait for two or more targets. Deploy scoring includes future engine value, so a ramp card can be worth playing before it does anything the turn it lands.
+**Spells and abilities.** Damage and debuffs on a valuable enemy score high. Heals and buffs score when an ally actually needs them. Reflex energy is often held for the opponent's turn. Float that would expire is spent now. Wide area effects wait for two or more targets. Deploy scoring includes future engine value, so a ramp card can be worth playing before it does anything on the turn it lands.
 
 Search clones the match, runs MCTS, and takes the chosen action. There is no separate Unreal AI.
 
@@ -70,7 +70,7 @@ Search clones the match, runs MCTS, and takes the chosen action. There is no sep
 
 [Standalone C++ host + join client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Cpp-Win64.zip)
 
-I don't really recommend this for actually playing. Its not tested yet and It's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
+I don't really recommend this for actually playing. It's not tested yet and it's meant to eventually have a web gui talk to it (and later the smart board). If you just want a match, use Host LAN in the packaged game.
 
 Download the C++ zip, unzip it, then:
 
@@ -80,4 +80,4 @@ Download the C++ zip, unzip it, then:
 
 Unreal can still Join the same host at `ws://127.0.0.1:8788/`.
 
-Made with C++ and Unreal 5.7/ 5.8
+Made with C++ and Unreal 5.7/5.8
