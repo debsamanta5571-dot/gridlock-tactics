@@ -16,6 +16,23 @@ Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine`
 - Play vs AI
 - Host LAN / Join (default port 8788)
 
+## Features
+
+- 3 factions: Gallantry (99th Dieselheart Company), Ingenuity (Asterian Civilian Militia), Mythology (The Lost Kingdom)
+- 114 cards
+  - 59 units
+  - 49 spells
+  - 6 buildings
+- 6 constructed decks (3 Militia, 3 Dieselheart)
+- 13 territories (20 lands in a list)
+- 52 keywords, including flying, taunt, evasive, stockpile, haste, and trueshot
+- Spells are Channeled, Reflex, or Blazing
+- Melee and ranged combat, with armor, magic resist, and counterattacks
+- Energy from territories; flux only pays for spells and abilities
+- Status effects: stun, silence, poison, bleed, overload, and more
+- Scanner, omni-energy, and aether tiles on the board
+- Play vs AI, Host LAN / Join, and a deck builder
+
 ## Architecture
 
 ### Rules core
