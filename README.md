@@ -9,7 +9,7 @@ Gridlock Tactics is a tactical card game my friends and I are working on. Matche
 ## Unreal build
 
 - [Unreal 3D client (Win64)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/GridlockTactics-Unreal-Win64.zip)
-- [How to play (PDF)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/HOW_TO_PLAY.pdf)
+- [Rulebook (PDF)](https://github.com/debsamanta5571-dot/gridlock-tactics/releases/latest/download/HOW_TO_PLAY.pdf)
 
 Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine` + `TacticsGameUnreal`).
 

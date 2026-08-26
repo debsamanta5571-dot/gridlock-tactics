@@ -1,4 +1,4 @@
-# How to Play Gridlock Tactics
+# Gridlock Tactics Rulebook
 
 ## 1. Winning
 
