@@ -20,7 +20,7 @@ Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine`
 
 ### Rules core
 
-The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 draws it. Nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns. The win condition is destroying the other base.
+The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws it. Nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns. The win condition is destroying the other base.
 
 The library covers an 8x12 grid with multi-tile units, A* pathing, line of sight, territories and energy (including flux, which only pays for spells and abilities), a turn manager, and a phase batch queue. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
 
