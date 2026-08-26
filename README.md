@@ -67,27 +67,23 @@ The rules are not Unreal objects. They are a separate C++ module loaded separate
 
 Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is currently a board view and a battle view right now. All of the art assets are still placeholders.
 
-## Advanced AI Bot
+## AI
 
-Play vs AI is Monte Carlo Tree Search on that same `GameState`. A generator lists legal deploys, moves, attacks, spells, abilities, and land uses. Attacks that fail range, line of sight, or validation never enter the tree.
+Play vs AI is Monte Carlo Tree Search on the same `GameState`. A generator lists legal deploys, moves, attacks, spells, abilities, and land uses. Anything that fails range, line of sight, or validation never enters the tree.
 
-Each leaf gets a score in `[-1, 1]` from the AI's seat: a dot product of features and weights, then clamped. The default weights are hand-tuned. They can be replaced at runtime from a file (`TACTICS_BOT_WEIGHTS`) without rebuilding. If the match is already over, the score is the real result (base destroyed, or sudden-death base health).
+Each leaf is scored from the AI's seat and clamped to `[-1, 1]`. The score is a weighted sum of features. The default weights are hand-tuned. They can be replaced at runtime from a file (`TACTICS_BOT_WEIGHTS`) without rebuilding. If the match is already over, the score is the actual result: a destroyed base, or remaining base health in sudden death.
 
-The features treat this as both a card game and a tactics game.
+Base health is the first term (`difference / 30`). After that it looks at cards in hand, float energy (which expires at end of turn), flux, remaining deck size, and how strong that deck still is.
 
-**Win condition.** Base health comes first (`difference / 30`). That outweighs everything else.
+Pieces are scored individually from HP, attack, movement, ranged reach, keywords, activated abilities, engine passives, and status. A large Sentinel is worth more than a 1/1 token. Spawners, energy generators, and auras count for more. Armor and damage boosts add; stun, silence, jammed, damage-over-time, and overload subtract. Evasive adds because half of incoming attacks miss.
 
-**Cards and tempo.** After that it looks at cards in hand, float energy (it expires at end of turn), flux, how many cards are left in the deck, and how strong that remaining deck is.
+Units get credit for closing on the enemy base. Enemy units within two tiles of our base are a penalty, scaled by their attack. Scanner, omni-energy, and aether tiles have hold values. Taking or contesting one adds to the score; stacking extra units onto a tile that is already contested does not.
 
-**Piece value.** Units are not counted as equals. Each piece is scored from HP, attack, movement, ranged reach, keywords, activated abilities, engine passives, and status. A large Sentinel is worth more than a 1/1 token. Spawners, energy generators, and auras are worth more still, so the AI does not trade them away cheaply. Armor and damage boosts add to the number. Stun, silence, jammed, damage-over-time, and overload subtract. Evasive adds, because half the attacks miss.
+Attacks prefer high `piece_value` targets and pay extra for a kill rather than chip damage. Evasive targets and low cover cut the expected value in half unless the attacker has trueshot or flying. The search includes the counterattack, including lines where our unit dies for almost nothing. The enemy base is usually the best target because it does not hit back.
 
-**Position.** Units get credit for closing on the enemy base. Enemy units within two tiles of our base are a penalty, scaled by their attack. Scanner, omni-energy, and aether tiles have hold values. Taking or contesting one scores; stacking extra units onto a tile that is already contested does not.
+Damage and debuffs on a valuable enemy score high. Heals and buffs score when an ally actually needs them. Reflex energy is often held for the opponent's turn. Float that would expire is spent now. Wide area effects wait for two or more targets. Deploy scoring includes future engine value, so a ramp card can be worth playing before it does anything on the turn it lands.
 
-**Attacks.** It prefers high `piece_value` targets and pays extra for a kill rather than chip damage. Evasive targets and low cover cut the expected value in half unless the attacker has trueshot or flying. It accounts for the counterattack, including lines where our unit dies for almost nothing. The enemy base stays the best target because it never hits back.
-
-**Spells and abilities.** Damage and debuffs on a valuable enemy score high. Heals and buffs score when an ally actually needs them. Reflex energy is often held for the opponent's turn. Float that would expire is spent now. Wide area effects wait for two or more targets. Deploy scoring includes future engine value, so a ramp card can be worth playing before it does anything on the turn it lands.
-
-Search clones the match, runs MCTS, and takes the chosen action. There is no separate Unreal AI.
+The search clones the match, runs MCTS, and takes the chosen action. Unreal does not have a second AI.
 
 ## C++ server
 
