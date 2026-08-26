@@ -20,29 +20,21 @@ Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine`
 
 ### Rules core
 
-The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws it. Nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns. The win condition is destroying the other base.
+The match is a C++20 library (`cpp_core`). Unreal Engine 5.8 only draws it; nothing in the rules is a `UObject`. One `tactics::GameState` owns the board, energy, cards, combat, and turns.
 
-The library covers an 8x12 grid with multi-tile units, A* pathing, line of sight, territories and energy (including flux, which only pays for spells and abilities), a turn manager, and a phase batch queue. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
+The library covers multi-tile units, A* pathing, line of sight, territories and energy (including flux, which only pays for spells and abilities), a turn manager, and a phase batch queue. Spells and abilities are Channeled, Reflex, or Blazing. Combat is melee or ranged, with armor, magic resist, and counterattacks.
 
 ### Same C++ in Unreal
 
-Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A Python script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list, including a `--check` mode. Slate, the 3D board, Host LAN, the headless server, and the C++ join client all send the same command strings into `dispatch_master_cli_line`. The GUI does not have a second copy of the rules.
+Those same `.cpp` files compile into Unreal through one-line UBT shims (`CppCoreStub_*.cpp`). A Python script (`generate_cpp_core_stubs.py`) keeps CMake and Unreal Build Tool on the same source list, including a `--check` mode. Every client uses the same command entry point (`dispatch_master_cli_line`). The core also builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
 
 ### Cards and data
 
-Cards, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A legal list is 40 cards, 5 reserves, and 20 territories. Adding a card is a data change, not a new Unreal class.
+Cards, abilities, passives, and decks are JSON under `Content/TacticsData/`. Catalogs load at runtime. A legal list is 40 cards, 5 reserves, and 20 territories.
 
 ### Networking
 
-The host owns `GameState`. Clients talk over WebSocket (port 8788, wire version 4). They send command strings. The host replies with full snapshots, JSON-patch deltas, and a command journal. A room token, if set, is HMAC-SHA256 over seat, a rising counter, and the line, so captured frames cannot be replayed. TLS is optional if the server is built with OpenSSL. `tactics_net_server` is the headless host (P1 is the server, joiners are P2+). `tactics_net_client` joins that same socket in text. That is the path for a later microcomputer, smart board, or web UI.
-
-### Unreal client
-
-UE 5.8: Slate HUD, 3D board, combat visualization, deck builder, Play vs AI, Host LAN, and Join.
-
-### Build
-
-C++20, CMake, MSVC, Unreal 5.8 / UBT. The core builds and tests without the editor (`build_standalone.bat`, `aether_bot_test`).
+The host's `GameState` is authoritative. Clients talk over WebSocket (port 8788, wire version 4). The host replies with full snapshots, JSON-patch deltas, and a command journal. A room token, if set, is HMAC-SHA256 over seat, a rising counter, and the line, so captured frames cannot be replayed. TLS is optional if the server is built with OpenSSL. `tactics_net_server` is the headless host (P1 is the server, joiners are P2+). `tactics_net_client` joins that same socket in text.
 
 ## Reasoning
 
