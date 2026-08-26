@@ -18,7 +18,7 @@ Unzip and run `TacticsGameUnreal.exe`. Keep that whole folder together (`Engine`
 
 ## Features
 
-- 2 factions: Asterian Civillian Milita and 99th Dieselheart company
+- 2 factions: Asterian Civillian Milita and 99th Dieselheart Company
 - 114 cards
   - 59 units
   - 49 spells
