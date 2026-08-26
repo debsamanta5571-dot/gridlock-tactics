@@ -379,6 +379,10 @@ void STacticsMainMenuPanel::SelectDeckAt(int32 Index)
 	}
 	SelectedDeckKey = Keys[Index];
 	RebuildDeckOptions();
+	if (IsInMultiplayerLobby() || IsJoiningLobby()) {
+		ApplySelectedDeckToLobby();
+		return;
+	}
 	RefreshUi();
 }
 
@@ -600,9 +604,16 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildLobbyCard()
 										if (!Seat.bOccupied) {
 											Lines += FString::Printf(TEXT("P%d  -  open\n"), Seat.SeatId);
 										} else {
-											const FString DeckLabel = Seat.DeckName.IsEmpty()
+											FString DeckKey = Seat.DeckName;
+											const bool bLocalSeat = (Net->IsHosting() && Seat.bIsHost)
+												|| (!Net->IsHosting()
+													&& Seat.SeatId == Net->GetClientRemoteSeatPlayerId());
+											if (bLocalSeat && !SelectedDeckKey.IsEmpty()) {
+												DeckKey = SelectedDeckKey;
+											}
+											const FString DeckLabel = DeckKey.IsEmpty()
 												? FString(TEXT("Deck"))
-												: (Lib ? Lib->GetDeckDisplayName(Seat.DeckName) : Seat.DeckName);
+												: (Lib ? Lib->GetDeckDisplayName(DeckKey) : DeckKey);
 											Lines += FString::Printf(TEXT("P%d  %s  ·  %s\n"), Seat.SeatId,
 												Seat.bIsHost ? TEXT("Host") : *Seat.DisplayName,
 												*DeckLabel);
@@ -795,6 +806,7 @@ FReply STacticsMainMenuPanel::StartJoin()
 	JoinHostText = SanitizeJoinHost(JoinHostText);
 	JoinPortText = FString::FromInt(Parsed);
 	if (GameInstance.IsValid()) {
+		RebuildDeckOptions();
 		PushMatchSettings();
 		StatusMessage = TEXT("Waiting for host.");
 		GameInstance->StartJoinLobby(FString::Printf(TEXT("ws://%s:%d/"), *JoinHostText, Parsed));

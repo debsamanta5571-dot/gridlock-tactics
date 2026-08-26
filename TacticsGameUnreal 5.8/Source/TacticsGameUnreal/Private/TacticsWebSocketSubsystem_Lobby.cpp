@@ -182,10 +182,17 @@ void UTacticsWebSocketSubsystem::ApplyLobbyStateFromJson(const TSharedPtr<FJsonO
 		Row->TryGetBoolField(TEXT("is_host"), S.bIsHost);
 		Row->TryGetStringField(TEXT("name"), S.DisplayName);
 		Row->TryGetStringField(TEXT("deck_name"), S.DeckName);
-		// Preserve our local deck JSON if this is our seat.
-		const int32 OldIdx = FindLobbySeatIndex(S.SeatId);
-		if (OldIdx != INDEX_NONE && S.SeatId == ClientRemoteSeatPlayerId) {
-			S.DeckJson = LobbySeats[OldIdx].DeckJson;
+		// Keep our pending pick if the host snapshot has not echoed it yet.
+		if (S.SeatId == ClientRemoteSeatPlayerId) {
+			const int32 OldIdx = FindLobbySeatIndex(S.SeatId);
+			if (!PendingJoinDeckJson.IsEmpty()) {
+				S.DeckJson = PendingJoinDeckJson;
+			} else if (OldIdx != INDEX_NONE) {
+				S.DeckJson = LobbySeats[OldIdx].DeckJson;
+			}
+			if (!PendingJoinDeckName.IsEmpty()) {
+				S.DeckName = PendingJoinDeckName;
+			}
 		}
 		Next.Add(S);
 	}
@@ -356,7 +363,7 @@ void UTacticsWebSocketSubsystem::ClientSendLobbyClaim()
 	FString DeckJson = PendingJoinDeckJson;
 	bool bReady = false;
 	if (Idx != INDEX_NONE) {
-		if (!LobbySeats[Idx].DeckJson.IsEmpty()) {
+		if (DeckJson.IsEmpty() && !LobbySeats[Idx].DeckJson.IsEmpty()) {
 			DeckJson = LobbySeats[Idx].DeckJson;
 			DeckName = LobbySeats[Idx].DeckName;
 		}
