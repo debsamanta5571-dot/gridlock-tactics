@@ -57,7 +57,7 @@ The real purpose of this c++ architecture is to hook it up to a physical smart b
 
 The rules are not Unreal objects. They are a separate C++ module loaded separately. The purpose for even having a C++ program is so you will be able to run a small server with a microcomputer. Of course you can also just launch it with Unreal and play on a 3D board.
 
-Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is a board view and a battle view right now. All of the art assets are still placeholders.
+Unreal sends commands to its own running C++ instance and draws the 3D board from that. There is currently a board view and a battle view right now. All of the art assets are still placeholders.
 
 ## Advanced AI Bot
 
