@@ -253,7 +253,7 @@ void UTacticsWebSocketSubsystem::BeginJoinLobby(const FString& Url, const FStrin
 	PendingJoinDeckName = PreferredDeckName;
 	PendingJoinDeckJson = PreferredDeckJson;
 	SessionPhase = ETacticsNetSessionPhase::Lobby;
-	LobbyStatusMessage = TEXT("Connecting to lobby…");
+	LobbyStatusMessage = TEXT("Waiting for host.");
 	ConnectClient(Url);
 	OnLobbyChanged.Broadcast();
 }

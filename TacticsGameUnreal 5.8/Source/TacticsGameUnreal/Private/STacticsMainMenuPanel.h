@@ -22,6 +22,7 @@ public:
 
 private:
 	TWeakObjectPtr<UTacticsGameInstance> GameInstance;
+	FString JoinHostText = TEXT("127.0.0.1");
 	FString JoinPortText = TEXT("8788");
 	FString HostPortText = TEXT("8788");
 	FString SelectedDeckKey = TEXT("militia_starforged");

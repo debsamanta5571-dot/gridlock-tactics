@@ -33,6 +33,58 @@ const FLinearColor kBtnPrimary(0.26f, 0.07f, 0.05f, 1.f);
 constexpr float kMenuCardRadius = 18.f;
 constexpr float kMenuBtnRadius = 10.f;
 
+FString SanitizeJoinHost(FString Host)
+{
+	Host.TrimStartAndEndInline();
+	if (Host.StartsWith(TEXT("ws://"), ESearchCase::IgnoreCase)) {
+		Host.RightChopInline(5);
+	} else if (Host.StartsWith(TEXT("wss://"), ESearchCase::IgnoreCase)) {
+		Host.RightChopInline(6);
+	}
+	int32 Slash = INDEX_NONE;
+	if (Host.FindChar(TEXT('/'), Slash)) {
+		Host.LeftInline(Slash);
+	}
+	int32 Colon = INDEX_NONE;
+	if (Host.FindLastChar(TEXT(':'), Colon) && Colon > 0) {
+		const FString After = Host.Mid(Colon + 1);
+		if (After.IsNumeric()) {
+			Host.LeftInline(Colon);
+		}
+	}
+	Host.TrimStartAndEndInline();
+	if (Host.IsEmpty()) {
+		Host = TEXT("127.0.0.1");
+	}
+	return Host;
+}
+
+int32 PortFromJoinHostField(const FString& HostIn, const int32 FallbackPort)
+{
+	FString Host = HostIn;
+	Host.TrimStartAndEndInline();
+	if (Host.StartsWith(TEXT("ws://"), ESearchCase::IgnoreCase)) {
+		Host.RightChopInline(5);
+	} else if (Host.StartsWith(TEXT("wss://"), ESearchCase::IgnoreCase)) {
+		Host.RightChopInline(6);
+	}
+	int32 Slash = INDEX_NONE;
+	if (Host.FindChar(TEXT('/'), Slash)) {
+		Host.LeftInline(Slash);
+	}
+	int32 Colon = INDEX_NONE;
+	if (Host.FindLastChar(TEXT(':'), Colon) && Colon > 0) {
+		const FString After = Host.Mid(Colon + 1);
+		if (After.IsNumeric()) {
+			const int32 Parsed = FCString::Atoi(*After);
+			if (Parsed >= 1 && Parsed <= 65535) {
+				return Parsed;
+			}
+		}
+	}
+	return FallbackPort;
+}
+
 const FSlateBrush* MenuCardBrush()
 {
 	static const FSlateRoundedBoxBrush Brush(kPanel, kMenuCardRadius, kLine, 1.5f);
@@ -259,6 +311,17 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildTitleCard()
 					.Visibility_Lambda([this]() { return bShowJoinField ? EVisibility::Visible : EVisibility::Collapsed; })
 					[
 						SNew(SVerticalBox)
+						+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 4.f)
+							[SNew(STextBlock)
+									.Text(FText::FromString(TEXT("IP")))
+									.ColorAndOpacity(kMuted)
+									.Font(TacticsCardText::DefaultFont(TEXT("Bold"), 9))]
+						+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 6.f)
+							[SNew(SEditableTextBox)
+									.Text_Lambda([this]() { return FText::FromString(JoinHostText); })
+									.OnTextChanged_Lambda([this](const FText& T) { JoinHostText = T.ToString(); })
+									.HintText(FText::FromString(TEXT("127.0.0.1")))
+									.Font(TacticsCardText::DefaultFont(TEXT("Regular"), 11))]
 						+ SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 4.f)
 							[SNew(STextBlock)
 									.Text(FText::FromString(TEXT("PORT")))
@@ -508,10 +571,13 @@ TSharedRef<SWidget> STacticsMainMenuPanel::BuildLobbyCard()
 									if (!Net) {
 										return FText::GetEmpty();
 									}
+									if (Net->IsHosting()) {
+										return FText::FromString(FString::Printf(
+											TEXT("Hosting LAN · port %d"), Net->GetListenPort()));
+									}
+									const int32 Port = FCString::Atoi(*JoinPortText);
 									return FText::FromString(FString::Printf(
-										TEXT("%s · port %d"),
-										Net->IsHosting() ? TEXT("Hosting LAN") : TEXT("Joined"),
-										Net->IsHosting() ? Net->GetListenPort() : FCString::Atoi(*JoinPortText)));
+										TEXT("Waiting for host · %s:%d"), *JoinHostText, Port));
 								})
 								.ColorAndOpacity(kText)
 								.Font(TacticsCardText::DesignFont(TEXT("Bold"), 18))]
@@ -717,17 +783,21 @@ FReply STacticsMainMenuPanel::StartJoin()
 	}
 	FString PortTrim = JoinPortText;
 	PortTrim.TrimStartAndEndInline();
-	const int32 Parsed = FCString::Atoi(*PortTrim);
+	int32 Parsed = FCString::Atoi(*PortTrim);
 	if (PortTrim.IsEmpty() || Parsed < 1 || Parsed > 65535) {
+		Parsed = PortFromJoinHostField(JoinHostText, 0);
+	}
+	if (Parsed < 1 || Parsed > 65535) {
 		StatusMessage = TEXT("Enter a join port between 1 and 65535.");
 		Invalidate(EInvalidateWidget::LayoutAndVolatility);
 		return FReply::Handled();
 	}
+	JoinHostText = SanitizeJoinHost(JoinHostText);
 	JoinPortText = FString::FromInt(Parsed);
 	if (GameInstance.IsValid()) {
 		PushMatchSettings();
-		StatusMessage = TEXT("Connecting...");
-		GameInstance->StartJoinLobby(FString::Printf(TEXT("ws://127.0.0.1:%d/"), Parsed));
+		StatusMessage = TEXT("Waiting for host.");
+		GameInstance->StartJoinLobby(FString::Printf(TEXT("ws://%s:%d/"), *JoinHostText, Parsed));
 		RefreshUi();
 	}
 	return FReply::Handled();
@@ -784,7 +854,7 @@ void STacticsMainMenuPanel::RefreshUi()
 		if (IsJoiningLobby()) {
 			StatusMessage = Net->GetLobbyStatusMessage();
 			if (StatusMessage.IsEmpty()) {
-				StatusMessage = TEXT("Connecting…");
+				StatusMessage = TEXT("Waiting for host.");
 			}
 			Invalidate(EInvalidateWidget::LayoutAndVolatility);
 			return;

@@ -683,6 +683,10 @@ void UTacticsWebSocketSubsystem::DispatchInboundJsonOnGameThread(const FString& 
 	if (Type == TEXT("lobby_state") && !bFromTcpClient) {
 		SessionPhase = ETacticsNetSessionPhase::Lobby;
 		ApplyLobbyStateFromJson(Root);
+		if (Role == ETacticsWsRole::ClientRemote) {
+			LobbyStatusMessage = TEXT("Waiting for host.");
+			OnLobbyChanged.Broadcast();
+		}
 		return;
 	}
 	if (Type == TEXT("match_begin") && !bFromTcpClient) {
@@ -792,6 +796,7 @@ void UTacticsWebSocketSubsystem::DispatchInboundJsonOnGameThread(const FString& 
 				LobbySeats[Idx].DeckName = PendingJoinDeckName;
 				LobbySeats[Idx].DeckJson = PendingJoinDeckJson;
 			}
+			LobbyStatusMessage = TEXT("Waiting for host.");
 			ClientSendLobbyClaim();
 		} else {
 			SendClientDeck();
@@ -916,6 +921,9 @@ void UTacticsWebSocketSubsystem::HandleClientConnected(const FString& Url)
 	ClientConnectionError.Empty();
 	UE_LOG(LogTemp, Log, TEXT("TacticsWS: client connected %s (requested seat hint P%d)"), *Url, ClientRemoteSeatPlayerId);
 	Role = ETacticsWsRole::ClientRemote;
+	if (IsInLobby()) {
+		LobbyStatusMessage = TEXT("Waiting for host.");
+	}
 	if (UGameInstance* GI = GetGameInstance()) {
 		if (UTacticsMatchSubsystem* Match = GI->GetSubsystem<UTacticsMatchSubsystem>()) {
 			Match->SetAutoFollowActiveSeat(false);
