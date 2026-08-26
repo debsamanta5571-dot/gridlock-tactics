@@ -13,7 +13,7 @@ Gridlock Tactics is a tactical card game my friends and I are working on. Matche
 
 Unzip and run `TacticsGameUnreal.exe`.
 
-## Game Features
+## Game features
 
 - 2 factions: Asterian Civillian Milita and 99th Dieselheart Company
 - 114 cards
